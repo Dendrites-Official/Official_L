@@ -2,6 +2,10 @@
 import React from "react";
 import LandingPage from "@/components/LandingPage"; // if alias "@" is set to ./src
 
-export default function HomePage() {
-  return <LandingPage />;
+type HomePageProps = {
+  introReady?: boolean;
+};
+
+export default function HomePage({ introReady = true }: HomePageProps) {
+  return <LandingPage introReady={introReady} />;
 }

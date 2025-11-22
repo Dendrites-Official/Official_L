@@ -1,5 +1,5 @@
 // src/components/Hero1.tsx
-import { useRef, useCallback, useState } from "react";
+import { useRef, useCallback, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import SplineLoader from "@/components/SplineLoader";
 import type { Application } from "@splinetool/runtime";
@@ -8,8 +8,13 @@ import { useSplineInteractions } from "@/hooks/useSplineInteractions";
 /** Your scene URL */
 const SCENE = "https://prod.spline.design/wrOy3QowMgzMN0CK/scene.splinecode";
 
-export default function Hero1() {
+type Hero1Props = {
+  introReady?: boolean;
+};
+
+export default function Hero1({ introReady = true }: Hero1Props) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [allowSpline, setAllowSpline] = useState(introReady);
   const heroRef = useRef<HTMLElement | null>(null);
   const splineAreaRef = useRef<HTMLDivElement | null>(null);
   const splineRef = useRef<Application | null>(null);
@@ -17,21 +22,27 @@ export default function Hero1() {
   // unify cursors / context menu for this spline area
   useSplineInteractions(splineAreaRef);
 
+  useEffect(() => {
+    if (!introReady) return;
+    const id = window.setTimeout(() => setAllowSpline(true), 150);
+    return () => window.clearTimeout(id);
+  }, [introReady]);
+
   const handleLoad = useCallback((app: Application) => {
     splineRef.current = app;
-    
+
     // Mobile fix: Ensure canvas becomes visible and interactive
     requestAnimationFrame(() => {
-      const canvas = splineAreaRef.current?.querySelector('canvas');
+      const canvas = splineAreaRef.current?.querySelector("canvas");
       if (canvas) {
         // Force visibility and interaction
-        canvas.style.visibility = 'visible';
-        canvas.style.opacity = '1';
+        canvas.style.visibility = "visible";
+        canvas.style.opacity = "1";
         // Trigger reflow to ensure browser processes the scene
         void canvas.offsetHeight;
       }
     });
-    
+
     setIsLoaded(true);
   }, []);
 
@@ -55,26 +66,35 @@ export default function Hero1() {
         className="absolute inset-0 z-0"
       >
         <div className="spline-target">
-          <SplineLoader
-            scene={SCENE}
-            onLoad={handleLoad}
-            onError={handleError}
-            disableOrbitControls={false}
-            disableZoom={false}
-            forceLoad
-            fallback={
-              <div className="w-full h-full bg-black flex items-center justify-center">
-                <img
-                  src="/logo_name2.png"
-                  alt="Dendrites"
-                  className="w-full h-full object-contain"
-                  loading="eager"
-                />
-              </div>
-              
-            }
-            
-          />
+          {allowSpline ? (
+            <SplineLoader
+              scene={SCENE}
+              onLoad={handleLoad}
+              onError={handleError}
+              disableOrbitControls={false}
+              disableZoom={false}
+              forceLoad
+              fallback={
+                <div className="w-full h-full bg-black flex items-center justify-center">
+                  <img
+                    src="/logo_name2.png"
+                    alt="Dendrites"
+                    className="w-full h-full object-contain"
+                    loading="eager"
+                  />
+                </div>
+              }
+            />
+          ) : (
+            <div className="w-full h-full bg-black flex items-center justify-center">
+              <img
+                src="/logo_name2.png"
+                alt="Dendrites placeholder"
+                className="w-full h-full object-contain"
+                loading="eager"
+              />
+            </div>
+          )}
         </div>
       </div>
 

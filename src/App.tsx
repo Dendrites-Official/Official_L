@@ -84,6 +84,7 @@ export default function App() {
   const location = useLocation();
   const [showIntro, setShowIntro] = useState<boolean>(() => shouldShowIntro());
   const [introComplete, setIntroComplete] = useState<boolean>(false);
+  const introReady = !showIntro || introComplete;
 
   // Consolidated scroll lock effect - single source of truth
   useEffect(() => {
@@ -164,7 +165,7 @@ export default function App() {
                   path="/"
                   element={
                     <PageTransition>
-                      <HomePage />
+                      <HomePage introReady={introReady} />
                     </PageTransition>
                   }
                 />

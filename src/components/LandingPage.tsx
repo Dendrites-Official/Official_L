@@ -20,8 +20,11 @@ import CTAJoinMobile from "./CTAJoinMobile";
 import CTAJoinDesktop from "./CTAJoinDesktop";
 import TokenomicsSection from "./TokenomicsSection";
 
+type LandingPageProps = {
+  introReady?: boolean;
+};
 
-export default function LandingPage() {
+export default function LandingPage({ introReady = true }: LandingPageProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -34,7 +37,7 @@ export default function LandingPage() {
       }}
     >
 
-      <Hero1 />
+      <Hero1 introReady={introReady} />
 
 
       {/* Page 1: Hero Section */}

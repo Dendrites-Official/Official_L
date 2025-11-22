@@ -25,7 +25,7 @@ export default function SRLCommunityReviews({
   videoLeft = "https://www.youtube.com/embed/ouKS-UB9OfA",
   videoRight = "https://www.youtube.com/embed/kEc5IsadG8?start=472",
   ctaHref = "https://waitlist.dendrites.ai/",
-  ctaLabel = "Join Waitlist",
+  ctaLabel = "Join Airdrop",
 }: Props) {
   return (
     <section

@@ -16,7 +16,7 @@ type CTAJoinDesktopProps = {
 
 export default function CTAJoinDesktop({
   ctaHref = "https://waitlist.dendrites.ai/",
-  ctaLabel = "Join the Waitlist",
+  ctaLabel = "Join Airdrop",
 }: CTAJoinDesktopProps) {
   const splineRef = useRef<Application | null>(null);
 

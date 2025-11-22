@@ -16,7 +16,7 @@ type CTAJoinMobileProps = {
 
 export default function CTAJoinMobile({
   ctaHref = "https://waitlist.dendrites.ai/",
-  ctaLabel = "Join the Waitlist",
+  ctaLabel = "Join Airdrop",
 }: CTAJoinMobileProps) {
   const splineRef = useRef<Application | null>(null);
 

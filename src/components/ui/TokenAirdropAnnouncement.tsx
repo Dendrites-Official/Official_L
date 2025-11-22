@@ -136,7 +136,7 @@ export default function TokenAirdropAnnouncement({
                     className="inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold"
                     style={{ background: TOKENS.blue, color: "#fff", border: `1px solid ${TOKENS.blue}` }}
                   >
-                    Join Pre-Sale Waitlist
+                    Join Airdrop
                     <svg className="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                       <path d="M12.293 3.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414L13 13.414a1 1 0 01-1.414-1.414L13.586 10H4a1 1 0 110-2h9.586l-2-2a1 1 0 010-1.414z"/>
                     </svg>

@@ -20,12 +20,12 @@ export const KNOWLEDGE_BASE: KnowledgeEntry[] = [
   // MOMO NAME ORIGIN
   {
     keywords: ['momo name', 'why momo', 'who named you', 'momo meaning', 'why is your name momo'],
-    response: "Faiz named me MOMO as a quiet tribute to someone who pushed him a long way in life. The story is personal, but it's rooted in gratitude and motivation, so I carry that inspiration forward.",
+    response: "Faiz named me MOMO as a tribute to someone very special who pushed him a long way in life. It's a quiet reminder of gratitude and motivation, so I carry the inspiration—not the full story.",
     category: 'general'
   },
   {
     keywords: ['who is that person', 'what is her name', 'tell me about her', 'who inspired momo'],
-    response: "That part stays private. My name is just a reminder of someone who inspired Faiz—it's not meant to reveal her identity, only the encouragement behind it.",
+    response: "That part stays private. My name is just a reminder of someone who inspired Faiz, not a clue to her identity—he prefers to keep that part personal.",
     category: 'general'
   },
 

@@ -9,6 +9,17 @@ export const KNOWLEDGE_BASE = [
         response: "Hey! I'm MOMO, your DNDX assistant. I can help you with information about DNDX, tokenomics, our vision, payment solutions, and more. What would you like to know?",
         category: 'general'
     },
+    // MOMO NAME ORIGIN
+    {
+        keywords: ['momo name', 'why momo', 'who named you', 'momo meaning', 'why is your name momo'],
+        response: "Faiz named me MOMO as a quiet tribute to someone who pushed him a long way in life. The story is personal, but it's rooted in gratitude and motivation, so I carry that inspiration forward.",
+        category: 'general'
+    },
+    {
+        keywords: ['who is that person', 'what is her name', 'tell me about her', 'who inspired momo'],
+        response: "That part stays private. My name is just a reminder of someone who inspired Faiz—it's not meant to reveal her identity, only the encouragement behind it.",
+        category: 'general'
+    },
     // WHAT IS DNDX
     {
         keywords: ['what is dndx', 'what is dendrites', 'explain dndx', 'about dndx', 'dndx purpose'],

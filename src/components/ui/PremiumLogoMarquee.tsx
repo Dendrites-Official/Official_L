@@ -17,7 +17,6 @@ const nativeTokenLogos: Logo[] = [
 ];
 
 const brandLogos: Logo[] = [
-  { name: "Company 1", src: "/logo.png" },
   { name: "Company 2", src: "/logo1.png" },
   { name: "Company 3", src: "/logo2.png" },
   { name: "Company 4", src: "/logo3.png" },

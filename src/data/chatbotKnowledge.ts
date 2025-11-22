@@ -125,7 +125,7 @@ export const KNOWLEDGE_BASE: KnowledgeEntry[] = [
   // TEAM
   {
     keywords: ['team', 'founder', 'who created', 'developers', 'about team', 'ceo', 'faiz'],
-    response: "Faiz Ahmed is the founder of Dendrites (DNDX). He has a Master's in Business Analytics from Mercy University in New York, a background in mechanical engineering, and experience as a financial/data analyst. He's obsessed with making crypto commerce safer, more predictable, and usable for real businesses. Our team includes: Venkat (frontend/UI developer, 3+ years experience), Vedanth (Director of the BVI Issuer), Yogesh (compliance & filings), and strategic partners like DevilsLab and SyncGalaxy (led by Eajaz Ahmed). For inquiries, reach out to support@dendrites.ai.",
+    response: "Dendrites was founded to solve real pain points in crypto commerce—unpredictable fees, irreversible mistakes, and broken trust between buyers and sellers. Our team brings expertise from financial analytics, software engineering, and blockchain development. We're building this because we believe commerce needs better infrastructure. For inquiries, reach out to support@dendrites.ai.",
     category: 'general'
   },
 

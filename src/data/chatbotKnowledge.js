@@ -101,8 +101,8 @@ export const KNOWLEDGE_BASE = [
     },
     // TEAM
     {
-        keywords: ['team', 'founder', 'who created', 'developers', 'about team'],
-        response: "DNDX is built by a team of experienced blockchain engineers, payment industry veterans, and security experts. Our founder has deep experience in fintech and identified the critical pain points in digital commerce. We're backed by advisors from leading blockchain projects.",
+        keywords: ['team', 'founder', 'who created', 'developers', 'about team', 'ceo', 'faiz'],
+        response: "Dendrites was founded to solve real pain points in crypto commerce—unpredictable fees, irreversible mistakes, and broken trust between buyers and sellers. Our team brings expertise from financial analytics, software engineering, and blockchain development. We're building this because we believe commerce needs better infrastructure. For inquiries, reach out to support@dendrites.ai.",
         category: 'general'
     },
     // WALLET

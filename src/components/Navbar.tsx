@@ -231,7 +231,7 @@ export default function Navbar() {
                 <div className="nav-shelf relative flex items-center justify-between w-full max-w-2xl px-4 translate-y-[10px]">
                   <CTA to="/league" variant="dark">Leagues</CTA>
                   <CTA to="/launch" variant="primary" className="z-10">Launch DNDX</CTA>
-                  <CTA to="https://waitlist.dendrites.ai/" variant="dark">Waitlist</CTA>
+                  <CTA to="https://waitlist.dendrites.ai/" variant="dark">Airdrop</CTA>
                 </div>
               </div>
 

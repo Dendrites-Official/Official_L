@@ -121,10 +121,13 @@ function WidgetContent() {
   }, []);
 
   const handleSceneMouseDown = useCallback((e: any) => {
+    // Disable Spline click interactions on mobile
+    if (isMobile) return;
+    
     if (e?.target?.name && ROBOT_TARGETS.has(e.target.name)) {
       setOpen(true);
     }
-  }, []);
+  }, [isMobile]);
 
   // Simplified bubble click handler - no debug logs
   const handleBubbleClick = useCallback(() => {
@@ -386,14 +389,14 @@ function WidgetContent() {
                 <Spline
                   scene="/scene.splinecode"
                   onLoad={onSplineLoad}
-                  onMouseDown={handleSceneMouseDown}
+                  onMouseDown={isMobile ? undefined : handleSceneMouseDown}
                   onError={() => setFailed(true)}
                   style={{
                     width: "100%",
                     height: "100%",
                     minWidth: "60px",
                     minHeight: "60px",
-                    pointerEvents: "none",
+                    pointerEvents: isMobile ? "none" : "auto",
                     display: "block",
                     visibility: "visible",
                   }}

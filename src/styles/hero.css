@@ -1,0 +1,60 @@
+/**
+ * Hero Section Styles
+ * 
+ * Additional utilities for the hero section that complement Tailwind.
+ */
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom focus styles for accessibility */
+.hero-focus-ring:focus-visible {
+  outline: 2px solid rgba(0, 209, 255, 0.6);
+  outline-offset: 4px;
+}
+
+/* Prevent layout shift from ResizeObserver */
+.hero-container {
+  contain: layout;
+}
+
+/* Smooth animations without forcing GPU layers */
+.hero-animated {
+  backface-visibility: hidden;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animated {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Code ticker scrollbar styling */
+.code-ticker-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.code-ticker-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.code-ticker-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 209, 255, 0.3);
+  border-radius: 2px;
+}
+
+.code-ticker-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 209, 255, 0.5);
+}
+
+/* Spline canvas optimization */
+.spline-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}

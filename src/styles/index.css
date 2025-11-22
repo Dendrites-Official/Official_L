@@ -1,0 +1,872 @@
+/* Import hero section styles */
+@import './hero.css';
+/* Import mobile fixes */
+@import './mobile-fixes.css';
+/* Import performance optimizations */
+@import './performance.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CRITICAL: Remove ALL borders from sections */
+/* section,
+section *,
+section::before,
+section::after {
+  border: none !important;
+  outline: none !important;
+} */
+
+
+
+
+
+/* Remove horizontal rules */
+hr {
+  display: none !important;
+  border: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* CRITICAL: Force hamburger button to ALWAYS work */
+button[aria-controls="mobile-menu-panel"],
+button[aria-label*="menu"] {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  touch-action: manipulation !important;
+}
+
+/* Force navigation to be clickable */
+nav, header, [role="banner"] {
+  pointer-events: auto !important;
+}
+
+/* Ensure hamburger and mobile menu always receive taps */
+button[aria-controls="mobile-menu-panel"],
+#mobile-menu-panel,
+.hamburger,
+.mobile-menu {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+
+/* Force absolute edge-to-edge positioning */
+html,
+body,
+#root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* .no-snap {
+  scroll-snap-type: none !important;
+} */
+
+/* index.css */
+.no-snap { scroll-snap-type: none !important; }
+
+
+
+
+/* Optional: intensify the timeline vertical rail */
+/* [data-theme="dark"] .timeline-vertical-rail {
+  background: linear-gradient(180deg, #0070f3 0%, #b794ff 100%) !important;
+  opacity: 0.9;
+} */
+
+/* Global: Hide ALL scrollbars + Smooth Scrolling */
+* {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari/Opera */
+  width: 0;
+  height: 0;
+}
+
+/* force the wave to Vercel blue everywhere */
+[data-dndx-wave] .dndx-wave {
+  stroke: #0070F3 !important;
+}
+
+/* Smooth scroll + snap on root */
+
+
+/* === Lenis base styles (local copy) === */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+
+
+
+html {
+  scroll-behavior: smooth; /* Smooth scroll for better UX */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Don't clip fixed positioned children */
+  position: relative;
+  /* Enable smooth momentum scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* FIXED: Enable touch scrolling on mobile */
+  touch-action: pan-y pinch-zoom;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* CRITICAL: Prevent any scroll container conflicts */
+#root {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+/* Ensure chatbot stays fixed at bottom-right */
+/* #chatbot-root {
+  position: fixed !important;
+  z-index: 15000 !important; 
+  pointer-events: none !important;
+ 
+  transform: none !important;
+  -webkit-transform: none !important;
+} */
+
+/* .chatbot-wrapper {
+  position: absolute !important;
+  right: clamp(0.75rem, 3vw, 1.5rem) !important;
+  bottom: clamp(0.75rem, 3vw, 1.5rem) !important;
+  pointer-events: none !important;
+  transform: none !important;
+} */
+
+/* CRITICAL: Canvas in chatbot should NOT block scrolling when panel is closed */
+/* #chatbot-root canvas {
+  pointer-events: none !important;
+} */
+
+/* When panel is open, the panel itself handles pointer events */
+/* .chatbot-panel canvas {
+  pointer-events: auto !important;
+} */
+
+/* Ensure it works on iOS devices */
+/* @supports (-webkit-touch-callout: none) {
+  #chatbot-root {
+    position: fixed !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+  }
+} */
+
+/* Hide Spline watermark - ONLY in hero background, NOT chatbot */
+.hero-spline-container #spline-watermark,
+.hero-spline-container [class*="watermark"],
+.hero-spline-container a[href*="spline.design"],
+.hero-spline-container a[href*="spline"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
+/* HAPE PRIME Style Animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive Chatbot Widget Styles */
+/* Note: ALL chatbot styles are now in ChatBotWidget.tsx component */
+/* No additional styles needed here to avoid conflicts */
+
+/* End of responsive chatbot widget styles */
+
+/* End of responsive chatbot widget styles */
+/* End of responsive chatbot widget styles */
+
+/* Scroll snap utility classes - ENHANCED for perfect snapping */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+}
+
+/* Ensure snap-start and snap-always work properly */
+.snap-start {
+  scroll-snap-align: start !important;
+  position: relative;
+}
+
+.snap-always {
+  scroll-snap-stop: always !important;
+}
+
+/* Additional snap enhancements */
+section {
+  position: relative;
+  /* Prevent layout shifts during snap */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Performance optimization for animations */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Let the overlay start below the fixed navbar (4rem) + ticker (2.5rem) */
+.mobile-overlay {
+  top: calc(4rem + 2.5rem) !important;
+  /* Prefer 100svh so mobile toolbars don’t break height */
+  height: calc(100svh - 4rem - 2.5rem) !important;
+}
+
+/* tablets (your navbar is taller here) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mobile-overlay {
+    top: calc(5rem + 2.5rem) !important;
+    height: calc(100svh - 5rem - 2.5rem) !important;
+  }
+}
+
+/* Hide scrollbars without breaking scroll (already present) */
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* HAPE-style text effects */
+.text-hape-glow:hover {
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.uppercase {
+  letter-spacing: 0.05em;
+}
+
+
+@keyframes grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+:root {
+  --dndx-black: #000000;
+  --dndx-silver: #C0C0C0;
+  --dndx-platinum: #E5E4E2;
+  --cursor-x: 2;
+  --cursor-y: 2;
+
+  /* Grid defaults */
+  --grid-opacity: .18;
+  /* overall intensity */
+  --grid-gap: 88px;
+  /* cell size */
+  --grid-line: 1px;
+  /* line thickness */
+  --grid-tilt: 62deg;
+  /* perspective tilt */
+  --grid-pan: 0px;
+  /* scroll parallax (set via JS) */
+
+  /* Starts grid below sticky navbar */
+  --grid-safe-top: 4rem;
+  /* mobile header (h-16) */
+}
+
+
+
+:root {
+  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
+}
+
+@keyframes cell-ripple {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
+
+
+/* Responsive grid safe area adjustments */
+@media (min-width: 768px) {
+  :root {
+    --grid-safe-top: 5rem;
+  }
+
+  /* md header (h-20) */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --grid-safe-top: 6rem;
+  }
+
+  /* lg header (h-24) */
+}
+
+/* =========================
+   Base / Cursor
+   ========================= */
+html,
+body {
+  background: #000;
+}
+
+html,
+body,
+* {
+  cursor: url("/cursor.svg") var(--cursor-x) var(--cursor-y), auto !important;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  cursor: text !important;
+}
+
+/* =========================
+   Premium nav underline
+   ========================= */
+/* Keep navbar with Inter font */
+nav,
+.nav-link,
+header,
+[role="navigation"] {
+  font-family: 'Inter Variable', sans-serif !important;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: .25rem .5rem;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--dndx-gold), var(--dndx-blue));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+  border-radius: 999px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* =========================
+   Matte panel with subtle gold glow
+   ========================= */
+.panel {
+  background: radial-gradient(900px 280px at 70% 40%, rgba(242, 194, 51, .06), transparent 60%);
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 16px;
+}
+
+.panel:hover {
+  box-shadow: 0 0 40px rgba(242, 194, 51, .10), 0 0 120px rgba(242, 194, 51, .06);
+}
+
+/* Soft card glow utility (used in features grid) */
+.shadow-dndx-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .06),
+    0 12px 40px rgba(11, 59, 140, .10),
+    0 0 80px rgba(242, 194, 51, .06);
+}
+
+/* =========================
+   A11y focus
+   ========================= */
+:focus-visible {
+  outline: 2px solid var(--dndx-gold);
+  outline-offset: 2px;
+}
+
+/* =========================
+   Brand font helper
+   ========================= */
+.font-brand {
+  font-family: 'Orbitron', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+/* =========================
+   Hypertext gradient + underline helpers
+   ========================= */
+.hypertext {
+  color: transparent;
+  background: linear-gradient(90deg, var(--dndx-platinum), var(--dndx-silver));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hypertext:hover {
+  filter: brightness(1.2);
+}
+
+.hyper-underline {
+  position: relative;
+}
+
+.hyper-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--dndx-platinum), var(--dndx-silver));
+  transform: scaleX(.25);
+  transform-origin: left;
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+  opacity: .9;
+}
+
+.hyper-underline.is-on::after {
+  transform: scaleX(1);
+}
+
+/* =========================
+   Hollow outline button (soft glow on hover)
+   ========================= */
+.btn-outline {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  /* idle: subtle static outline */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .14);
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--dndx-gold), var(--dndx-blue));
+  /* hollow center */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: filter .25s ease, opacity .25s ease;
+  opacity: .9;
+}
+
+.btn-outline::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  background:
+    radial-gradient(120% 120% at 50% 0%,
+      rgba(242, 194, 51, .35), rgba(11, 59, 140, .25) 40%, transparent 70%);
+  filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.btn-outline__inner {
+  position: relative;
+  z-index: 1;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 14px;
+  /* slightly smaller for crisp edge */
+}
+
+.btn-outline:hover::before,
+.btn-outline:focus-visible::before {
+  filter: brightness(1.15) saturate(1.1);
+}
+
+.btn-outline:hover::after,
+.btn-outline:focus-visible::after {
+  opacity: .95;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .btn-outline::before,
+  .btn-outline::after {
+    transition: none;
+  }
+}
+
+/* Fallback for browsers lacking mask-composite */
+@supports not (mask-composite: exclude) {
+  .btn-outline::before {
+    padding: 0;
+    background: none;
+    box-shadow: 0 0 0 1.5px var(--dndx-blue);
+  }
+
+  .btn-outline:hover::before {
+    box-shadow:
+      0 0 0 1.5px var(--dndx-blue),
+      0 0 22px rgba(11, 59, 140, .25),
+      0 0 28px rgba(242, 194, 51, .22);
+  }
+}
+
+/* =========================
+   Perspective Grid Background (lightweight, safe below navbar)
+   ========================= */
+.dndx-grid {
+  position: absolute;
+  inset: 0;
+  top: var(--grid-safe-top);
+  /* ensures grid never overlaps sticky navbar */
+  pointer-events: none;
+  z-index: 0;
+  /* hero content should be z>0 */
+  overflow: hidden;
+  background: var(--dndx-black);
+}
+
+/* grid plane */
+.dndx-grid__plane {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  top: calc(-35% + var(--grid-pan));
+  /* small scroll parallax */
+  height: 200%;
+  transform: perspective(1000px) rotateX(var(--grid-tilt));
+  transform-origin: 50% 20%;
+  opacity: var(--grid-opacity);
+}
+
+.dndx-grid__plane:hover {
+  filter: drop-shadow(0 0 24px rgba(242, 194, 51, .08));
+}
+
+/* lines + palette glow */
+.dndx-grid__plane::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 380px at 68% 36%,
+      rgba(242, 194, 51, .10),
+      rgba(11, 59, 140, .06) 35%,
+      transparent 70%),
+    repeating-linear-gradient(0deg,
+      rgba(255, 255, 255, .14) 0 calc(var(--grid-line)),
+      transparent calc(var(--grid-line)) var(--grid-gap)),
+    repeating-linear-gradient(90deg,
+      rgba(255, 255, 255, .12) 0 calc(var(--grid-line)),
+      transparent calc(var(--grid-line)) var(--grid-gap));
+  background-blend-mode: screen, normal, normal;
+  animation: dndx-grid-drift 36s linear infinite;
+}
+
+/* subtle drift */
+@keyframes dndx-grid-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 0 600px, 600px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dndx-grid__plane::before {
+    animation: none;
+  }
+}
+
+/* Suppress all font loading errors by providing fallbacks */
+@font-face {
+  font-family: 'text-l-0d-u-j';
+  src: local('Arial');
+  font-display: optional;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: 'text-l-0d-u-j-1';
+  src: local('Arial');
+  font-display: optional;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: 'text-l-0d-u-j-2';
+  src: local('Arial');
+  font-display: optional;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: 'text-l-0d-u-j-3';
+  src: local('Arial');
+  font-display: optional;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: 'text-l-0d-u-j-4';
+  src: local('Arial');
+  font-display: optional;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: 'text-l-0d-u-j-5';
+  src: local('Arial');
+  font-display: optional;
+  unicode-range: U+0000-00FF;
+}
+
+/* Ensure all interactive elements are above Spline */
+button,
+a,
+input,
+textarea,
+select,
+[role="button"],
+[tabindex],
+.nav-link {
+  position: relative;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure text content is visible above Spline */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  position: relative;
+  z-index: 20 !important;
+}
+
+/* Ensure content sections are layered properly */
+section,
+main,
+.hero-section {
+  position: relative;
+  z-index: 10;
+}
+
+/* ============================================= */
+/* CRITICAL MOBILE FIXES - DO NOT REMOVE */
+/* ============================================= */
+
+/* Ensure all buttons are tappable on mobile */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  -webkit-touch-callout: none;
+}
+
+/* Ensure inputs and selects work on mobile */
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Range sliders styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+/* Slider thumb - Chrome/Safari */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Slider thumb - Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Slider track - Firefox */
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hover state */
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: #60a5fa;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  background: #60a5fa;
+}
+
+/* Mobile scrolling fix - ensure body is scrollable */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+    touch-action: pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  body {
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Ensure main content is scrollable */
+  main {
+    overflow: visible;
+    height: auto;
+  }
+  
+  /* Ensure sections don't block scrolling */
+  section {
+    overflow: visible;
+    height: auto;
+  }
+  
+  /* Buttons work on mobile - no background changes */
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* All interactive elements - no background interference */
+  a, button, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}

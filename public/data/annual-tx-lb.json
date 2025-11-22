@@ -1,0 +1,31 @@
+{
+  "networks": [
+    {
+      "key": "ethereum",
+      "label": "Ethereum (L1)",
+      "dailyTxAvg": 1560000
+    },
+    {
+      "key": "bsc",
+      "label": "BNB Smart Chain",
+      "dailyTxAvg": 4000000
+    },
+    {
+      "key": "arbitrum",
+      "label": "Arbitrum One",
+      "dailyTxAvg": 2500000
+    },
+    {
+      "key": "base",
+      "label": "Base",
+      "dailyTxAvg": 1600000
+    },
+    {
+      "key": "polygon",
+      "label": "Polygon PoS",
+      "dailyTxAvg": 2000000
+    }
+  ],
+  "hacksUSD": 2200000000,
+  "scamsUSD": 9900000000
+}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+  
+  <!-- Permissions Policy: Disable browser extension interference -->
+  <meta http-equiv="Permissions-Policy" content="unload=()">
+  
+  <link rel="stylesheet" href="/edge-reset.css"><!-- edge reset: loads last to remove side gaps -->
+<link rel="dns-prefetch" href="https://prod.spline.design">
+<link rel="preconnect" href="https://prod.spline.design" crossorigin>
+
+
+  <!-- HAPE PRIME Style Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@100..900&family=Raleway:wght@100..900&display=swap"
+    rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <meta name="theme-color" content="#000000" />
+  <title>DNDX — Commerce-grade predictable fees</title>
+  <link rel="icon" href="/DX.jpg" width="32" height="32" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap"
+    rel="stylesheet" />
+  <!-- Add under your existing Google Fonts links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="bg-black">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  
+  <!-- Suppress console errors -->
+  <script>
+  const originalError = console.error;
+  const originalWarn = console.warn;
+  
+  console.error = function (...args) {
+    const errorMsg = args.join(' ');
+    if (
+      errorMsg.includes('Failed to load resource') || 
+      errorMsg.includes('text-l-') || 
+      errorMsg.includes('favicon.ico') ||
+      errorMsg.includes('missing property') ||
+      errorMsg.includes('ignore-listed frames') ||
+      errorMsg.includes('0dff') ||
+      errorMsg.includes('Show ignore-listed frames') ||
+      errorMsg.includes('react-dom') ||
+      errorMsg.includes('scheduler')
+    ) {
+      return;
+    }
+    originalError.apply(console, args);
+  };
+
+  console.warn = function (...args) {
+    const warnMsg = args.join(' ');
+    // Suppress known warnings (add your new one here)
+    if (
+      warnMsg.includes('A component is changing') ||
+      warnMsg.includes('defaultValue') ||
+      warnMsg.includes('uncontrolled') ||
+      warnMsg.includes('updating from  ') ||              // 👈 catches "updating from  118 to  119"
+      warnMsg.includes('Your .splinecode file is more recent') // (optional) hide Spline version warning
+    ) {
+      return;
+    }
+    originalWarn.apply(console, args);
+  };
+</script>
+
+</body>
+
+</html>

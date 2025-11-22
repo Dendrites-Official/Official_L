@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { margin: 20px; background: #000; color: #fff; font-family: sans-serif; }
+    .test-btn {
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+      background: #222;
+      border: 1px solid #444;
+      color: #0ff;
+      border-radius: 12px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .log { margin-top: 20px; padding: 10px; background: #111; border: 1px solid #333; }
+  </style>
+</head>
+<body>
+  <h2>Mobile Button Click Test</h2>
+  <button class="test-btn" onclick="log('Button 1 clicked!')">Test Button 1</button>
+  <button class="test-btn" onclick="log('Button 2 clicked!')">Test Button 2</button>
+  <button class="test-btn" onclick="window.location.href='/'">Navigate Home</button>
+  <div class="log" id="log">No clicks yet...</div>
+  <script>
+    let count = 0;
+    function log(msg) {
+      count++;
+      document.getElementById('log').innerHTML = count + '. ' + msg + '<br>' + document.getElementById('log').innerHTML;
+    }
+  </script>
+</body>
+</html>

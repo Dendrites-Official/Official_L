@@ -1,0 +1,276 @@
+/* ============================================
+   MOBILE RESPONSIVENESS & INTERACTION FIXES
+   ============================================ */
+
+/* 1. CLEAN DOCUMENT SCROLL - NO OVERFLOW MEDDLING */
+/* Let the document scroll naturally, don't create nested scrollers */
+html, body, #root, main {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Ensure root containers never block interactions */
+  pointer-events: auto !important;
+}
+
+/* 2. INTERACTIVE ELEMENTS - CLEAR HIERARCHY */
+button, 
+a[role="button"],
+[role="button"],
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(6, 182, 212, 0.2);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+}
+
+/* Allow text selection in inputs and text areas */
+input,
+select,
+textarea {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+/* 3. HERO SECTION - NO HIDDEN OVERFLOW */
+.hero-section, 
+[class*="HeroSection"] {
+  overflow: visible !important;
+  touch-action: pan-y pinch-zoom !important;
+  scroll-behavior: smooth !important;
+}
+
+/* 3b. Global click-through guard for decorative layers (mobile) */
+@media (max-width: 1024px) {
+  /* Any decorative layer explicitly marked must not intercept taps */
+  [aria-hidden].absolute,
+  [aria-hidden].fixed,
+  .absolute[aria-hidden],
+  .fixed[aria-hidden],
+  [data-decor="true"],
+  [data-decor="true"] * {
+    pointer-events: none !important;
+  }
+
+  /* Ensure backdrops that should capture taps opt-in explicitly */
+  .backdrop-tappable { pointer-events: auto !important; }
+}
+
+/* 4. BACKGROUND ELEMENTS - SAFE (targeted only) */
+.bg-decoration,
+.background-layer {
+  pointer-events: none !important;
+}
+
+/* Spline background never blocks interactions (hero only) */
+.hero-spline-container,
+.hero-spline-container * {
+  pointer-events: none !important;
+}
+
+/* 5. MOBILE MENU - ALWAYS ACCESSIBLE */
+/* Hamburger button MUST be clickable */
+button[aria-controls="mobile-menu-panel"],
+button[aria-label*="menu" i] {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+#mobile-menu-root,
+#mobile-menu-panel,
+.mobile-menu,
+.hamburger {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  z-index: 999999 !important;
+}
+
+/* Hide hamburger on large desktop (xl breakpoint = 1280px+) */
+@media (min-width: 1280px) {
+  .hamburger,
+  button.hamburger,
+  [class*="hamburger"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Ensure backdrop is clickable */
+#mobile-menu-root .backdrop-tappable {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+
+/* 6. CHATBOT - SELECTIVE POINTER EVENTS */
+#chatbot-root {
+  pointer-events: none !important; /* wrapper never intercepts */
+  z-index: 2147483647 !important;
+}
+
+/* Chatbot panel must be clickable */
+.chatbot-panel {
+  pointer-events: auto !important;
+  touch-action: auto !important;
+  z-index: 2147483647 !important;
+}
+
+.chatbot-bubble-container {
+  pointer-events: none !important;
+  z-index: 2147483647 !important;
+}
+
+#chatbot-root [role="button"],
+#chatbot-root button,
+.chatbot-bubble,
+.chatbot-bubble-container > button,
+.chatbot-wrapper {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  z-index: 2147483647 !important;
+}
+
+/* Mobile-specific fixes for chatbot */
+@media (max-width: 1024px) {
+  .chatbot-panel {
+    pointer-events: auto !important;
+    touch-action: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  .chatbot-bubble-container > button {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Carve out a permanent click-through band at the very top so header taps never get blocked by portals */
+/* DISABLED - was blocking chatbot panel */
+/* @media (max-width: 1024px) {
+  #chatbot-root::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 6.5rem;
+    pointer-events: none !important;
+  }
+} */
+
+/* 7. MODALS/OVERLAYS - ALWAYS CLICKABLE */
+[role="dialog"],
+[role="modal"],
+.modal,
+.overlay {
+  pointer-events: auto !important;
+  touch-action: auto !important;
+}
+
+
+
+/* 8. PAIN & FEATURE SECTIONS */
+.pain-card,
+.feature-item {
+  touch-action: manipulation !important;
+  pointer-events: auto !important;
+}
+
+/* 9. MINIMUM TOUCH TARGET SIZES FOR MOBILE */
+@media (max-width: 1024px) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 48px !important;
+    min-width: 48px !important;
+  }
+  
+  /* Extra padding for better touch targets */
+  button {
+    padding: 12px 16px !important;
+  }
+}
+
+/* 10. PREVENT TEXT SELECTION ON BUTTONS */
+button,
+[role="button"],
+.btn {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* 11. FIX SPLINE WATERMARK & OVERLAYS */
+.hero-spline-container a[href*="spline"],
+.hero-spline-container #spline-watermark,
+.hero-spline-container [class*="watermark"] {
+  display: none !important;
+  pointer-events: none !important;
+  z-index: -9999 !important;
+}
+
+/* 12. NAVBAR - ALWAYS ACCESSIBLE ON MOBILE */
+nav,
+header,
+[role="navigation"],
+[role="banner"] {
+  pointer-events: auto !important;
+  touch-action: auto !important;
+}
+
+/* 13. MARQUEE - DOESN'T BLOCK CLICKS */
+[class*="marquee"],
+[class*="ticker"] {
+  pointer-events: none !important;
+}
+
+[class*="marquee"] * {
+  pointer-events: none !important;
+}
+
+/* 14. ANIMATION PERFORMANCE ON MOBILE */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* 15. INTRO STATE SCROLL LOCKING */
+html.intro-open,
+body.intro-open {
+  overflow: hidden !important;
+  touch-action: none !important;
+}
+
+/* 16. ENSURE PADDING FOR NOTCHED DEVICES */
+@supports (padding: max(0px)) {
+  body {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
+/* 17. PREVENT ZOOM ON INPUT FOCUS */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+/* 18. FIX TOUCH FEEDBACK */
+*:active {
+  outline: none;
+}
+
+button:active {
+  opacity: 0.8;
+}

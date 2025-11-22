@@ -1,0 +1,167 @@
+// src/data/blogs.ts
+export type BlogCategoryId =
+  | "all"
+  | "vision"
+  | "safe-commerce"
+  | "technical"
+  | "dev-guides"
+  | "market"
+  | "announcements"
+  | "founder";
+
+export type BlogArticle = {
+  id: number;
+  title: string;
+  excerpt: string;
+  category: BlogCategoryId;
+  categoryLabel: string;
+  date: string;
+  readMins: number;
+  pdfPath: string;
+  featured?: boolean;
+};
+
+export const BLOG_CATEGORIES = [
+  { id: "all" as const, label: "All" },
+  { id: "vision" as const, label: "Vision & Narrative" },
+  { id: "safe-commerce" as const, label: "Safe Commerce" },
+  { id: "technical" as const, label: "Technical Papers" },
+  { id: "dev-guides" as const, label: "Developer Guides" },
+  { id: "market" as const, label: "Market Insights" },
+  { id: "announcements" as const, label: "Announcements" },
+  { id: "founder" as const, label: "Founder Letters" },
+];
+
+export const BLOG_ARTICLES: BlogArticle[] = [
+  {
+    id: 13,
+    title: "The Dendrites Protocol: A High-Level Summary of Every Feature",
+    excerpt: "The complete guide: Predictable Gas™, SafetySend, AckPay, APP Escrow, PayCodes, QuickPay, SDK. Everything you need to understand Safe Commerce in one place.",
+    category: "vision",
+    categoryLabel: "Vision & Narrative",
+    date: "Nov 2025",
+    readMins: 8,
+    pdfPath: "/blogs/blog-13.pdf",
+    featured: true,
+  },
+  {
+    id: 1,
+    title: "The Vision of Dendrites: Why Crypto Needs a Trust Layer",
+    excerpt: "Crypto solved the money layer but never solved the commerce layer. Dendrites introduces Safe Commerce — the trust layer digital money has been missing since day one.",
+    category: "vision",
+    categoryLabel: "Vision & Narrative",
+    date: "Oct 2025",
+    readMins: 6,
+    pdfPath: "/blogs/blog-1.pdf",
+  },
+  {
+    id: 2,
+    title: "Why Crypto Payments Are Broken (And How We Fix Them)",
+    excerpt: "The 5 fatal flaws stopping crypto adoption: unpredictable fees, no undo, no refunds, no escrow, terrible UX. How Dendrites fixes all of them with one unified system.",
+    category: "safe-commerce",
+    categoryLabel: "Safe Commerce",
+    date: "Oct 2025",
+    readMins: 5,
+    pdfPath: "/blogs/blog-2.pdf",
+  },
+  {
+    id: 3,
+    title: "Introducing Predictable Gas™: Ending Fee Anxiety Forever",
+    excerpt: "Crypto didn't fail because fees are high — it failed because they're unpredictable. Predictable Gas™ delivers pre-quoted fee bands and SLA Credits when reality exceeds the quote.",
+    category: "safe-commerce",
+    categoryLabel: "Safe Commerce",
+    date: "Oct 2025",
+    readMins: 6,
+    pdfPath: "/blogs/blog-3.pdf",
+  },
+  {
+    id: 4,
+    title: "SafetySend (UNDO): Reversible Crypto Payments for the First Time",
+    excerpt: "Billions are lost every year to simple mistakes. SafetySend introduces a 3-minute undo window — the safety net crypto has needed since day one.",
+    category: "safe-commerce",
+    categoryLabel: "Safe Commerce",
+    date: "Oct 2025",
+    readMins: 5,
+    pdfPath: "/blogs/blog-4.pdf",
+  },
+  {
+    id: 5,
+    title: "APP Escrow Explained: Payments That Behave Like Workflows",
+    excerpt: "Commerce requires structure: milestones, approvals, refunds, delivery checks. APP Escrow brings enterprise-grade payment workflows to crypto for the first time.",
+    category: "technical",
+    categoryLabel: "Technical Papers",
+    date: "Oct 2025",
+    readMins: 7,
+    pdfPath: "/blogs/blog-5.pdf",
+  },
+  {
+    id: 6,
+    title: "AckPay: Confirmation-Based Crypto Payments",
+    excerpt: "Payments finalize only when the receiver accepts. If they don't confirm, funds auto-refund. The confirmation layer crypto has needed since day one.",
+    category: "technical",
+    categoryLabel: "Technical Papers",
+    date: "Oct 2025",
+    readMins: 6,
+    pdfPath: "/blogs/blog-6.pdf",
+  },
+  {
+    id: 7,
+    title: "Why \"Planning Gas\" Doesn't Work (Real Data Breakdown)",
+    excerpt: "Gas volatility is chaotic, not predictable. MEV bots, liquidations, and spikes destroy every estimate. Real data shows why businesses need Predictable Gas™ instead.",
+    category: "market",
+    categoryLabel: "Market Insights",
+    date: "Oct 2025",
+    readMins: 7,
+    pdfPath: "/blogs/blog-7.pdf",
+  },
+  {
+    id: 8,
+    title: "$12B in 2024: The Harsh Reality of Crypto Scams & Mistakes",
+    excerpt: "Over $12B lost in 2024 to user errors, scams, and irreversible mistakes. SafetySend, AckPay, and APP Escrow could prevent 50%+ of these losses.",
+    category: "market",
+    categoryLabel: "Market Insights",
+    date: "Oct 2025",
+    readMins: 6,
+    pdfPath: "/blogs/blog-8.pdf",
+  },
+  {
+    id: 9,
+    title: "A Developer's Guide to Using the Dendrites SDK (Simple Version)",
+    excerpt: "Get Safe Commerce in minutes. No Solidity needed. Integrate Predictable Gas™, SafetySend, APP Escrow, and AckPay with just a few lines of JavaScript.",
+    category: "dev-guides",
+    categoryLabel: "Developer Guides",
+    date: "Nov 2025",
+    readMins: 8,
+    pdfPath: "/blogs/blog-9.pdf",
+  },
+  {
+    id: 10,
+    title: "Understanding PayCodes (EIP-681 for Safe Commerce)",
+    excerpt: "PayCodes are enhanced payment URIs that embed Safe Commerce features: UNDO, AckPay, escrow, metadata. Error-proof, merchant-ready, universally compatible.",
+    category: "dev-guides",
+    categoryLabel: "Developer Guides",
+    date: "Nov 2025",
+    readMins: 5,
+    pdfPath: "/blogs/blog-10.pdf",
+  },
+  {
+    id: 11,
+    title: "Founder Letter #1: The Birth of Dendrites (Personal Edition)",
+    excerpt: "From pain came purpose. From loss came leadership. The personal story behind Dendrites and why Safe Commerce became a mission, not just a protocol.",
+    category: "founder",
+    categoryLabel: "Founder Letters",
+    date: "Nov 2025",
+    readMins: 7,
+    pdfPath: "/blogs/blog-11.pdf",
+  },
+  {
+    id: 12,
+    title: "Dendrites Monthly Update #1: Building the Foundations of Safe Commerce",
+    excerpt: "Architecture complete, SDK prototyping started, design system evolving. A transparent look at where we stand and what's coming next.",
+    category: "announcements",
+    categoryLabel: "Announcements",
+    date: "Nov 2025",
+    readMins: 6,
+    pdfPath: "/blogs/blog-12.pdf",
+  },
+];

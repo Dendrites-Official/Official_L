@@ -1,0 +1,177 @@
+/* ========================================
+   PERFORMANCE OPTIMIZATION CSS (drop-in)
+   ======================================== */
+
+/* 0) ROOT + SCROLL BASICS - Ultra-smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* Prevent sideways reflows; stabilize scrollbar space */
+  overflow-x: hidden;
+  scrollbar-gutter: stable both-edges;
+  -webkit-text-size-adjust: 100%;
+  /* Minimal GPU hint - removed excessive transforms */
+}
+
+/* Use small-viewport units when supported (iOS toolbar safe) */
+@supports (height: 100svh) {
+  .vh-100 { min-height: 100svh; }
+}
+
+/* 1) GPU ACCELERATION - MINIMAL AND TARGETED ONLY
+   - Removed global transforms to prevent layer explosion and conflicts */
+
+/* Only add will-change when actively animating - browser handles the rest */
+[data-animation]:hover,
+[data-animation]:focus,
+[data-animation]:active {
+  will-change: transform, opacity;
+}
+
+/* Hero sections use natural rendering - no forced layers */
+.hero-section, [data-hero] {
+  will-change: auto !important;
+  transform: none !important;
+}
+
+/* Sticky elements must NOT have transforms (breaks sticky behavior) */
+.sticky, [style*="position: sticky"] {
+  will-change: auto !important;
+  transform: none !important;
+}
+
+/* 2) HEAVY SECTIONS: use content-visibility for offscreen performance */
+.spline-container,
+.matrix-intro,
+.code-animation-panel,
+.pains-section,
+.roadmap-section,
+[data-heavy] {
+  /* Isolate paint/layout; let browser skip offscreen */
+  contain: layout paint style;
+  content-visibility: auto;
+  /* Reserve space to avoid layout jumps while cv:auto is offscreen */
+  contain-intrinsic-size: auto 600px;
+}
+
+/* 3) BACKDROP BLUR: minimal radii for performance */
+.backdrop-blur-xl,
+.backdrop-blur-2xl,
+.backdrop-blur-3xl,
+[class*="backdrop-blur"] {
+  backdrop-filter: blur(3px) !important; /* Minimal blur for all devices */
+}
+
+/* Even less blur on mobile devices */
+@media (max-width: 768px) {
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-3xl,
+  [class*="backdrop-blur"] {
+    backdrop-filter: blur(2px) !important;
+  }
+}
+
+/* 4) SHADOWS: clamp expensive multi-pass */
+[class*="shadow-2xl"],
+[class*="shadow-3xl"],
+.heavy-shadow {
+  box-shadow: 0 8px 16px rgba(0,0,0,.28) !important;
+}
+
+/* 5) TEXT RENDERING & TAP FEEDBACK */
+html, body, * {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+/* 6) SCROLL HANDLING */
+body {
+  overscroll-behavior-y: contain;  /* prevent rubber-banding cascades */
+  -webkit-overflow-scrolling: touch; /* inertial scroll on iOS */
+  touch-action: pan-y pinch-zoom;    /* avoid JS scroll-blocking */
+}
+
+/* Keep global GPU hints, but NOT inside the hero */
+/* Exempt hero from global transform/fixed hacks */
+[data-hero], [data-hero] .sticky, [data-hero] .fixed {
+  transform: none !important;
+  will-change: auto !important;
+}
+
+
+
+/* 7) ANIMATION DIET (global) */
+a, button {
+  transition: color .15s ease, background-color .15s ease !important;
+}
+[data-framer-motion],
+[data-motion] {
+  /* Keep events live but cap layer hints to only what’s used */
+  pointer-events: auto;
+  will-change: transform, opacity;
+}
+
+/* Pause any CSS animation when you know it’s offscreen via an observer */
+.animation-paused { animation-play-state: paused !important; }
+
+/* 8) GRADIENTS */
+.gradient-heavy, .bg-fixed-gradient {
+  background-attachment: scroll !important; /* fixed = repaint magnet */
+}
+
+/* 9) BORDERS (gradient borders are expensive) */
+[class*="border-gradient"], .border-fancy {
+  border-image: none !important;
+}
+
+/* 10) IMAGES & MEDIA 
+   Lazy offscreen work, keep aspect ratio stable */
+img.cv, video.cv, .media-cv {
+  content-visibility: auto;
+  contain: paint;
+  contain-intrinsic-size: 720px 405px; /* adjust for your common media size */
+}
+
+/* 11) REDUCE WORK ON LOW-END/USER PREFS */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Also trim blur on low-motion devices */
+  [class*="backdrop-blur"] { backdrop-filter: blur(4px) !important; }
+}
+
+/* 12) STICKY STACKED LAYOUT SAFETY (for your StackedSlide)
+   - Don’t transform sticky containers
+   - Isolate paint to avoid bleed-through
+*/
+[data-stacked-root] {
+  isolation: isolate;
+}
+[data-stacked-slide] {
+  will-change: auto;      /* no forced layers on sticky */
+  transform: none !important;
+  contain: paint;
+}
+
+/* 13) SCROLL DEBOUNCE HINTS (for pages with JS scroll handlers)
+   - Mark containers that fire scroll listeners so browsers can optimize */
+.scroll-listener, [data-scroll-listener] {
+  contain: layout paint;
+}
+
+/* 14) SAFARI STICKY QUIRKS (fonts sometimes blur mid-stick) */
+.safari-text-fix {
+  -webkit-font-smoothing: subpixel-antialiased;
+  backface-visibility: hidden;
+}

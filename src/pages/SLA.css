@@ -1,0 +1,20 @@
+/* Styles extracted from inline SLA.tsx injection */
+.sla-title {
+  background: linear-gradient(135deg, #FFE6A3 0%, #F9F1C6 35%, #B9F2FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.08);
+}
+
+.sla-title-small {
+  background: linear-gradient(135deg, #00D1FF 0%, #00F5FF 50%, #FFD700 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sla-glow-cyan:hover {
+  text-shadow: 0 0 10px rgba(0,209,255,0.4), 0 0 20px rgba(0,209,255,0.2);
+  filter: drop-shadow(0 0 8px rgba(0,209,255,0.3));
+}

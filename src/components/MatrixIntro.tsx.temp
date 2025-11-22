@@ -1,0 +1,348 @@
+// src/components/MatrixIntro.tsx
+import React, { useEffect, useRef, useState } from 'react'
+
+/** Rain colors */
+const GOLD = 'rgba(242,194,51,1)'
+const GOLDa = (a = 1) => `rgba(242,194,51,${a})`
+const BLUE = 'rgba(11,59,140,1)'
+const BLUEa = (a = 1) => `rgba(11,59,140,${a})`
+
+/** Symbol set (yours, preserved) */
+const CHARSET = (
+  '日月金木水火土山田口中上下左右大小天地不人心手目耳口车門電氣体数文漢計算機' +
+  '零一二三四五六七八九十甲乙丙丁戊己庚辛壬癸' +
+  'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ' +
+  '⟟ ⌰⍜⎐⟒ ⊬⍜⎍ ⏃☍⌇⊑⏃⏁⏃ ⌇⊑⟟⋏⎅⟒, ⎅⟒☍⊑⋏⏃ ⏁⎍ ⋔⟒⍀⟟ ⊑⍜☌⟟' +
+  'أحبك أكشاتا شيندي، ديكنا تو ميري هوجी' +
+  'سأغزو هذا العالم، انتظر وشاهد، أنا الملك....محمد فايز أحمد' +
+  'अहम् एतत् विश्वं जित्वा प्रतीक्षां पश्यतु, अहं राजा....MOHAMMED FAIZ AHMED' +
+  'I LOVE YOU AKSHATA SHINDE, देखना तू मेरी होगी' +
+  '⟟ ⍙⟟⌰⌰ ☊⍜⋏⍾⎍⟒⍀⍜⍀ ⏁⊑⟟⌇ ⍙⍜⍀⌰⎅, ⍙⏃⟟⏁ ⏃⋏⎅ ⍙⏃⏁☊⊑, ⟟ ⏃⋔ ⏁⟒ ☍⟟⋏☌....⋔⍜⊑⏃⋔⋔⟒⎅ ⎎⏃⟟⋉ ⏃⊑⋔⟒⎅' +
+  '⟡◇◈◍◌⬢⬣ΞΦΨΩλδπΣβηµ'
+).split('')
+
+type Phase = 'loading' | 'brand' | 'done'
+
+/** Timings (ms) */
+const HOLD_BEFORE_BRAND = 1200
+const HOLD_AFTER_BRAND  = 2000
+
+export default function MatrixIntro({ onHandoff }: { onHandoff: () => void }) {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const [progress, setProgress] = useState(0)
+  const [phase, setPhase] = useState<Phase>('loading')
+
+  // Block all scrolling while intro is active
+  useEffect(() => {
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    };
+
+    // Lock body scroll
+    const originalOverflow = document.body.style.overflow;
+    const originalPosition = document.body.style.position;
+    const originalWidth = document.body.style.width;
+    const originalTop = document.body.style.top;
+    const scrollY = window.scrollY;
+
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${scrollY}px`;
+
+    // Prevent all scroll events
+    window.addEventListener('scroll', preventScroll, { passive: false });
+    window.addEventListener('wheel', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+
+    return () => {
+      // Restore original state
+      document.body.style.overflow = originalOverflow;
+      document.body.style.position = originalPosition;
+      document.body.style.width = originalWidth;
+      document.body.style.top = originalTop;
+      window.scrollTo(0, scrollY);
+
+      // Remove event listeners
+      window.removeEventListener('scroll', preventScroll);
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('touchmove', preventScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (phase === 'brand') {
+      const id = setTimeout(() => {
+        setPhase('done')
+        onHandoff()
+      }, HOLD_AFTER_BRAND)
+      return () => clearTimeout(id)
+    }
+  }, [phase, onHandoff])
+
+  useEffect(() => {
+    const canvas = canvasRef.current!
+    const ctx = canvas.getContext('2d')!
+
+    let raf = 0
+    const DPR = Math.max(1, Math.floor(window.devicePixelRatio || 1))
+
+    const resize = () => {
+      const w = innerWidth, h = innerHeight
+      canvas.width = w * DPR
+      canvas.height = h * DPR
+      canvas.style.width = `${w}px`
+      canvas.style.height = `${h}px`
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0)
+    }
+    resize()
+    addEventListener('resize', resize)
+
+    const fontSize = 18
+    const cols = Math.floor(canvas.width / DPR / fontSize)
+
+    type Col = { y: number; speed: number; burst: number; bright: number; headColor: string }
+    const pickHeadColor = () => {
+      const r = Math.random()
+      if (r < 0.008) return 'rgba(255,255,255,0.98)'
+      if (r < 0.08)  return GOLD
+      return BLUE
+    }
+    const makeCol = (): Col => ({
+      y: 1 + Math.random() * 30,
+      speed: 0.9 + Math.random() * 0.9,
+      burst: Math.random() * 180 + 120,
+      bright: Math.random() * 0.25 + 0.25,
+      headColor: pickHeadColor(),
+    })
+    const columns: Col[] = Array.from({ length: cols }, makeCol)
+
+    const t0 = performance.now()
+    let lastPct = 0, stallUntil = 0
+
+    function computePct(now: number) {
+      const t = now - t0
+      const d0 = 1600, d1 = 1400, d2 = 2600
+      let pct = 0
+      if (t <= d0) {
+        const x = t / d0
+        pct = (1 - (1 - x) * (1 - x)) * 70
+      } else if (t <= d0 + d1) {
+        const x = (t - d0) / d1
+        pct = 70 + (x < 0.5 ? 2*x*x : 1 - Math.pow(-2*x + 2, 2)/2) * 20
+      } else {
+        const x = Math.min(1, (t - d0 - d1) / d2)
+        pct = 90 + Math.pow(x, 3) * 10
+      }
+      const nowMs = performance.now()
+      if (pct > 92 && pct < 99) {
+        if (nowMs >= stallUntil && Math.random() < 0.08) stallUntil = nowMs + (120 + Math.random() * 220)
+        if (nowMs < stallUntil) pct = lastPct
+      }
+      if (pct >= 99 && pct < 100) {
+        const dwellEnd = t0 + d0 + d1 + d2 + 600
+        if (performance.now() < dwellEnd) pct = Math.min(pct, 99)
+      }
+      pct = Math.max(lastPct, Math.min(100, pct))
+      lastPct = pct
+      return Math.floor(pct)
+    }
+
+    function draw(now: number) {
+      if (phase !== 'loading') return
+
+      const pct = computePct(now)
+      setProgress(pct)
+
+      ctx.fillStyle = '#000'
+      ctx.fillRect(0, 0, canvas.width / DPR, canvas.height / DPR)
+
+      ctx.textBaseline = 'top'
+      ctx.font = `600 ${fontSize}px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace`
+
+      for (let i = 0; i < cols; i++) {
+        const c = columns[i]
+        const x = i * fontSize
+
+        c.burst -= 1
+        const burstNow = c.burst <= 0
+        if (burstNow) {
+          c.burst = Math.random() * 240 + 200 // Slower bursts for less glitchiness
+          c.speed = 1.4 + Math.random() * 0.8 // Reduced speed range
+          c.bright = 0.7 // Less intense brightness
+          c.headColor = pickHeadColor()
+        } else {
+          c.speed = Math.max(0.85, c.speed * 0.99 + 0.9 * 0.01) // Smoother speed transitions
+          c.bright = Math.max(0.25, c.bright * 0.98) // Gentler brightness fade
+        }
+
+        const ch = CHARSET[(Math.random() * CHARSET.length) | 0]
+        const yPx = c.y * fontSize
+
+        ctx.fillStyle = c.headColor
+        ctx.fillText(ch, x, yPx)
+
+        const trailLen = 14 + ((i * 7) % 8)
+        for (let tix = 1; tix <= trailLen; tix++) {
+          const fade = Math.max(0, 1 - tix / (trailLen + 1))
+          const warm = (i + tix) % 23 === 0
+          ctx.fillStyle = warm ? GOLDa(0.08 * fade * c.bright) : BLUEa(0.09 * fade * c.bright) // Reduced opacity for smoother look
+          const tch = (i + tix) % 4 === 0 ? '▮' : CHARSET[(Math.random() * CHARSET.length) | 0]
+          ctx.fillText(tch, x, (c.y - tix) * fontSize)
+        }
+
+        c.y += c.speed
+        if (c.y * fontSize > canvas.height / DPR) {
+          c.y = 0
+          c.speed = 0.9 + Math.random() * 0.6 // Reduced randomness
+          c.headColor = pickHeadColor()
+        }
+      }
+
+      if (pct < 100) {
+        raf = requestAnimationFrame(draw)
+      } else {
+        setTimeout(() => setPhase('brand'), HOLD_BEFORE_BRAND)
+        cancelAnimationFrame(raf)
+      }
+    }
+
+    raf = requestAnimationFrame(draw)
+    return () => { cancelAnimationFrame(raf); removeEventListener('resize', resize) }
+  }, [phase])
+
+  return (
+    // Blocks interaction while visible - fixed positioning with overflow hidden
+    <div 
+      className="fixed bg-black select-none pointer-events-auto" 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100vw',
+        height: '100vh',
+        minHeight: '100vh',
+        maxHeight: '100vh',
+        overflow: 'hidden',
+        overscrollBehavior: 'none',
+        touchAction: 'none',
+        margin: 0,
+        padding: 0,
+        zIndex: 1200,
+        transform: 'translateZ(0)',
+        WebkitTransform: 'translateZ(0)'
+      }}
+    >
+      <canvas 
+        ref={canvasRef} 
+        className="absolute" 
+        style={{ 
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+          margin: 0,
+          padding: 0,
+          display: 'block',
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)'
+        }} 
+      />
+
+      {phase === 'loading' && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-white text-7xl md:text-8xl font-extrabold tracking-tight">
+              {progress}%
+            </div>
+            <div className="mt-3 text-white/90 tracking-[0.4em] text-xs md:text-sm">
+              LOADING
+            </div>
+          </div>
+        </div>
+      )}
+
+      {phase === 'brand' && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative overflow-visible text-center">
+            <div 
+              className="dndx-brand text-6xl md:text-7xl lg:text-8xl uppercase"
+              style={{
+                fontFamily: "'Orbitron', 'Rajdhani', 'Exo 2', sans-serif",
+                fontWeight: 300,
+                letterSpacing: '0.15em',
+              }}
+            >
+              DENDRITES
+            </div>
+            <div className="mx-auto mt-4 h-[2px] w-[72%] dndx-underline" />
+          </div>
+
+          <style>{`
+            .dndx-brand{
+              position: relative;
+              color: #ffffff;
+              animation: dndx-hyper 1.4s cubic-bezier(.22,1,.36,1) forwards;
+              transform-origin: center;
+              text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            .dndx-brand:hover{
+              text-shadow: 0 0 25px rgba(255,255,255,0.4), 0 0 35px rgba(255,255,255,0.25);
+            }
+            .dndx-underline{
+              background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.8) 0%, 
+                rgba(255, 255, 255, 0.95) 50%, 
+                rgba(255, 255, 255, 0.8) 100%
+              );
+              animation: dndx-underline 1.4s cubic-bezier(.22,1,.36,1) forwards;
+              transform-origin: center;
+              box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+            }
+            .dndx-underline:hover{
+              filter: blur(0.5px) drop-shadow(0 0 10px rgba(255,255,255,0.25));
+            }
+            @keyframes dndx-hyper{
+              0%{
+                opacity: 0; 
+                transform: translateY(32px) scale(0.96); 
+                filter: blur(10px);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+              }
+              70%{
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+                filter: blur(0);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+              }
+              100%{
+                opacity: 1;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+              }
+            }
+            @keyframes dndx-underline{
+              0%{
+                transform: scaleX(0.15); 
+                opacity: 0;
+              }
+              100%{
+                transform: scaleX(1); 
+                opacity: 1;
+              }
+            }
+          `}</style>
+        </div>
+      )}
+    </div>
+  )
+}

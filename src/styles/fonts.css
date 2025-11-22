@@ -1,0 +1,45 @@
+/* Import working fonts */
+@import '@fontsource-variable/manrope';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/raleway';
+
+/* HAPE PRIME Font System with working fonts */
+:root {
+  /* Primary - Bold geometric like HAPE */
+  --font-hape: 'Raleway Variable', sans-serif;
+  /* Secondary - Clean backup */
+  --font-geometric: 'Raleway Variable', sans-serif;
+  /* Body - Professional text */
+  --font-body: 'Raleway Variable', sans-serif;
+  /* Navbar - Keep original */
+  --font-navbar: 'Inter Variable', sans-serif;
+}
+
+/* Apply HAPE-style typography */
+body {
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
+}
+
+/* Ultra-bold headlines like HAPE */
+.hape-headline {
+  font-family: var(--font-hape);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.hape-subhead {
+  font-family: var(--font-geometric);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.hape-body {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.6;
+}

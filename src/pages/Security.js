@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import Footer from '@/components/Footer';
+export default function LeadBoard() {
+    return (_jsxs(_Fragment, { children: [_jsxs("div", { className: 'pt-28 text-white max-w-4xl mx-auto px-4 py-24', children: [_jsx("h1", { className: 'text-4xl font-bold mb-6', children: "LeadBoard" }), _jsx("p", { className: 'text-white/70 mb-12', children: "Track top performers and community leaders." }), _jsx("div", { className: 'space-y-8', children: _jsxs("article", { className: 'border border-white/10 rounded-lg p-6 hover:border-white/20 transition-colors', children: [_jsx("h2", { className: 'text-2xl font-semibold mb-2', children: "LeadBoard Coming Soon" }), _jsx("p", { className: 'text-white/60 text-sm mb-4', children: "Stay tuned for updates" }), _jsx("p", { className: 'text-white/70', children: "Our LeadBoard is currently being prepared. Check back soon to see rankings, top contributors, and community achievements." })] }) })] }), _jsx("div", { className: "bg-gradient-to-b from-black via-slate-950 to-slate-900 py-12 sm:py-16 md:py-20", children: _jsx(Footer, {}) })] }));
+}

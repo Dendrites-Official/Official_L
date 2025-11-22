@@ -1,0 +1,48 @@
+/* edge-reset.css — load this LAST in <head> */
+/* Ensures the page background and major wrappers go truly edge-to-edge,
+   removing left/right gutters introduced by framework defaults */
+:root { box-sizing: border-box; }
+*,*::before,*::after { box-sizing: inherit; }
+
+html, body {
+  margin: 0;           /* remove browser default margins */
+  padding: 0;
+  width: 100%;         /* prefer width:100% over 100vw to avoid h-scroll */
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #000;    /* keep your dark canvas edge-to-edge */
+}
+
+html { scroll-behavior: smooth; }
+
+
+/* Avoid accidental horizontal scroll from wide children */
+body { overflow-x: hidden; }
+
+/* Neutralize common containers that introduce side gaps */
+.container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl,
+.site-wrapper, .wrapper, .main, .content, .page, #app, #root {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* If a grid system adds gutters, flatten them */
+.row { margin-left: 0 !important; margin-right: 0 !important; }
+.row > [class*="col-"] { padding-left: 0 !important; padding-right: 0 !important; }
+
+/* Media should never leak beyond the viewport */
+img, picture, video, iframe { display: block; max-width: 100%; height: auto; }
+
+/* Optional iOS safe-areas */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Utility: force any block to be truly edge-to-edge */
+.edge-no-gutter { margin:0 !important; padding:0 !important; width:100% !important; max-width:none !important; }

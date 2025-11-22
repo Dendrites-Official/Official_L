@@ -120,14 +120,14 @@ function WidgetContent() {
     splineAppRef.current = app;
   }, []);
 
-  const showSplineRobot = !isMobile;
-
   const handleSceneMouseDown = useCallback((e: any) => {
-    if (!showSplineRobot) return;
+    // Disable Spline click interactions on mobile
+    if (isMobile) return;
+    
     if (e?.target?.name && ROBOT_TARGETS.has(e.target.name)) {
       setOpen(true);
     }
-  }, [showSplineRobot]);
+  }, [isMobile]);
 
   // Simplified bubble click handler - no debug logs
   const handleBubbleClick = useCallback(() => {
@@ -363,7 +363,7 @@ function WidgetContent() {
             />
           </div>
 
-          {showSplineRobot && !failed && (
+          {!failed && (
             <div
               className="absolute inset-0 rounded-full"
               style={{ pointerEvents: "none", overflow: "visible" }}
@@ -389,14 +389,14 @@ function WidgetContent() {
                 <Spline
                   scene="/scene.splinecode"
                   onLoad={onSplineLoad}
-                  onMouseDown={handleSceneMouseDown}
+                  onMouseDown={isMobile ? undefined : handleSceneMouseDown}
                   onError={() => setFailed(true)}
                   style={{
                     width: "100%",
                     height: "100%",
                     minWidth: "60px",
                     minHeight: "60px",
-                    pointerEvents: "none",
+                    pointerEvents: isMobile ? "none" : "auto",
                     display: "block",
                     visibility: "visible",
                   }}
@@ -405,15 +405,15 @@ function WidgetContent() {
             </div>
           )}
 
-          {(!showSplineRobot || failed) && (
+          {failed && (
             <div
               className="absolute inset-0 grid place-items-center"
               style={{ pointerEvents: "none" }}
             >
               <img
-                src="/Robotgen.jpg"
-                alt="MOMO assistant"
-                style={{ width: 64, height: 64, borderRadius: "18px", objectFit: "cover" }}
+                src="/logo-small.png"
+                alt="Chatbot"
+                style={{ width: 48, height: 48, borderRadius: "50%" }}
               />
             </div>
           )}

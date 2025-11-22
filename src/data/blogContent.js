@@ -1,5 +1,228 @@
 // src/data/blogContent.ts
 export const blogContent = {
+    14: `
+# Dendrites Season-0 Airdrop: Complete Guide to Points, NFTs, Multipliers & Prizes
+
+![Season-0 Launch](/airdrop1.jpg)
+
+Season-0 is the prologue to Safe Commerce. Before the token lists, before Predictable Gas™ secures every checkout, and before builders embed PayCode rails into their apps, there is a proving ground for the earliest believers. Season-0 is where you earn your slot in the movement, mint your identity, and stack multipliers that decide how loud your voice will be the moment Dendrites goes live.
+
+This guide covers everything: the philosophy behind the distribution, the exact math, how points flow, how NFTs supercharge your totals, and how Season-0 hands you an advantage going into Season-1 and mainnet.
+
+---
+
+## 1. Season-0 Is the Beginning of the Dendrites Movement
+
+Season-0 exists for builders, contributors, researchers, and early community members who want more than a speculative airdrop. It rewards people who put in consistent work before the spotlight arrives.
+
+Joining Season-0 means:
+
+- **Points** for every verified action you take.
+- **NFTs** that lock your identity and multiplier tier.
+- **Multipliers** that compound the value of everything you do afterward.
+- **Prizes** that make the leaderboard feel like a sport, not a chore.
+- **First-access rights** to Season-1 and early mainnet features.
+- **A permanent edge** when the final airdrop allocates tokens.
+
+Season-0 is not a waiting room. It is the first field test of the Safe Commerce ethos.
+
+---
+
+## 2. The Airdrop Philosophy
+
+Dendrites refuses to host a “free token spray.” The protocol exists to make money programmable, safe, and fair—so the airdrop must follow the same logic. Three principles anchor Season-0:
+
+### Usage-First
+
+Every reward connects to real actions: joining the waitlist, submitting proofs, participating in testnet quests, integrating SDK demos, or referring builders. Random wallet snapshots are not coming. Participation is the only currency that matters.
+
+### Anti-Sybil
+
+Points require social verification, wallet signatures, Telegram linking, and quest proofs. Multi-wallet farmers cannot spoof the Dendrites identity graph. Each user is expected to be a human with a story, not a stack of bots.
+
+### Merit-Based & NFT-Powered
+
+The deeper you go, the more you earn. Points drive leaderboard rank, NFTs determine multipliers, and multipliers decide how heavily your points convert into tokens. NFTs are not cosmetics—they are score amplifiers.
+
+This structure creates a competitive but fair arena where effort beats luck.
+
+---
+
+## 3. The Airdrop Formula (Final)
+
+Season-0 uses a transparent equation:
+
+**Airdrop = Points × Tier Multiplier × Testnet Bonus**
+
+- **Points** track what you did.
+- **Tier Multiplier** comes from the Access or Prestige NFT you earn.
+- **Testnet Bonus** adds a surge when you complete milestone builds.
+
+This ensures three truths:
+
+1. **Newcomers** can still earn meaningful allocations if they go hard on Season-0 quests.
+2. **Early believers** pull ahead because they lock Genesis or Prestige NFTs first.
+3. **Elite contributors** receive the highest multipliers, prizes, and hall-of-fame identity.
+
+Your formula is visible, provable, and upgradeable. Every new quest or integration increases at least one input.
+
+---
+
+## 4. How Base Points Work
+
+Points act as your raw score. They accumulate from day one and never reset inside Season-0.
+
+- **Joining the Waitlist – 50 Points**  
+  Verify your email and you secure your first allocation.
+
+- **Joining *with* a referral – 75 Points**  
+  Use a trusted invite code when you sign up and you start ahead of the pack.
+
+- **Referrer Rewards – 100 Points per wallet**  
+  Share your code. When a new user verifies, you receive 100 points. Referral waves occasionally double these rewards.
+
+From there, the scoreboard gets richer.
+
+---
+
+## 5. Earning Points Through Actions & Quests
+
+Season-0 is designed so that active participation beats speculation. Here is the map:
+
+### Social Quests
+
+Publish threads, share reels, tag @Dendrites_AI, or recap Safe Commerce concepts. Submit proofs and your points update automatically.
+
+### Verified Socials
+
+Connect Twitter/X, LinkedIn, Discord, and Telegram. Every platform you verify adds identity weight and incremental points.
+
+### Streaks & Daily Momentum
+
+Complete daily or weekly check-ins to unlock streak multipliers. Streaks boost leaderboard position because they prove consistent energy, not a single lucky spike.
+
+### Testnet Participation
+
+Finish the first testnet milestone to unlock the Testnet Bonus portion of the formula. Subsequent milestones stack additional points and qualify you for the Genesis Access Pass.
+
+### Seasonal Quests
+
+AMAs, deep-dive quizzes, Safe Commerce scenario walkthroughs, PayCode demos, and SDK trial integrations appear as limited-time quests. Each one rewards more than vanity metrics—they force you to understand the protocol.
+
+### Referral Waves
+
+Certain weeks increase referral point payouts. Refer during a wave and both you and your invitees accelerate faster than the baseline.
+
+The system always favors builders who put in the work. You can watch the scoreboard climb in real time; nothing is hidden.
+
+---
+
+## 6. Access NFTs: Your Season-0 Identity
+
+Access NFTs are non-tradable, soulbound passes. They certify that you crossed milestone gates and they decide your base multiplier.
+
+### Standard Access Pass — Open for All Eligible Users
+
+Requirements:
+
+- Verified email
+- Linked wallet
+- Connected Telegram
+- Minimum quest completions
+- One testnet proof
+
+Holding the Standard Pass proves you are a real participant. It unlocks Season-0 eligibility, a baseline multiplier, and access to Season-1 features.
+
+### Genesis Access Pass — Scarce & Premium
+
+Requirements:
+
+- Be among the first 3,000–5,000 verified wallets
+- Link wallet + Telegram
+- Complete minimum quests
+- Attach at least two verified socials
+- Finish the first testnet milestone
+
+Once the cap is hit, no more Genesis Access Passes will ever exist. They signal “First 5,000” status forever, provide a higher multiplier than Standard, and grant priority into Season-1 drops.
+
+---
+
+## 7. Prestige NFTs: Elite, Tradable, Prize-Backed
+
+Prestige NFTs are the trophies of Season-0. They are ERC-721 collectibles awarded at snapshot based on leaderboard rank and they come with real-world prizes.
+
+### 👑 Galaxy Crown — Top 10
+
+- Reserved for the most relentless Season-0 contributors.
+- Includes a PlayStation/PS5, the highest multiplier, VIP roles, and Hall of Fame recognition.
+- Fully tradable.
+
+### 💎 Galaxy Crest — Top 30
+
+- Awarded to ranks 11–30.
+- Ships with a premium gaming headset, elite recognition, and high multipliers.
+- Tradable status lets you carry the badge into the open market.
+
+### 🌌 Galaxy Tokenmark 1K — Top 1000
+
+- Given to ranks 31–1000.
+- Bundles surprise partner drops, merch, and elevated multipliers.
+- Tradable and positioned as the “builder club” credential.
+
+Prestige NFTs layer on top of Access NFTs. You still keep your soulbound pass, but the prestige tier compounds your multiplier and lottery odds forever.
+
+---
+
+## 8. How Multipliers Actually Work
+
+Multipliers translate your NFT status into raw airdrop weight. Higher tiers multiply every point you earned before and after minting.
+
+Descending order of strength:
+
+1. Galaxy Crown
+2. Galaxy Crest
+3. Galaxy Tokenmark 1K
+4. Genesis Access Pass
+5. Standard Access Pass
+
+Example:
+
+- User A: 12,000 points + Galaxy Crest + Testnet Bonus → outscores User B even if User B has 18,000 points but only holds the Standard Pass and no Testnet completion. The multiplier math incentivizes depth, not spam.
+
+This keeps the competition merit-oriented: elite performance amplifies every new action.
+
+---
+
+## 9. Season-0 → Season-1 → Mainnet: Full Path
+
+### Season-0
+
+Earn points, complete quests, mint Access NFTs, climb leaderboards, claim multipliers, and capture prizes. Snapshot occurs before TGE.
+
+### TGE
+
+Participants receive claimable receipts. There is no instant unlock or hyperinflationary dump. Vesting begins after TGE, aligned with protocol milestones.
+
+### Season-1
+
+inPay usage, PayCodes, Escrow workflows, QuickPay flows, and developer integrations become the new quest surface. Multipliers can continue to stack.
+
+### Mainnet
+
+Your NFT identity plus every action from Season-0 and Season-1 defines your long-term status in Safe Commerce. The more you contribute now, the more gravity you hold later.
+
+---
+
+## Why This Matters Now
+
+Season-0 is not a vanity contest. It is a filtration layer ensuring that the first Dendrites token distribution goes to people who actually help make Safe Commerce real. Your points, quests, referrals, testnet proofs, streaks, and NFT tier all work together to decide how much you will hold when the network launches.
+
+If you want a fair system, you have to help build it—and you get rewarded precisely for that effort. The earlier and more active you are, the bigger your multiplier, the rarer your NFT, the higher your rank, and the larger your reward.
+
+This is the start of the Dendrites community. Season-0 sets the tone for everything that follows.
+
+**Ready to secure your slot? [Join the waitlist](https://waitlist.dendrites.ai) and start earning points now.**
+`,
     1: `
 # Crypto Solved the "Money Layer." But It Never Solved the "Commerce Layer."
 

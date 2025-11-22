@@ -19,33 +19,24 @@ const TOKENS = {
   sub: "rgba(255,255,255,0.70)",
 };
 
-// Get the featured blog and two recent blogs from actual blog data
-const DEFAULT_ARTICLES: Article[] = [
-  {
-    title: BLOG_ARTICLES[0].title, // Blog 13 - Featured
-    href: `/blogs/${BLOG_ARTICLES[0].id}`,
-    image: "/image.png",
-    tag: BLOG_ARTICLES[0].categoryLabel.toUpperCase(),
-    date: BLOG_ARTICLES[0].date,
-    readMins: BLOG_ARTICLES[0].readMins,
-  },
-  {
-    title: BLOG_ARTICLES[1].title, // Blog 1
-    href: `/blogs/${BLOG_ARTICLES[1].id}`,
-    image: "/FinalAlien.jpg",
-    tag: BLOG_ARTICLES[1].categoryLabel.toUpperCase(),
-    date: BLOG_ARTICLES[1].date,
-    readMins: BLOG_ARTICLES[1].readMins,
-  },
-  {
-    title: BLOG_ARTICLES[2].title, // Blog 2
-    href: `/blogs/${BLOG_ARTICLES[2].id}`,
-    image: "/DX.jpg",
-    tag: BLOG_ARTICLES[2].categoryLabel.toUpperCase(),
-    date: BLOG_ARTICLES[2].date,
-    readMins: BLOG_ARTICLES[2].readMins,
-  },
-];
+const FALLBACK_IMAGES = ["/image.png", "/airdrop1.jpg", "/DX.jpg"];
+
+const DEFAULT_ARTICLES: Article[] = (() => {
+  const featuredArticles = BLOG_ARTICLES.filter((article) => article.featured);
+  const nonFeatured = BLOG_ARTICLES.filter((article) => !article.featured);
+  const prioritized = [...featuredArticles, ...nonFeatured].slice(0, 3);
+
+  const pickArticle = (article: (typeof BLOG_ARTICLES)[number], fallbackIndex: number): Article => ({
+    title: article.title,
+    href: `/blogs/${article.id}`,
+    image: article.heroImage ?? FALLBACK_IMAGES[fallbackIndex] ?? FALLBACK_IMAGES[0],
+    tag: article.categoryLabel.toUpperCase(),
+    date: article.date,
+    readMins: article.readMins,
+  });
+
+  return prioritized.map((article, index) => pickArticle(article, index));
+})();
 
 export default function ArticlesBlogs({
   title = "Most popular articles",

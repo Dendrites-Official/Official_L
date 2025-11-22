@@ -7,8 +7,21 @@ export const BLOG_CATEGORIES = [
     { id: "market", label: "Market Insights" },
     { id: "announcements", label: "Announcements" },
     { id: "founder", label: "Founder Letters" },
+    { id: "ecosystem", label: "Ecosystem / Airdrop" },
 ];
 export const BLOG_ARTICLES = [
+    {
+        id: 14,
+        title: "Season-0 Airdrop: Guide to Points, NFTs, Multipliers & Rewards",
+        excerpt: "Season-0 is the proving ground for Dendrites. Learn how points, referrals, quests, access NFTs, prestige NFTs, and multipliers combine into the most merit-based airdrop in crypto.",
+        category: "ecosystem",
+        categoryLabel: "Ecosystem / Airdrop",
+        date: "Nov 2025",
+        readMins: 9,
+        pdfPath: "/blogs/blog-14.pdf",
+        featured: true,
+        heroImage: "/airdrop1.jpg",
+    },
     {
         id: 13,
         title: "The Dendrites Protocol: A High-Level Summary of Every Feature",
@@ -18,6 +31,7 @@ export const BLOG_ARTICLES = [
         date: "Nov 2025",
         readMins: 8,
         pdfPath: "/blogs/blog-13.pdf",
+        heroImage: "/image.png",
         featured: true,
     },
     {

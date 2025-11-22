@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { BLOG_ARTICLES, BLOG_CATEGORIES, type BlogCategoryId } from "../data/blogs";
 
 export default function Blogs() {
+  const featuredArticles = BLOG_ARTICLES.filter((a) => a.featured);
   const [activeCategory, setActiveCategory] = useState<BlogCategoryId>("all");
 
   const filteredArticles =
@@ -12,7 +13,11 @@ export default function Blogs() {
       ? BLOG_ARTICLES
       : BLOG_ARTICLES.filter((a) => a.category === activeCategory);
 
-  const featuredArticle = BLOG_ARTICLES.find((a) => a.featured);
+  const shouldShowFeaturedHero = activeCategory === "all" && featuredArticles.length > 0;
+  const featuredIds = new Set(featuredArticles.map((article) => article.id));
+  const articlesToRender = shouldShowFeaturedHero
+    ? filteredArticles.filter((article) => !featuredIds.has(article.id))
+    : filteredArticles;
   const trendingPosts = BLOG_ARTICLES.slice(0, 3);
 
   return (
@@ -95,41 +100,45 @@ export default function Blogs() {
         </section>
 
         {/* Featured Article - Mobile optimized */}
-        {featuredArticle && activeCategory === "all" && (
-          <section className="border-b border-neutral-800 bg-gradient-to-b from-neutral-950/50 to-black">
+        {shouldShowFeaturedHero && (
+          <section className="border-b border-neutral-800 bg-black">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12">
-              <div className="grid gap-6 sm:gap-8 lg:grid-cols-2">
-                <div>
-                  <div className="mb-3">
-                    <span className="inline-block rounded-full border border-neutral-700 bg-neutral-900 px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs font-medium text-neutral-400">
-                      {featuredArticle.categoryLabel}
-                    </span>
+              <div className="space-y-10">
+                {featuredArticles.map((article) => (
+                  <div key={article.id} className="grid gap-6 sm:gap-8 lg:grid-cols-2">
+                    <div>
+                      <div className="mb-3">
+                        <span className="inline-block rounded-full border border-neutral-700 bg-neutral-900 px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs font-medium text-neutral-400">
+                          {article.categoryLabel}
+                        </span>
+                      </div>
+                      <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-white">
+                        {article.title}
+                      </h2>
+                      <p className="mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed text-neutral-400 line-clamp-3 sm:line-clamp-none">
+                        {article.excerpt}
+                      </p>
+                      <div className="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-neutral-500">
+                        <span>{article.date}</span>
+                        <span>•</span>
+                        <span>{article.readMins} min read</span>
+                      </div>
+                      <Link
+                        to={`/blogs/${article.id}`}
+                        className="inline-flex items-center gap-2 rounded-full bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-black transition-all hover:bg-neutral-200 shadow-lg"
+                      >
+                        READ FULL →
+                      </Link>
+                    </div>
+                    <div className="aspect-video overflow-hidden rounded-xl sm:rounded-2xl border border-neutral-800 bg-neutral-900 order-first lg:order-last">
+                      <img
+                        src={article.heroImage ?? "/image.png"}
+                        alt={article.title}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
                   </div>
-                  <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-white">
-                    {featuredArticle.title}
-                  </h2>
-                  <p className="mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed text-neutral-400 line-clamp-3 sm:line-clamp-none">
-                    {featuredArticle.excerpt}
-                  </p>
-                  <div className="mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-neutral-500">
-                    <span>{featuredArticle.date}</span>
-                    <span>•</span>
-                    <span>{featuredArticle.readMins} min read</span>
-                  </div>
-                  <Link
-                    to={`/blogs/${featuredArticle.id}`}
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-black transition-all hover:bg-neutral-200 shadow-lg"
-                  >
-                    READ FULL →
-                  </Link>
-                </div>
-                <div className="aspect-video overflow-hidden rounded-xl sm:rounded-2xl border border-neutral-800 bg-neutral-900 order-first lg:order-last">
-                  <img
-                    src="/image.png"
-                    alt={featuredArticle.title}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                ))}
               </div>
             </div>
           </section>
@@ -141,7 +150,7 @@ export default function Blogs() {
             <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1fr_320px]">
               {/* Blog Grid */}
               <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 auto-rows-min">
-                {filteredArticles.map((article) => (
+                {articlesToRender.map((article) => (
                   <article
                     key={article.id}
                     className="group flex flex-col rounded-xl sm:rounded-2xl border border-neutral-800 bg-neutral-950/50 p-4 sm:p-5 transition-all hover:border-neutral-600 hover:bg-neutral-900/50 hover:shadow-xl hover:shadow-neutral-900/20"

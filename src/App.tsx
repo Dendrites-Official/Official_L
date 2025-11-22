@@ -270,6 +270,10 @@ export default function App() {
                 path="/leaderboard"
                 element={<ExternalRedirect to="https://waitlist.dendrites.ai/leaderboard" />}
               />
+              <Route
+                path="/leadboard"
+                element={<ExternalRedirect to="https://waitlist.dendrites.ai/leaderboard" />}
+              />
               </Routes>
             </Suspense>
           </AnimatePresence>

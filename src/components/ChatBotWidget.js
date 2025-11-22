@@ -198,7 +198,7 @@ function WidgetContent() {
                                             pointerEvents: "none",
                                             display: "block",
                                             visibility: "visible",
-                                        } }) }) })), (!showSplineRobot || failed) && (_jsx("div", { className: "absolute inset-0 grid place-items-center", style: { pointerEvents: "none" }, children: _jsx("img", { src: "/logo-small.png", alt: "Chatbot", style: { width: 48, height: 48, borderRadius: "50%" } }) }))] })] })] }));
+                                        } }) }) })), (!showSplineRobot || failed) && (_jsx("div", { className: "absolute inset-0 grid place-items-center", style: { pointerEvents: "none" }, children: _jsx("img", { src: "/Robotgen.jpg", alt: "MOMO assistant", style: { width: 64, height: 64, borderRadius: "18px", objectFit: "cover" } }) }))] })] })] }));
 }
 export default function ChatBotWidget() {
     const host = useMemo(() => {

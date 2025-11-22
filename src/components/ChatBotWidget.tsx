@@ -411,9 +411,9 @@ function WidgetContent() {
               style={{ pointerEvents: "none" }}
             >
               <img
-                src="/logo-small.png"
-                alt="Chatbot"
-                style={{ width: 48, height: 48, borderRadius: "50%" }}
+                src="/Robotgen.jpg"
+                alt="MOMO assistant"
+                style={{ width: 64, height: 64, borderRadius: "18px", objectFit: "cover" }}
               />
             </div>
           )}

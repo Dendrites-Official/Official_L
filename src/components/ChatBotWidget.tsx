@@ -120,14 +120,14 @@ function WidgetContent() {
     splineAppRef.current = app;
   }, []);
 
+  const showSplineRobot = !isMobile;
+
   const handleSceneMouseDown = useCallback((e: any) => {
-    // Disable Spline click interactions on mobile
-    if (isMobile) return;
-    
+    if (!showSplineRobot) return;
     if (e?.target?.name && ROBOT_TARGETS.has(e.target.name)) {
       setOpen(true);
     }
-  }, [isMobile]);
+  }, [showSplineRobot]);
 
   // Simplified bubble click handler - no debug logs
   const handleBubbleClick = useCallback(() => {
@@ -363,7 +363,7 @@ function WidgetContent() {
             />
           </div>
 
-          {!failed && (
+          {showSplineRobot && !failed && (
             <div
               className="absolute inset-0 rounded-full"
               style={{ pointerEvents: "none", overflow: "visible" }}
@@ -389,14 +389,14 @@ function WidgetContent() {
                 <Spline
                   scene="/scene.splinecode"
                   onLoad={onSplineLoad}
-                  onMouseDown={isMobile ? undefined : handleSceneMouseDown}
+                  onMouseDown={handleSceneMouseDown}
                   onError={() => setFailed(true)}
                   style={{
                     width: "100%",
                     height: "100%",
                     minWidth: "60px",
                     minHeight: "60px",
-                    pointerEvents: isMobile ? "none" : "auto",
+                    pointerEvents: "none",
                     display: "block",
                     visibility: "visible",
                   }}
@@ -405,7 +405,7 @@ function WidgetContent() {
             </div>
           )}
 
-          {failed && (
+          {(!showSplineRobot || failed) && (
             <div
               className="absolute inset-0 grid place-items-center"
               style={{ pointerEvents: "none" }}

@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useMemo, useRef, } from "react";
 import { createPortal } from "react-dom";
 import Spline from "@splinetool/react-spline";
 import { getAIResponse } from "@/lib/aiChatbot";
+import { useIsMobile } from "@/hooks/useIsMobile";
 const ASSISTANT_NAME = "MOMO";
 const TOOLTIP_TEXT_TOP = "Hi 👋";
 const TOOLTIP_TEXT_BOTTOM = `I'm ${ASSISTANT_NAME}. Need help? Chat with me!`;
@@ -27,6 +28,7 @@ function WidgetContent() {
     const [text, setText] = useState("");
     const [tooltipVisible, setTooltipVisible] = useState(true);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const isMobile = useIsMobile(1024);
     const closeCountRef = useRef(0);
     const tooltipTimerRef = useRef(null);
     const bubbleRef = useRef(null);
@@ -62,6 +64,8 @@ function WidgetContent() {
     }, [open]);
     // Mouse tracking for robot tilt (desktop mainly)
     useEffect(() => {
+        if (isMobile)
+            return;
         const handleMouseMove = (e) => {
             if (!bubbleRef.current)
                 return;
@@ -77,7 +81,7 @@ function WidgetContent() {
         };
         window.addEventListener("mousemove", handleMouseMove, { passive: true });
         return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, []);
+    }, [isMobile]);
     const scheduleTooltip = useCallback((ms) => {
         if (tooltipTimerRef.current)
             window.clearTimeout(tooltipTimerRef.current);
@@ -92,14 +96,17 @@ function WidgetContent() {
         // first close → show again after 1 min, later → after 5 mins
         scheduleTooltip(closeCountRef.current === 1 ? 60000 : 300000);
     }, [scheduleTooltip]);
+    const showSplineRobot = !isMobile;
     const onSplineLoad = useCallback((app) => {
         splineAppRef.current = app;
     }, []);
     const handleSceneMouseDown = useCallback((e) => {
+        if (!showSplineRobot)
+            return;
         if (e?.target?.name && ROBOT_TARGETS.has(e.target.name)) {
             setOpen(true);
         }
-    }, []);
+    }, [showSplineRobot]);
     // Simplified bubble click handler - no debug logs
     const handleBubbleClick = useCallback(() => {
         setOpen((v) => !v);
@@ -169,12 +176,12 @@ function WidgetContent() {
                             cursor: "pointer",
                             touchAction: "manipulation",
                             userSelect: "none",
-                        }, children: [_jsx("div", { className: "absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none", children: _jsx("div", { className: "absolute inset-0 rounded-full border-2 border-white/50 animate-ping", style: { animationDuration: "2s" } }) }), !failed && (_jsx("div", { className: "absolute inset-0 rounded-full", style: { pointerEvents: "none", overflow: "visible" }, children: _jsx("div", { className: "absolute top-1/2 left-1/2 transition-transform duration-200 ease-out", style: {
+                        }, children: [_jsx("div", { className: "absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none", children: _jsx("div", { className: "absolute inset-0 rounded-full border-2 border-white/50 animate-ping", style: { animationDuration: "2s" } }) }), showSplineRobot && !failed && (_jsx("div", { className: "absolute inset-0 rounded-full", style: { pointerEvents: "none", overflow: "visible" }, children: _jsx("div", { className: "absolute top-1/2 left-1/2 transition-transform duration-200 ease-out", style: {
                                         transform: `
                     translate(-50%, -50%)
-                    translate(${ROBOT_NUDGE_X_PX + mousePos.x * 8}px, ${ROBOT_NUDGE_Y_PX + mousePos.y * 8}px)
-                    rotateY(${mousePos.x * 15}deg)
-                    rotateX(${-mousePos.y * 10}deg)
+                    translate(${ROBOT_NUDGE_X_PX + (isMobile ? 0 : mousePos.x * 8)}px, ${ROBOT_NUDGE_Y_PX + (isMobile ? 0 : mousePos.y * 8)}px)
+                    rotateY(${isMobile ? 0 : mousePos.x * 15}deg)
+                    rotateX(${isMobile ? 0 : -mousePos.y * 10}deg)
                     scale(${ROBOT_SCALE})
                   `,
                                         transformOrigin: "center center",
@@ -191,7 +198,7 @@ function WidgetContent() {
                                             pointerEvents: "none",
                                             display: "block",
                                             visibility: "visible",
-                                        } }) }) })), failed && (_jsx("div", { className: "absolute inset-0 grid place-items-center", style: { pointerEvents: "none" }, children: _jsx("img", { src: "/logo-small.png", alt: "Chatbot", style: { width: 48, height: 48, borderRadius: "50%" } }) }))] })] })] }));
+                                        } }) }) })), (!showSplineRobot || failed) && (_jsx("div", { className: "absolute inset-0 grid place-items-center", style: { pointerEvents: "none" }, children: _jsx("img", { src: "/logo-small.png", alt: "Chatbot", style: { width: 48, height: 48, borderRadius: "50%" } }) }))] })] })] }));
 }
 export default function ChatBotWidget() {
     const host = useMemo(() => {

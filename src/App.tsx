@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import ChatBotWidget from "@/components/ChatBotWidget";
 import MatrixIntro from "@/components/MatrixIntro";
 import MusicPlayer from "@/components/MusicPlayer";
+import ExternalRedirect from "@/components/ExternalRedirect";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
 // Pages - Lazy loaded for better performance
@@ -258,6 +259,16 @@ export default function App() {
                     <League />
                   </PageTransition>
                 }
+              />
+              
+              {/* External redirects */}
+              <Route
+                path="/airdrop"
+                element={<ExternalRedirect to="https://waitlist.dendrites.ai" />}
+              />
+              <Route
+                path="/leaderboard"
+                element={<ExternalRedirect to="https://waitlist.dendrites.ai/leaderboard" />}
               />
               </Routes>
             </Suspense>

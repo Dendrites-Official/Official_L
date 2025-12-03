@@ -19,6 +19,8 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import CTAJoinMobile from "./CTAJoinMobile";
 import CTAJoinDesktop from "./CTAJoinDesktop";
 import TokenomicsSection from "./TokenomicsSection";
+import TrustSignalStack from "./TrustSignalStack";
+import TokenProofStrip from "./TokenProofStrip";
 
 type LandingPageProps = {
   introReady?: boolean;
@@ -58,6 +60,8 @@ export default function LandingPage({ introReady = true }: LandingPageProps) {
       >
         <HeroSection />
       </section>
+
+      <TokenProofStrip />
 
       {/* Page 2: Logo Marquee */}
       <section
@@ -122,6 +126,8 @@ export default function LandingPage({ introReady = true }: LandingPageProps) {
       <section className="w-full bg-black text-white" style={{ overflow: 'visible' }}>
         <DndxRoadmapPremium />
       </section>
+
+      <TrustSignalStack />
 
       <TokenomicsSection />
 

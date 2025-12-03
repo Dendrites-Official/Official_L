@@ -86,6 +86,7 @@ export default function App() {
   const location = useLocation();
   const [showIntro, setShowIntro] = useState<boolean>(() => shouldShowIntro());
   const [introComplete, setIntroComplete] = useState<boolean>(false);
+  const [chatbotReady, setChatbotReady] = useState(false);
   const introReady = !showIntro || introComplete;
 
   // Consolidated scroll lock effect - single source of truth
@@ -129,6 +130,22 @@ export default function App() {
     sessionStorage.setItem("dndx:introShown", "true");
     setShowIntro(false);
   };
+
+  useEffect(() => {
+    if (showIntro) {
+      setChatbotReady(false);
+      return;
+    }
+
+    setChatbotReady(false);
+    const bootDelay = window.setTimeout(() => {
+      setChatbotReady(true);
+    }, 1200);
+
+    return () => {
+      window.clearTimeout(bootDelay);
+    };
+  }, [showIntro, location.pathname]);
 
   return (
     <>
@@ -279,7 +296,7 @@ export default function App() {
             </Suspense>
           </AnimatePresence>
         </motion.div>
-      </main>      <ChatBotWidget />
+      </main>      {chatbotReady && <ChatBotWidget />}
 
       <style>{`
         html.intro-open [data-navbar] > div > div:first-child,

@@ -3,6 +3,7 @@
 import React, { useCallback, useRef } from "react";
 import Spline from "@splinetool/react-spline";
 import type { Application } from "@splinetool/runtime";
+import { getFallbackAsset, useSplineGate } from "@/lib/splineController";
 
 type MobileSRLProps = {
   sceneUrl?: string;
@@ -12,6 +13,8 @@ export default function MobileSRL({
   sceneUrl = "https://prod.spline.design/Ma21i9Ulbjz29I-M/scene.splinecode",
 }: MobileSRLProps) {
   const splineRef = useRef<Application | null>(null);
+  const fallbackSrc = getFallbackAsset("srl");
+  const { canRender } = useSplineGate({ preferred: "medium" });
 
   const handleLoad = useCallback((app: Application) => {
     splineRef.current = app;
@@ -28,12 +31,23 @@ export default function MobileSRL({
         {/* Phone-style box – Spline behaves like object-fit: contain */}
         <div className="mobile-srl-box">
           <div className="mobile-srl-frame">
-            <Spline
-              scene={sceneUrl}
-              onLoad={handleLoad}
-              onError={handleError}
-              className="mobile-srl-spline"
-            />
+            {canRender ? (
+              <Spline
+                scene={sceneUrl}
+                onLoad={handleLoad}
+                onError={handleError}
+                className="mobile-srl-spline"
+              />
+            ) : (
+              <div className="mobile-srl-spline">
+                <img
+                  src={fallbackSrc}
+                  alt="SRL hero mobile fallback"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
 
             {/* === BOTTOM-LEFT OVERLAY COPY === */}
             {/* <div className="mobile-srl-overlay mobile-srl-overlay-bottom-left">

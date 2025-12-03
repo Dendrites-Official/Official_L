@@ -1,5 +1,5 @@
 // src/pages/InternshipApplyPage.tsx
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useMemo, useState, useCallback, useRef } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 type RoleId = "frontend" | "backend" | "marketing";
@@ -156,7 +156,7 @@ Best,
 [Your name here]`
   );
 
-  return `mailto:jobs@dendrites.ai?subject=${subject}&body=${body}`;
+  return `mailto:hello@dendrites.ai?subject=${subject}&body=${body}`;
 }
 
 function ToggleRow(props: {
@@ -206,6 +206,7 @@ function ToggleRow(props: {
 export default function InternshipApplyPage() {
   const { roleId } = useParams<{ roleId?: string }>();
   const navigate = useNavigate();
+  const mailtoLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const role: RoleConfig = useMemo(() => {
     if (!roleId) return ROLES.frontend;
@@ -231,6 +232,10 @@ export default function InternshipApplyPage() {
 
   const handleApplyClick = useCallback(() => {
     if (!allChecked) return;
+    if (mailtoLinkRef.current) {
+      mailtoLinkRef.current.click();
+      return;
+    }
     window.location.href = mailtoHref;
   }, [allChecked, mailtoHref]);
 
@@ -331,11 +336,20 @@ export default function InternshipApplyPage() {
               >
                 Open email draft &amp; apply
               </button>
+              <a
+                ref={mailtoLinkRef}
+                href={mailtoHref}
+                className="hidden"
+                aria-hidden="true"
+                tabIndex={-1}
+              >
+                Email application
+              </a>
               <p className="text-[11px] sm:text-xs text-white/45">
                 We&apos;ll open your default email client with a pre-filled
                 template to{" "}
                 <span className="font-semibold text-white/70">
-                  jobs@dendrites.ai
+                  hello@dendrites.ai
                 </span>
                 . Attach your resume and edit the text before sending.
               </p>

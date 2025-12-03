@@ -334,6 +334,25 @@ export default function Footer() {
               </svg>
               <span className="break-all">support@dendrites.ai</span>
             </a>
+            <a
+              href="mailto:hello@dendrites.ai"
+              className="flex items-center gap-2 footer-link"
+            >
+              <svg
+                className="w-4 h-4 flex-shrink-0 footer-icon"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              <span className="break-all">hello@dendrites.ai</span>
+            </a>
             <div className="flex items-center gap-2 text-white/60">
               <svg
                 className="w-4 h-4 flex-shrink-0 footer-icon"
@@ -548,6 +567,27 @@ export default function Footer() {
                   </svg>
                   <span className="text-xs sm:text-sm break-all">
                     support@dendrites.ai
+                  </span>
+                </a>
+                <a
+                  href="mailto:hello@dendrites.ai"
+                  className="flex items-center gap-2 sm:gap-3 text-white/70 hover:transition-colors group footer-link"
+                >
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 footer-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span className="text-xs sm:text-sm break-all">
+                    hello@dendrites.ai
                   </span>
                 </a>
                 <div className="flex items-center gap-2 sm:gap-3 text-white/70">

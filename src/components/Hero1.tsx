@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SplineLoader from "@/components/SplineLoader";
 import type { Application } from "@splinetool/runtime";
 import { useSplineInteractions } from "@/hooks/useSplineInteractions";
+import { getFallbackAsset, useSplineGate } from "@/lib/splineController";
 
 /** Your scene URL */
 const SCENE = "https://prod.spline.design/wrOy3QowMgzMN0CK/scene.splinecode";
@@ -18,6 +19,9 @@ export default function Hero1({ introReady = true }: Hero1Props) {
   const heroRef = useRef<HTMLElement | null>(null);
   const splineAreaRef = useRef<HTMLDivElement | null>(null);
   const splineRef = useRef<Application | null>(null);
+  const fallbackImage = getFallbackAsset("hero");
+
+  const { canRender, tier } = useSplineGate({ preferred: "high" });
 
   // unify cursors / context menu for this spline area
   useSplineInteractions(splineAreaRef);
@@ -66,20 +70,21 @@ export default function Hero1({ introReady = true }: Hero1Props) {
         className="absolute inset-0 z-0"
       >
         <div className="spline-target">
-          {allowSpline ? (
+          {allowSpline && canRender ? (
             <SplineLoader
               scene={SCENE}
               onLoad={handleLoad}
               onError={handleError}
               disableOrbitControls={false}
               disableZoom={false}
-              forceLoad
+              forceLoad={tier === "high"}
+              minHeight="100svh"
               fallback={
                 <div className="w-full h-full bg-black flex items-center justify-center">
                   <img
-                    src="/logo_name2.png"
+                    src={fallbackImage}
                     alt="Dendrites"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                     loading="eager"
                   />
                 </div>
@@ -88,9 +93,9 @@ export default function Hero1({ introReady = true }: Hero1Props) {
           ) : (
             <div className="w-full h-full bg-black flex items-center justify-center">
               <img
-                src="/logo_name2.png"
+                src={fallbackImage}
                 alt="Dendrites placeholder"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 loading="eager"
               />
             </div>

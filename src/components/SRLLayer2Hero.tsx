@@ -5,19 +5,44 @@
 import { useRef } from "react";
 import SplineLoader from "@/components/SplineLoader";
 import { useSplineInteractions } from "@/hooks/useSplineInteractions";
+import { getFallbackAsset, useSplineGate } from "@/lib/splineController";
 
 export default function SRLLayerHero() {
   const splineAreaRef = useRef<HTMLDivElement | null>(null);
   useSplineInteractions(splineAreaRef);
+  const { canRender, tier } = useSplineGate({ preferred: "high" });
+  const fallbackSrc = getFallbackAsset("srl");
 
   return (
     <section className="relative w-full bg-black overflow-hidden">
       <div ref={splineAreaRef} className="relative w-full h-[520px] md:h-[640px]">
-        <SplineLoader
-          scene="https://prod.spline.design/Ma21i9Ulbjz29I-M/scene.splinecode"
-          disableOrbitControls={false}
-          disableZoom={false}
-        />
+        {canRender ? (
+          <SplineLoader
+            scene="https://prod.spline.design/Ma21i9Ulbjz29I-M/scene.splinecode"
+            disableOrbitControls={false}
+            disableZoom={false}
+            forceLoad={tier === "high"}
+            fallback={
+              <div className="w-full h-full">
+                <img
+                  src={fallbackSrc}
+                  alt="SRL hero fallback"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            }
+          />
+        ) : (
+          <div className="w-full h-full">
+            <img
+              src={fallbackSrc}
+              alt="SRL hero static"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        )}
       </div>
 
       {/* import React from "react";

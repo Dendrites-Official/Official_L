@@ -366,7 +366,7 @@ export default function MobileMenu({
                     className="text-base font-bold tracking-wide"
                     style={{ fontFamily: 'var(--font-hape)' }}
                   >
-                    Waitlist
+                    Airdrop
                   </GradientRingButton>
                 </div>
               </div>

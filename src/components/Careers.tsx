@@ -57,6 +57,17 @@ export default function Careers() {
             Early builders for DNDX and SRL L2. Paid, remote-friendly internships
             where you ship real things, not fake side projects.
           </p>
+          <p className="mt-4 text-xs sm:text-sm text-white/55 max-w-2xl mx-auto">
+            Already have a resume or deck ready? Email it directly to{" "}
+            <a
+              href="mailto:hello@dendrites.ai"
+              className="underline decoration-white/30 hover:decoration-[#1850ebff]"
+            >
+              hello@dendrites.ai
+            </a>
+            {" "}
+            with a quick note on what you want to build here.
+          </p>
 
           {/* Top rule */}
           <div className="mt-10 h-px w-full bg-white/12" />
@@ -120,7 +131,7 @@ export default function Careers() {
         <p className="mt-10 text-xs sm:text-sm text-white/40 text-center">
           Don’t see the right track?{" "}
           <a
-            href="mailto:jobs@dendrites.ai?subject=General%20internship%20interest%20@%20Dendrites&body=Hi%20Dendrites%20team%2C%0A%0AI%E2%80%99d%20love%20to%20introduce%20myself%20and%20explore%20how%20I%20could%20contribute%20to%20DNDX%20and%20SRL%20L2.%20Here%E2%80%99s%20a%20quick%20snapshot%20of%20who%20I%20am%20and%20what%20I%E2%80%99m%20excited%20about%3A%0A%0A-%20Background%20and%20focus%3A%0A-%20Relevant%20experience%20and%20links%3A%0A-%20How%20I%20could%20help%20ship%20commerce-grade%20payments%20and%20Undo%3A%0A%0ALooking%20forward%20to%20connecting!%0A%0ABest%2C%0A%5BYour%20name%5D"
+            href="mailto:hello@dendrites.ai?subject=General%20interest%20@%20Dendrites&body=Hi%20Dendrites%20team%2C%0A%0AHere%E2%80%99s%20my%20resume%20%2F%20portfolio%20for%20future%20internship%20or%20full-time%20roles.%20Quick%20snapshot%3A%0A-%20Background%20and%20focus%3A%0A-%20Links%20(resume%20%2B%20portfolio)%3A%0A-%20Where%20I%20can%20add%20leverage%3A%0A%0ALooking%20forward%20to%20connecting!%0A%0ABest%2C%0A%5BYour%20name%5D"
             className="underline decoration-white/30 hover:decoration-[#1850ebff] hover:text-white/80 transition-colors"
           >
             Send a general application

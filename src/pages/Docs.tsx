@@ -471,7 +471,7 @@ Receipt Layer.
         </section>
       </main>
 
-      <Footer />
+      <Footer showCompanyInfo={true} />
     </div>
   );
 };

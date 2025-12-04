@@ -282,7 +282,7 @@ function PolicyModal({ type, onClose }: PolicyModalProps) {
    Footer
 -------------------------------------------------- */
 
-export default function Footer() {
+export default function Footer({ showCompanyInfo = false }: { showCompanyInfo?: boolean }) {
   const [openModal, setOpenModal] = useState<PolicyType | null>(null);
 
   return (
@@ -425,7 +425,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://discord.gg/bGED5Z5V"
+              href="https://discord.gg/2vPu6PerTU"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"
@@ -693,7 +693,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="https://discord.gg/bGED5Z5V"
+                  href="https://discord.gg/2vPu6PerTU"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 sm:gap-3 text-white/70 footer-link transition-colors group"
@@ -834,6 +834,24 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
+          {/* Company Information - Only on Docs Page */}
+          {showCompanyInfo && (
+            <div className="pt-5 mt-5">
+              <div className="text-center space-y-2">
+                <p className="text-sm font-semibold text-white/70">
+                  Dendrites Technology Ltd — BVI Business Company
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-white/45">
+                  <span>Company No. 2193875</span>
+                  <span className="text-white/25">•</span>
+                  <span>Incorporated 20 November 2025</span>
+                  <span className="text-white/25">•</span>
+                  <span>British Virgin Islands</span>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Bottom Bar */}
           <div className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">

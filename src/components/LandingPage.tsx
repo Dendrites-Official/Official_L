@@ -19,7 +19,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import CTAJoinMobile from "./CTAJoinMobile";
 import CTAJoinDesktop from "./CTAJoinDesktop";
 import TokenomicsSection from "./TokenomicsSection";
-import TrustSignalStack from "./TrustSignalStack";
+// import TrustSignalStack from "./TrustSignalStack";
 import TokenProofStrip from "./TokenProofStrip";
 
 type LandingPageProps = {
@@ -127,7 +127,7 @@ export default function LandingPage({ introReady = true }: LandingPageProps) {
         <DndxRoadmapPremium />
       </section>
 
-      <TrustSignalStack />
+      {/* <TrustSignalStack /> */}
 
       <TokenomicsSection />
 

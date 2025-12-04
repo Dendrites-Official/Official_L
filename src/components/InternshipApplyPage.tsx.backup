@@ -171,35 +171,33 @@ function ToggleRow(props: {
     <button
       type="button"
       onClick={onToggle}
-      className={`w-full flex items-start justify-between gap-4 rounded-2xl border px-4 py-3.5 sm:px-5 sm:py-4 text-left transition-colors
+      className={`w-full flex items-center justify-between gap-3 rounded-2xl border px-4 py-3 sm:px-5 sm:py-3.5 text-left transition-colors
       ${
         checked
           ? "border-[#1850ebff] bg-white/[0.04]"
           : "border-white/10 bg-white/[0.02] hover:border-white/25"
       }`}
     >
-      <div className="flex-1 min-w-0">
-        <p className="text-xs sm:text-sm font-medium text-white leading-relaxed">
+      <div className="flex-1">
+        <p className="text-xs sm:text-sm font-medium text-white">
           {label}
         </p>
         {description && (
-          <p className="mt-1 text-[11px] sm:text-xs text-white/55 leading-relaxed">
+          <p className="mt-0.5 text-[11px] sm:text-xs text-white/55">
             {description}
           </p>
         )}
       </div>
-      <div className="flex-shrink-0 pt-0.5">
-        <div
-          className={`relative h-5 w-9 rounded-full border transition-colors ${
-            checked ? "border-[#1850ebff] bg-[#1850eb33]" : "border-white/25"
+      <div
+        className={`relative h-5 w-9 rounded-full border transition-colors ${
+          checked ? "border-[#1850ebff] bg-[#1850eb33]" : "border-white/25"
+        }`}
+      >
+        <span
+          className={`absolute top-[2px] h-4 w-4 rounded-full bg-white shadow-sm transition-all duration-200 ${
+            checked ? "right-[2px]" : "left-[2px]"
           }`}
-        >
-          <span
-            className={`absolute top-[2px] h-4 w-4 rounded-full bg-white shadow-sm transition-all duration-200 ${
-              checked ? "right-[2px]" : "left-[2px]"
-            }`}
-          />
-        </div>
+        />
       </div>
     </button>
   );
@@ -300,96 +298,36 @@ export default function InternshipApplyPage() {
                 Self-assessment checklist
               </h2>
               <p className="text-xs sm:text-sm text-white/60">
-                Please confirm you meet the requirements before applying. Check all to generate your email draft.
+                Please confirm you meet these requirements before applying. Check all boxes to generate your email draft.
               </p>
             </div>
 
             <div className="space-y-3 sm:space-y-3.5">
-              {role.id === "frontend" ? (
-                <>
-                  <ToggleRow
-                    label="I have hands-on experience with React and modern JavaScript/TypeScript"
-                    checked={toggles.eligible}
-                    onToggle={() => toggle("eligible")}
-                  />
-                  <ToggleRow
-                    label="I'm comfortable with Git/GitHub and basic CLI workflows"
-                    checked={toggles.resume}
-                    onToggle={() => toggle("resume")}
-                  />
-                  <ToggleRow
-                    label="I have at least one real project (site, dashboard, or app) I can demonstrate"
-                    checked={toggles.links}
-                    onToggle={() => toggle("links")}
-                  />
-                  <ToggleRow
-                    label="I can commit to remote work with clear availability (start date + weekly hours)"
-                    checked={toggles.motivation}
-                    onToggle={() => toggle("motivation")}
-                  />
-                  <ToggleRow
-                    label="I have my resume/CV ready to attach (PDF preferred)"
-                    checked={toggles.availability}
-                    onToggle={() => toggle("availability")}
-                  />
-                </>
-              ) : role.id === "backend" ? (
-                <>
-                  <ToggleRow
-                    label="I have hands-on experience with Node.js/TypeScript or similar back-end stack"
-                    checked={toggles.eligible}
-                    onToggle={() => toggle("eligible")}
-                  />
-                  <ToggleRow
-                    label="I can read and write SQL, and understand basic schema design"
-                    checked={toggles.resume}
-                    onToggle={() => toggle("resume")}
-                  />
-                  <ToggleRow
-                    label="I'm curious about reliability, transactions, and how real money systems stay safe"
-                    checked={toggles.links}
-                    onToggle={() => toggle("links")}
-                  />
-                  <ToggleRow
-                    label="I can commit to remote work with clear availability (start date + weekly hours)"
-                    checked={toggles.motivation}
-                    onToggle={() => toggle("motivation")}
-                  />
-                  <ToggleRow
-                    label="I have my resume/CV ready to attach (PDF preferred)"
-                    checked={toggles.availability}
-                    onToggle={() => toggle("availability")}
-                  />
-                </>
-              ) : (
-                <>
-                  <ToggleRow
-                    label="I have strong written English and can explain technical ideas in simple language"
-                    checked={toggles.eligible}
-                    onToggle={() => toggle("eligible")}
-                  />
-                  <ToggleRow
-                    label="I understand how crypto/fintech conversations move online and live on the internet"
-                    checked={toggles.resume}
-                    onToggle={() => toggle("resume")}
-                  />
-                  <ToggleRow
-                    label="I'm comfortable taking ownership of a channel or small campaign end-to-end"
-                    checked={toggles.links}
-                    onToggle={() => toggle("links")}
-                  />
-                  <ToggleRow
-                    label="I can commit to remote work with clear availability (start date + weekly hours)"
-                    checked={toggles.motivation}
-                    onToggle={() => toggle("motivation")}
-                  />
-                  <ToggleRow
-                    label="I have my resume/CV ready to attach (PDF preferred)"
-                    checked={toggles.availability}
-                    onToggle={() => toggle("availability")}
-                  />
-                </>
-              )}
+              <ToggleRow
+                label="I’m in Computer Science (or a related field) or a recent graduate."
+                checked={toggles.eligible}
+                onToggle={() => toggle("eligible")}
+              />
+              <ToggleRow
+                label="I have a resume / CV ready to attach (PDF preferred)."
+                checked={toggles.resume}
+                onToggle={() => toggle("resume")}
+              />
+              <ToggleRow
+                label="I can share at least one link (GitHub, portfolio, LinkedIn or similar)."
+                checked={toggles.links}
+                onToggle={() => toggle("links")}
+              />
+              <ToggleRow
+                label="I can write 4–6 sentences on why I’m a strong fit for this internship."
+                checked={toggles.motivation}
+                onToggle={() => toggle("motivation")}
+              />
+              <ToggleRow
+                label="I have a rough idea of my availability (start date + weekly hours)."
+                checked={toggles.availability}
+                onToggle={() => toggle("availability")}
+              />
             </div>
 
             <div className="mt-4 space-y-2">

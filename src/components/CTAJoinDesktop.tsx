@@ -10,14 +10,14 @@ export default function CTAJoinDesktop({
   ctaLabel = "Join Airdrop",
 }: CTAJoinDesktopProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const [videoReady, setVideoReady] = useState(false);
+  const [mediaReady, setMediaReady] = useState(false);
 
   useEffect(() => {
     const node = sectionRef.current;
-    if (!node || videoReady) return;
+    if (!node || mediaReady) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVideoReady(true);
+      setMediaReady(true);
       return;
     }
 
@@ -25,398 +25,481 @@ export default function CTAJoinDesktop({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVideoReady(true);
+            setMediaReady(true);
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.35 }
+      { threshold: 0.25 }
     );
 
     observer.observe(node);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [videoReady]);
+    return () => observer.disconnect();
+  }, [mediaReady]);
 
   return (
-    <section className="cta-premium-shell" ref={sectionRef}>
-      <div className="cta-premium-container">
-        <div className="cta-content-wrapper">
-          <div className="cta-header">
-            <span className="cta-chip">Priority Access</span>
-            <h2>Join the Future of Crypto Commerce</h2>
-            <p>
-              Predictable fees, real refunds, and escrow you can trust. Built with USDC rails,
-              zero speculation, and concierge-grade support for every launch partner.
+    <section className="cta-shell" ref={sectionRef}>
+      <div className="cta-inner">
+        <div className="cta-grid">
+          {/* NFT / MEDIA COLUMN */}
+          <div className="cta-media-col">
+            <div className="cta-media-wrap">
+              <div className="cta-media-frame">
+                <div className="cta-media-inner">
+                  {mediaReady ? (
+                    <video
+                      className="cta-media-video"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
+                      poster="/page_end_cta.png"
+                      controls={false}
+                      controlsList="nodownload noplaybackrate nofullscreen"
+                      disablePictureInPicture
+                    >
+                      <source src="/NeuralPass.mp4" type="video/mp4" />
+                    </video>
+                  ) : (
+                    <div className="cta-media-skeleton">
+                      <div className="cta-media-line" />
+                      <div className="cta-media-line" />
+                      <div className="cta-media-dot" />
+                    </div>
+                  )}
+                  <div className="cta-media-glare" />
+                </div>
+              </div>
+
+              <div className="cta-media-caption">
+                <span className="cta-media-title">Neuron Pass • Genesis</span>
+                <span className="cta-media-meta">
+                  Access credential for Season-0 and early DNDX utility.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* COPY / CTA COLUMN */}
+          <div className="cta-copy-col">
+            <div className="cta-eyebrow-row">
+              <span className="cta-eyebrow">Season-0 Priority Access</span>
+            </div>
+
+            <h2 className="cta-title">Join the Dendrites waitlist</h2>
+
+            <p className="cta-subcopy">
+              Predictable fees, real refunds, and escrow for real work — so crypto behaves like
+              a payment rail, not a guessing game.
             </p>
-            <div className="cta-actions">
+
+            <div className="cta-primary-row">
               <a
                 href={ctaHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cta-button"
+                className="cta-btn"
               >
                 {ctaLabel}
               </a>
-              <div className="cta-meta">
-                <span className="dot" />
-                Season-0 slots are limited; responses within 24 hours.
-              </div>
-            </div>
-          </div>
-
-          <div className="cta-essentials">
-            <div className="cta-milestones">
-              <div className="cta-milestone">
-                <span className="milestone-dot" />
-                <div>
-                  <p className="milestone-label">Mission-0 Sync</p>
-                  <p className="milestone-copy">Wallet + identity sync grants a launch badge and unlocks early airdrop multipliers.</p>
-                </div>
-              </div>
-              <div className="cta-milestone">
-                <span className="milestone-dot" />
-                <div>
-                  <p className="milestone-label">Neuron Pass Tiers</p>
-                  <p className="milestone-copy">Standard + Genesis NFTs (Base) map to higher allocations and concierge escalation.</p>
-                </div>
-              </div>
-              <div className="cta-milestone">
-                <span className="milestone-dot" />
-                <div>
-                  <p className="milestone-label">Galaxy Ladder</p>
-                  <p className="milestone-copy">Leaderboard collectibles for Top 1K; claimable once Presale-1 closes.</p>
-                </div>
-              </div>
+              <p className="cta-note">
+                <span className="cta-dot" />
+                Limited Season-0 capacity. Replies usually within 24 hours.
+              </p>
             </div>
 
-            <div className="cta-status-inline">
-              <p className="cta-status-label">Project Status</p>
-              <div className="cta-status-items">
-                <span><span className="status-dot" />Token deployed (Nov 2025)</span>
-                <span><span className="status-dot" />Season-0 live since Oct 17</span>
-                <span><span className="status-dot" />Predictable Gas + SafetySend testnet</span>
-                <span><span className="status-dot" />Presale-1 • Q1 2026</span>
+            <div className="cta-points">
+              <div className="cta-point">
+                <span className="cta-point-dot" />
+                <div>
+                  <p className="cta-point-label">Mission-0 Sync</p>
+                  <p className="cta-point-copy">
+                    Wallet + identity sync unlocks a launch badge and early multipliers.
+                  </p>
+                </div>
+              </div>
+              <div className="cta-point">
+                <span className="cta-point-dot" />
+                <div>
+                  <p className="cta-point-label">Neuron Pass tiers</p>
+                  <p className="cta-point-copy">
+                    Standard + Genesis NFTs map to higher allocations and escalation.
+                  </p>
+                </div>
+              </div>
+              <div className="cta-point">
+                <span className="cta-point-dot" />
+                <div>
+                  <p className="cta-point-label">Galaxy Ladder</p>
+                  <p className="cta-point-copy">
+                    Top 1K leaderboard collectibles after Presale-1 closes.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="cta-visual-wrapper">
-          <div className="cta-premium-visual" aria-hidden="true">
-            {videoReady ? (
-              <video
-                className="cta-premium-video"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
-                poster="/page_end_cta.png"
-                controls={false}
-                controlsList="nodownload noplaybackrate nofullscreen"
-                disablePictureInPicture
-              >
-                <source src="/NeuralPass.mp4" type="video/mp4" />
-              </video>
-            ) : (
-              <div className="cta-video-placeholder">
-                <div className="placeholder-line" />
-                <div className="placeholder-line" />
-                <div className="placeholder-dot" />
+            <div className="cta-status">
+              <span className="cta-status-label">Project status</span>
+              <div className="cta-status-list">
+                <span>Token deployed • Nov 2025</span>
+                <span>Season-0 live • Oct 17</span>
+                <span>Predictable Gas + SafetySend (testnet)</span>
+                <span>Presale-1 • Q1 2026</span>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
-        .cta-premium-shell {
+        /* SHELL – no background or borders, uses page theme */
+        .cta-shell {
           width: 100%;
           background: transparent;
-          padding: clamp(40px, 5vw, 72px) clamp(16px, 4vw, 48px);
-          position: relative;
-          overflow: visible;
-          border-top: 1px solid rgba(148,163,184,0.15);
-          border-bottom: 1px solid rgba(148,163,184,0.15);
+          border: none;
+          padding: clamp(24px, 4vw, 40px) 0;
         }
 
-        .cta-premium-container {
-          position: relative;
-          z-index: 1;
-          max-width: 1150px;
+        .cta-inner {
+          max-width: 1120px;
           margin: 0 auto;
+          padding: 0 clamp(16px, 4vw, 32px);
+        }
+
+        .cta-grid {
           display: grid;
-          grid-template-columns: minmax(0, 0.95fr) auto;
-          gap: clamp(28px, 4vw, 48px);
-          align-items: stretch;
+          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+          gap: clamp(20px, 4vw, 40px);
+          align-items: center;
         }
 
-        .cta-content-wrapper {
+        .cta-media-col {
+          order: 1;
+          display: flex;
+          justify-content: flex-start;
+        }
+
+        .cta-copy-col {
+          order: 2;
           display: flex;
           flex-direction: column;
-          gap: clamp(20px, 3vw, 40px);
+          gap: 14px;
         }
 
-        .cta-header {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .cta-chip {
-          align-self: flex-start;
-          padding: 7px 16px;
-          border-radius: 999px;
-          border: 1px solid rgba(255,255,255,0.2);
-          font-size: 0.72rem;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.8);
-          background: rgba(255,255,255,0.02);
-        }
-
-        .cta-header h2 {
-          font-size: clamp(2rem, 3.5vw, 3rem);
-          line-height: 1.1;
-          letter-spacing: -0.025em;
-          font-weight: 700;
-        }
-
-        .cta-header p {
-          color: rgba(255,255,255,0.7);
-          font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-          line-height: 1.55;
-          max-width: 36ch;
-        }
-
-        .cta-actions {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 16px;
-          align-items: center;
-          margin-top: 6px;
-        }
-
-        .cta-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 14px 32px;
-          border-radius: 999px;
-          background: linear-gradient(135deg, #a3e635, #06b6d4);
-          color: #020617;
-          font-weight: 700;
-          font-size: 0.9rem;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 16px 36px rgba(163,230,53,0.22), 0 0 60px rgba(6,182,212,0.12);
-        }
-
-        .cta-button:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 28px 65px rgba(163,230,53,0.35), 0 0 100px rgba(6,182,212,0.25);
-        }
-
-        .cta-meta {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          color: rgba(255,255,255,0.6);
-          font-size: 0.92rem;
-        }
-
-        .cta-meta .dot {
-          width: 7px;
-          height: 7px;
-          border-radius: 999px;
-          background: linear-gradient(135deg, #22d3ee, #3b82f6);
-          box-shadow: 0 0 12px rgba(34,211,238,0.6);
-        }
-
-        .cta-essentials {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .cta-milestones {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 16px;
-        }
-
-        .cta-milestone {
-          display: flex;
-          gap: 12px;
-          align-items: flex-start;
-        }
-
-        .milestone-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          border: 1px solid rgba(125,211,252,0.7);
-          background: radial-gradient(circle, rgba(34,211,238,0.85), rgba(14,165,233,0.2));
-          box-shadow: 0 0 12px rgba(34,211,238,0.45);
-          margin-top: 4px;
-          flex-shrink: 0;
-        }
-
-        .milestone-label {
-          font-size: 0.88rem;
-          text-transform: uppercase;
-          letter-spacing: 0.18em;
-          color: rgba(255,255,255,0.78);
-          margin-bottom: 6px;
-        }
-
-        .milestone-copy {
-          font-size: 0.88rem;
-          line-height: 1.5;
-          color: rgba(255,255,255,0.65);
-        }
-
-        .cta-status-inline {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .cta-status-label {
-          font-size: 0.62rem;
-          text-transform: uppercase;
-          letter-spacing: 0.35em;
-          color: rgba(125,211,252,0.85);
-        }
-
-        .cta-status-items {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px 18px;
-          font-size: 0.88rem;
-          color: rgba(255,255,255,0.72);
-        }
-
-        .cta-status-items span {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .status-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 999px;
-          background: linear-gradient(135deg, #22d3ee, #3b82f6);
-          box-shadow: 0 0 8px rgba(34,211,238,0.5);
-        }
-
-        .cta-visual-wrapper {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: clamp(180px, 22vw, 320px);
-        }
-
-        .cta-premium-visual {
-          position: relative;
+        /* MEDIA / NFT BOX */
+        .cta-media-wrap {
           width: 100%;
-          height: clamp(160px, 23vw, 240px);
-          border-radius: 20px;
-          background: transparent;
-          border: 1px solid rgba(148,163,184,0.2);
-          overflow: hidden;
-          box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+          max-width: 320px;
         }
 
-        .cta-premium-video {
+        .cta-media-frame {
+          border-radius: 18px;
+          padding: 1px;
+          background: linear-gradient(
+            135deg,
+            rgba(249,249,249,0.38),
+            rgba(15,15,15,1)
+          );
+        }
+
+        .cta-media-inner {
+          position: relative;
+          border-radius: 17px;
+          overflow: hidden;
+          aspect-ratio: 3 / 4;
+          box-shadow: 0 18px 50px rgba(0,0,0,0.75);
+          background: #020617;
+        }
+
+        .cta-media-video,
+        .cta-media-skeleton {
           width: 100%;
           height: 100%;
-          object-fit: cover;
           display: block;
         }
 
-        .cta-video-placeholder {
-          position: absolute;
-          inset: 0;
+        .cta-media-video {
+          object-fit: cover;
+        }
+
+        .cta-media-skeleton {
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px dashed rgba(148,163,184,0.35);
           gap: 10px;
         }
 
-        .placeholder-line {
-          width: 28%;
+        .cta-media-line {
+          width: 26%;
           height: 2px;
-          background: rgba(148,163,184,0.45);
+          background: rgba(156,163,175,0.9);
         }
 
-        .placeholder-dot {
+        .cta-media-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 999px;
+          background: rgba(229,231,235,0.9);
+        }
+
+        .cta-media-glare {
+          pointer-events: none;
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            120deg,
+            rgba(249,250,251,0.22),
+            transparent 45%
+          );
+          mix-blend-mode: screen;
+          opacity: 0.45;
+        }
+
+        .cta-media-caption {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          margin-top: 8px;
+          font-size: 0.8rem;
+          color: rgba(229,231,235,0.96);
+        }
+
+        .cta-media-title {
+          font-weight: 600;
+        }
+
+        .cta-media-meta {
+          font-size: 0.78rem;
+          color: rgba(148,163,184,0.96);
+        }
+
+        /* COPY SIDE */
+        .cta-eyebrow-row {
+          display: flex;
+          justify-content: flex-start;
+        }
+
+        .cta-eyebrow {
+          padding: 5px 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(148,163,184,0.7);
+          font-size: 0.68rem;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          color: rgba(229,231,235,0.96);
+          background: rgba(0,0,0,0.7);
+        }
+
+        .cta-title {
+          font-size: clamp(1.9rem, 3vw, 2.4rem);
+          line-height: 1.05;
+          letter-spacing: -0.03em;
+          font-weight: 700;
+          color: #f9fafb;
+        }
+
+        .cta-subcopy {
+          font-size: 0.95rem;
+          line-height: 1.6;
+          color: rgba(209,213,219,0.92);
+          max-width: 32rem;
+        }
+
+        .cta-primary-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 10px;
+        }
+
+        /* NEW PREMIUM BUTTON COLORS */
+        .cta-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 24px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          background: linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 50%, #C0C0C0 100%);
+          color: #000000;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          text-decoration: none;
+          box-shadow: 0 12px 32px rgba(255, 255, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.6);
+          transition:
+            transform 140ms ease,
+            box-shadow 140ms ease,
+            background 140ms ease,
+            color 140ms ease,
+            border-color 140ms ease;
+        }
+
+        .cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 16px 40px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(0, 0, 0, 0.8);
+          background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 50%, #D8D8D8 100%);
+          border-color: rgba(255, 255, 255, 1);
+        }
+
+        .cta-note {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.8rem;
+          color: rgba(148,163,184,0.96);
+        }
+
+        .cta-dot {
           width: 6px;
           height: 6px;
-          border-radius: 50%;
-          background: rgba(148,163,184,0.45);
+          border-radius: 999px;
+          background: #f9fafb;
+          box-shadow: 0 0 10px rgba(249,250,251,0.7);
+          flex-shrink: 0;
         }
 
-        @media (max-width: 1200px) {
-          .cta-premium-container {
-            grid-template-columns: 1fr auto;
-          }
+        /* POINTS */
+        .cta-points {
+          margin-top: 10px;
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 14px;
         }
 
+        .cta-point {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .cta-point-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 999px;
+          border: 1px solid rgba(148,163,184,0.9);
+          margin-top: 5px;
+          flex-shrink: 0;
+        }
+
+        .cta-point-label {
+          font-size: 0.78rem;
+          text-transform: uppercase;
+          letter-spacing: 0.18em;
+          color: rgba(229,231,235,0.96);
+          margin-bottom: 2px;
+        }
+
+        .cta-point-copy {
+          font-size: 0.8rem;
+          line-height: 1.5;
+          color: rgba(156,163,175,0.96);
+        }
+
+        /* STATUS */
+        .cta-status {
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .cta-status-label {
+          font-size: 0.68rem;
+          text-transform: uppercase;
+          letter-spacing: 0.3em;
+          color: rgba(156,163,175,0.96);
+        }
+
+        .cta-status-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px 14px;
+          font-size: 0.78rem;
+          color: rgba(148,163,184,0.96);
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
-          .cta-premium-container {
-            grid-template-columns: 1fr;
-            gap: 32px;
+          .cta-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
           }
-
-          .cta-visual-wrapper {
-            order: -1;
-            width: 100%;
-          }
-
-          .cta-premium-visual {
-            height: 200px;
+          .cta-points {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
 
         @media (max-width: 768px) {
-          .cta-premium-shell {
-            padding: 40px 16px;
+          .cta-shell {
+            padding: 18px 0 26px;
           }
 
-          .cta-premium-visual {
-            height: 180px;
+          .cta-inner {
+            padding-inline: 16px;
           }
 
-          .cta-button {
+          .cta-grid {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 18px;
+          }
+
+          /* Mobile: same visual language, just stacked & tighter */
+          .cta-media-col {
+            order: 1;
+            justify-content: center;
+          }
+
+          .cta-copy-col {
+            order: 2;
+            gap: 10px;
+          }
+
+          .cta-media-wrap {
+            max-width: 320px;
+          }
+
+          .cta-title {
+            font-size: 1.55rem;
+          }
+
+          .cta-subcopy {
+            font-size: 0.9rem;
+            max-width: 100%;
+          }
+
+          .cta-btn {
             width: 100%;
+            justify-content: center;
+            padding-block: 11px;
           }
 
-          .cta-milestones {
-            grid-template-columns: 1fr;
+          .cta-primary-row {
+            align-items: flex-start;
+          }
+
+          .cta-note {
+            font-size: 0.78rem;
+          }
+
+          .cta-points {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 10px;
           }
         }
 
-        @media (max-width: 520px) {
-          .cta-header h2 {
-            font-size: 2rem;
+        @media (max-width: 480px) {
+          .cta-inner {
+            padding-inline: 14px;
           }
 
-          .cta-premium-visual {
-            height: 170px;
-            border-radius: 16px;
+          .cta-title {
+            font-size: 1.45rem;
           }
 
-          .cta-status-items {
-            flex-direction: column;
-            gap: 8px;
+          .cta-subcopy {
+            font-size: 0.88rem;
           }
         }
       `}</style>

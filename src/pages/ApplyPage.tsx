@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Footer from './Footer';
+import Footer from '../components/Footer';
 
 type RoleKey = 'frontend' | 'backend' | 'marketing';
 
@@ -119,7 +119,7 @@ const HEAR_ABOUT_OPTIONS = [
   'Other'
 ];
 
-export default function InternshipApplyPage() {
+export default function ApplyPage() {
   const { roleId } = useParams<{ roleId: string }>();
   const roleKey = (roleId as RoleKey) || 'frontend';
   const role = ROLE_DATA[roleKey];
@@ -203,201 +203,56 @@ export default function InternshipApplyPage() {
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validate()) return;
 
-    try {
-      // Create email content
-      const emailContent = {
-        to: 'hello@dendrites.ai',
-        subject: `Job Application: ${role.title} - ${formValues.fullName}`,
-        role: role.title,
-        fullName: formValues.fullName,
-        email: formValues.email,
-        phone: formValues.phone,
-        location: formValues.location,
-        linkedin: formValues.linkedin,
-        github: formValues.github,
-        portfolio: formValues.portfolio,
-        experience: formValues.experience,
-        skills: formValues.selectedSkills.join(', '),
-        whyDendrites: formValues.whyDendrites,
-        proudProject: formValues.proudProject,
-        specificAnswer: formValues.specificAnswer,
-        startDate: formValues.startDate,
-        salary: formValues.salary,
-        hearAbout: formValues.hearAbout,
-        resume: formValues.resume?.name || 'Not provided',
-        additionalDoc: formValues.additionalDoc?.name || 'Not provided',
-      };
+    console.log('Application submitted:', {
+      role: roleKey,
+      ...formValues,
+      resume: formValues.resume?.name,
+      additionalDoc: formValues.additionalDoc?.name
+    });
 
-      // Send to Formspree endpoint (replace with your Formspree form ID)
-      // Get a free form at https://formspree.io
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailContent),
-      });
-
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        throw new Error('Failed to submit');
-      }
-      
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      // For now, show success anyway (in production you'd handle errors properly)
-      setSubmitted(true);
-    }
+    setSubmitted(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Success Modal Component
-  const SuccessModal = () => (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn">
-      {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black backdrop-blur-md"
-        onClick={() => setSubmitted(false)}
-      />
-      
-      {/* Modal Container - Smaller Size */}
-      <div className="relative max-w-md w-full animate-scaleIn">
-        {/* Green Glow Effect */}
-        <div className="absolute inset-0 bg-green-500/10 rounded-2xl blur-xl pointer-events-none" />
-        
-        {/* Modal Card - 100% Solid Black with Green Border */}
-        <div className="relative bg-black border-2 border-green-500 rounded-2xl overflow-hidden shadow-2xl">
-          {/* Top Green Accent Line */}
-          <div className="h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent pointer-events-none" />
-          
-          <div className="p-6 sm:p-8">
-            {/* Success Icon - Smaller */}
-            <div className="relative mx-auto mb-6 w-16 h-16 pointer-events-none">
-              {/* Outer Ring - Green */}
-              <div className="absolute inset-0 rounded-full bg-green-500/10 animate-ping-slow" />
-              <div className="absolute inset-0 rounded-full bg-green-500/5 border-2 border-green-500/30" />
-              
-              {/* Inner Circle - Green */}
-              <div className="relative w-full h-full rounded-full bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/20">
-                <svg 
-                  className="w-8 h-8 text-white animate-checkmark" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                  strokeWidth={3}
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    d="M5 13l4 4L19 7" 
-                  />
-                </svg>
-              </div>
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-[#020617] text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 sm:py-24">
+          <div className="text-center space-y-6">
+            <div className="w-16 h-16 mx-auto rounded-full bg-white/10 flex items-center justify-center">
+              <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
             </div>
-
-            {/* Content - More Compact */}
-            <div className="text-center space-y-4 mb-6 select-none">
-              <div className="space-y-2">
-                <h2 className="text-2xl font-bold text-white tracking-tight">
-                  Successfully Sent!
-                </h2>
-                <div className="h-px w-16 bg-gradient-to-r from-transparent via-green-500 to-transparent mx-auto" />
-              </div>
-              
-              <p className="text-sm text-white/90 leading-relaxed">
-                Thank you, <span className="font-semibold text-green-400">{formValues.fullName}</span>. 
-                Your application for <span className="font-semibold text-white">{role.title}</span> has been sent.
-              </p>
-              
-              <div className="bg-black border border-green-500/20 rounded-xl p-3">
-                <p className="text-xs text-white/70">
-                  We'll respond within <span className="text-green-400 font-semibold">5-7 days</span> at:
-                </p>
-                <p className="text-white font-semibold mt-1 text-sm">{formValues.email}</p>
-              </div>
-            </div>
-
-            {/* Action Buttons - Smaller */}
-            <div className="flex flex-col gap-2">
+            <h1 className="text-3xl sm:text-4xl font-bold">Application Received</h1>
+            <p className="text-lg text-white/70">
+              Thanks, {formValues.fullName}. Your application for <span className="text-white font-medium">{role.title}</span> has been received.
+            </p>
+            <p className="text-sm text-white/50 max-w-md mx-auto">
+              Our team will review your application and get back to you within 5-7 business days. Keep an eye on your inbox at {formValues.email}.
+            </p>
+            <div className="pt-8">
               <Link
                 to="/careers"
-                className="w-full px-6 py-3 bg-green-500 text-white rounded-xl font-semibold text-sm hover:bg-green-600 transition-all text-center shadow-lg shadow-green-500/20 hover:shadow-green-500/30 cursor-pointer"
-                onClick={() => setSubmitted(false)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-all shadow-lg"
               >
-                Back to Careers
+                ← Back to Careers
               </Link>
-              <button
-                onClick={() => setSubmitted(false)}
-                className="w-full px-6 py-3 bg-black text-white border border-green-500/50 rounded-xl font-medium text-sm hover:bg-green-500/10 hover:border-green-500 transition-all cursor-pointer"
-              >
-                Close
-              </button>
             </div>
           </div>
         </div>
+        <Footer showCompanyInfo={false} />
       </div>
-
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes scaleIn {
-          from { 
-            opacity: 0;
-            transform: scale(0.95) translateY(10px);
-          }
-          to { 
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
-        }
-        @keyframes ping-slow {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 0.3;
-          }
-          50% {
-            transform: scale(1.15);
-            opacity: 0;
-          }
-        }
-        @keyframes checkmark {
-          0% {
-            stroke-dasharray: 0, 100;
-          }
-          100% {
-            stroke-dasharray: 100, 0;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-        .animate-scaleIn {
-          animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .animate-ping-slow {
-          animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-        .animate-checkmark {
-          stroke-dasharray: 100;
-          stroke-dashoffset: 100;
-          animation: checkmark 0.6s ease-out 0.2s forwards;
-        }
-      `}</style>
-    </div>
-  );
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Success Modal */}
-      {submitted && <SuccessModal />}
-      
+    <div className="min-h-screen bg-[#020617] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
@@ -487,7 +342,7 @@ export default function InternshipApplyPage() {
                 </Field>
 
                 <Field label="Role">
-                  <div className="input-field bg-white/5 cursor-not-allowed opacity-60">
+                  <div className="input-field bg-slate-800/50 cursor-not-allowed">
                     {role.title}
                   </div>
                 </Field>
@@ -559,10 +414,10 @@ export default function InternshipApplyPage() {
                         key={skill}
                         type="button"
                         onClick={() => handleSkillToggle(skill)}
-                        className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                           formValues.selectedSkills.includes(skill)
                             ? 'bg-white text-black'
-                            : 'bg-transparent text-white/70 border border-white/20 hover:border-white/40 hover:bg-white/5'
+                            : 'bg-slate-800 text-white/70 border border-slate-700 hover:border-slate-600'
                         }`}
                       >
                         {skill}
@@ -595,6 +450,19 @@ export default function InternshipApplyPage() {
                 </Field>
               </Section>
 
+              {/* Role-Specific Question */}
+              <Section title="Role-Specific">
+                <Field label={role.specificQuestion} error={errors.specificAnswer}>
+                  <input
+                    type="url"
+                    value={formValues.specificAnswer}
+                    onChange={(e) => handleChange('specificAnswer', e.target.value)}
+                    className="input-field"
+                    placeholder="https://..."
+                  />
+                </Field>
+              </Section>
+
               {/* Documents */}
               <Section title="Documents">
                 <Field
@@ -612,7 +480,7 @@ export default function InternshipApplyPage() {
                   />
                   <label
                     htmlFor="resume-upload"
-                    className="input-field cursor-pointer flex items-center justify-between hover:border-white/40 hover:bg-white/5"
+                    className="input-field cursor-pointer flex items-center justify-between hover:border-slate-600"
                   >
                     <span className={formValues.resume ? 'text-white' : 'text-white/50'}>
                       {formValues.resume ? formValues.resume.name : 'Choose file (PDF, DOC, DOCX)'}
@@ -631,7 +499,7 @@ export default function InternshipApplyPage() {
                   />
                   <label
                     htmlFor="additional-upload"
-                    className="input-field cursor-pointer flex items-center justify-between hover:border-white/40 hover:bg-white/5"
+                    className="input-field cursor-pointer flex items-center justify-between hover:border-slate-600"
                   >
                     <span className={formValues.additionalDoc ? 'text-white' : 'text-white/50'}>
                       {formValues.additionalDoc ? formValues.additionalDoc.name : 'Portfolio, case study, etc.'}
@@ -679,49 +547,17 @@ export default function InternshipApplyPage() {
                 </Field>
 
                 <Field error={errors.consent} ref={!formValues.consent && errors.consent ? firstErrorRef : null}>
-                  <div className="flex items-start gap-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const newValue = !formValues.consent;
-                        setFormValues(prev => ({ ...prev, consent: newValue }));
-                        if (errors.consent) {
-                          setErrors(prev => ({ ...prev, consent: undefined }));
-                        }
-                      }}
-                      className={`relative flex items-center justify-center w-5 h-5 flex-shrink-0 rounded-md border-2 transition-all cursor-pointer ${
-                        formValues.consent 
-                          ? 'bg-white border-white' 
-                          : errors.consent 
-                            ? 'border-red-500 bg-transparent' 
-                            : 'border-white/20 bg-transparent hover:border-white/40'
-                      }`}
-                    >
-                      {formValues.consent && (
-                        <svg 
-                          className="w-3.5 h-3.5 text-black"
-                          fill="none" 
-                          viewBox="0 0 24 24" 
-                          stroke="currentColor"
-                          strokeWidth={3}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      )}
-                    </button>
-                    <label 
-                      onClick={() => {
-                        const newValue = !formValues.consent;
-                        setFormValues(prev => ({ ...prev, consent: newValue }));
-                        if (errors.consent) {
-                          setErrors(prev => ({ ...prev, consent: undefined }));
-                        }
-                      }}
-                      className="text-sm text-white/70 hover:text-white/90 transition-colors cursor-pointer"
-                    >
+                  <label className="flex items-start gap-3 cursor-pointer group">
+                    <input
+                      type="checkbox"
+                      checked={formValues.consent}
+                      onChange={(e) => handleChange('consent', e.target.checked)}
+                      className="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-900 text-white focus:ring-2 focus:ring-slate-300"
+                    />
+                    <span className="text-sm text-white/70 group-hover:text-white/90">
                       I agree that Dendrites can store my application data for recruiting purposes.
-                    </label>
-                  </div>
+                    </span>
+                  </label>
                 </Field>
               </Section>
 
@@ -729,7 +565,7 @@ export default function InternshipApplyPage() {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-10 py-4 bg-white text-black rounded-xl font-semibold text-base hover:bg-white/90 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02]"
+                  className="w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-semibold text-base hover:bg-white/90 transition-all shadow-lg hover:shadow-xl"
                 >
                   Submit Application
                 </button>
@@ -740,7 +576,7 @@ export default function InternshipApplyPage() {
           {/* Right: Sidebar */}
           <div className="lg:sticky lg:top-8 lg:self-start space-y-8">
             {/* About Dendrites */}
-            <div className="p-6 rounded-xl border border-white/10 bg-white/[0.02]">
+            <div className="p-6 rounded-xl border border-white/10 bg-slate-900/30">
               <h3 className="text-xs uppercase tracking-[0.2em] text-white/50 mb-3">About Dendrites</h3>
               <p className="text-sm text-white/70 leading-relaxed">
                 Dendrites is building a Web3 payments and trust layer with predictable gas, escrow-like flows, and real receipts. We're making crypto transactions feel like modern SaaS — no surprises, no failed txs, just reliable infrastructure.
@@ -748,7 +584,7 @@ export default function InternshipApplyPage() {
             </div>
 
             {/* What You'll Work On */}
-            <div className="p-6 rounded-xl border border-white/10 bg-white/[0.02]">
+            <div className="p-6 rounded-xl border border-white/10 bg-slate-900/30">
               <h3 className="text-xs uppercase tracking-[0.2em] text-white/50 mb-4">What You'll Work On</h3>
               <ul className="space-y-3">
                 {role.whatYoullWorkOn.map((item, idx) => (
@@ -761,7 +597,7 @@ export default function InternshipApplyPage() {
             </div>
 
             {/* What We're Looking For */}
-            <div className="p-6 rounded-xl border border-white/10 bg-white/[0.02]">
+            <div className="p-6 rounded-xl border border-white/10 bg-slate-900/30">
               <h3 className="text-xs uppercase tracking-[0.2em] text-white/50 mb-4">What We're Looking For</h3>
               <ul className="space-y-3">
                 {role.whatWereLookingFor.map((item, idx) => (
@@ -777,41 +613,6 @@ export default function InternshipApplyPage() {
       </div>
 
       <Footer showCompanyInfo={false} />
-
-      <style>{`
-        .input-field {
-          width: 100%;
-          padding: 0.875rem 1.125rem;
-          background-color: transparent;
-          border: 1.5px solid rgb(255 255 255 / 0.15);
-          border-radius: 0.75rem;
-          color: white;
-          font-size: 0.9375rem;
-          transition: all 0.25s ease;
-          font-weight: 400;
-        }
-        .input-field:focus {
-          outline: none;
-          border-color: rgb(255 255 255 / 0.4);
-          background-color: rgb(255 255 255 / 0.02);
-          box-shadow: 0 0 0 3px rgb(255 255 255 / 0.05);
-        }
-        .input-field:hover:not(:disabled) {
-          border-color: rgb(255 255 255 / 0.25);
-          background-color: rgb(255 255 255 / 0.01);
-        }
-        .input-field::placeholder {
-          color: rgb(255 255 255 / 0.35);
-        }
-        .input-field-error {
-          border-color: rgb(239 68 68) !important;
-          background-color: rgb(239 68 68 / 0.05) !important;
-        }
-        .input-field-error:focus {
-          border-color: rgb(239 68 68) !important;
-          box-shadow: 0 0 0 3px rgb(239 68 68 / 0.1) !important;
-        }
-      `}</style>
     </div>
   );
 }
@@ -837,33 +638,17 @@ const Field = React.forwardRef<HTMLDivElement, {
   error?: string;
   children: React.ReactNode;
 }>(({ label, required, error, children }, ref) => {
-  // Add error class to input children, but not to labels or divs
-  const childrenWithError = React.Children.map(children, child => {
-    if (React.isValidElement(child)) {
-      const childType = (child as any).type;
-      const currentClassName = child.props.className || '';
-      
-      // Only add error class to input, textarea, and select elements
-      if (childType === 'input' || childType === 'textarea' || childType === 'select') {
-        const errorClass = error ? 'input-field-error' : '';
-        const newClassName = `${currentClassName} ${errorClass}`.trim();
-        return React.cloneElement(child, { className: newClassName } as any);
-      }
-    }
-    return child;
-  });
-
   return (
     <div ref={ref} className="space-y-2">
       {label && (
         <label className="block text-sm text-white/80">
           {label}
-          {required && <span className="text-white ml-1">*</span>}
+          {required && <span className="text-red-400 ml-1">*</span>}
         </label>
       )}
-      {childrenWithError}
+      {children}
       {error && (
-        <p className="text-xs text-red-400 font-medium">{error}</p>
+        <p className="text-xs text-red-400">{error}</p>
       )}
     </div>
   );

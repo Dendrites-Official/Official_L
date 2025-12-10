@@ -61,11 +61,17 @@ const Docs: React.FC = () => {
                 >
                   Litepaper
                 </a>
+                <a
+                  href="#season0"
+                  className="rounded-full border border-neutral-800 bg-neutral-950/60 px-3 py-1 transition hover:border-neutral-300 hover:bg-neutral-900 hover:text-neutral-100"
+                >
+                  Season-0
+                </a>
               </div>
             </div>
 
-            {/* 3 doc cards */}
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {/* 4 doc cards */}
+            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {/* Whitepaper card */}
               <div className="flex flex-col justify-between rounded-2xl border border-neutral-900 bg-neutral-950/60 px-4 py-4 sm:px-5 sm:py-5">
                 <div className="space-y-2">
@@ -166,6 +172,41 @@ Receipt Layer.
                   </a>
                   <a
                     href="/docs/dendrites-litepaper-v1.1.pdf"
+                    className="inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.16em] text-neutral-400 transition hover:text-neutral-100"
+                  >
+                    Download PDF
+                    <span className="text-[13px]">↗</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Season-0 Guide card */}
+              <div className="flex flex-col justify-between rounded-2xl border border-neutral-900 bg-neutral-950/60 px-4 py-4 sm:px-5 sm:py-5">
+                <div className="space-y-2">
+                  <div className="text-xs font-medium text-neutral-100">
+                    Season-0 Guide
+                  </div>
+                  <p className="text-[13px] leading-relaxed text-neutral-400">
+                    Complete guide to Season-0 Airdrop: Points, NFTs, Multipliers, and DNDX rewards for early participants.
+                  </p>
+                  <ul className="mt-2 space-y-1.5 text-[11px] text-neutral-500">
+                    <li>• Mission-0, Neuron Passes, and Galaxy NFTs.</li>
+                    <li>• How to earn points and unlock multipliers.</li>
+                    <li>• Season-0 scoring formula and claim process.</li>
+                  </ul>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2 text-[11px]">
+                  <a
+                    href="/blogs/14"
+                    className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-3 py-1.5 font-medium uppercase tracking-[0.16em] hover:border-neutral-200 hover:bg-neutral-900"
+                  >
+                    <span className="h-[1px] w-4 bg-neutral-300" />
+                    Read Guide
+                  </a>
+                  <a
+                    href="/blogs/blog-14.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.16em] text-neutral-400 transition hover:text-neutral-100"
                   >
                     Download PDF
@@ -440,6 +481,110 @@ Receipt Layer.
                   className="w-full h-[600px] md:h-[800px]"
                   title="Dendrites Litepaper PDF"
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Season-0 Guide section */}
+        <section
+          id="season0"
+          className="scroll-mt-24 lg:scroll-mt-28 border-t border-neutral-900 bg-black"
+        >
+          <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12">
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
+              <div className="space-y-4">
+                <h2 className="text-xs font-medium uppercase tracking-[0.22em] text-neutral-500">
+                  Season-0 Guide
+                </h2>
+                <h3 className="text-xl font-light tracking-tight sm:text-2xl lg:text-3xl">
+                  Your Complete Guide to Points, NFTs, Multipliers & DNDX Rewards
+                </h3>
+                <p className="text-[13px] leading-relaxed text-neutral-400 md:text-sm">
+                  Season-0 is Dendrites' first airdrop season—a transparent, multi-tier campaign that rewards early users who help build and test our commerce-grade payment infrastructure. This guide explains exactly how Season-0 works: how you earn points, what the Access NFTs and Prestige NFTs are, what multipliers do, and how everything converts to DNDX tokens when we launch.
+                </p>
+                <p className="text-[13px] leading-relaxed text-neutral-400 md:text-sm">
+                  Season-0 is designed to filter real users from farmers. We want people who understand what Dendrites is building, not wallets hunting for quick flips. If you're serious about securing your allocation, this is your blueprint.
+                </p>
+              </div>
+
+              <div className="space-y-4 text-[13px] text-neutral-400">
+                <div>
+                  <div className="text-xs font-medium text-neutral-100">
+                    What's Inside the Guide
+                  </div>
+                  <ul className="mt-2 space-y-1.5 text-[12px]">
+                    <li>
+                      • Season-0 Scoring Formula: Points × Tier Multiplier × Testnet Bonus
+                    </li>
+                    <li>
+                      • How to earn points through quests, referrals, testnet participation, and content creation
+                    </li>
+                    <li>
+                      • Access NFTs: Mission-0 (Safe Commerce Scout), Neuron Pass – Standard, and Neuron Pass – Genesis
+                    </li>
+                    <li>
+                      • Prestige NFTs: Galaxy Crown (Top 10), Galaxy Crest (Top 30), and Galaxy Tokenmark 1K (Top 1,000)
+                    </li>
+                    <li>
+                      • Multiplier system: How NFTs amplify your Season-0 Score
+                    </li>
+                    <li>
+                      • Step-by-step guide to claiming your NFTs on Base (ERC-1155, gas sponsored)
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <div className="text-xs font-medium text-neutral-100">
+                    Key Highlights
+                  </div>
+                  <ul className="mt-2 space-y-1.5 text-[12px]">
+                    <li>
+                      • All Access NFTs (Mission-0, Neuron Passes) are soulbound (non-tradable) ERC-1155 tokens on Base
+                    </li>
+                    <li>
+                      • Prestige NFTs (Galaxy Series) are tradable ERC-1155 reward NFTs for top performers
+                    </li>
+                    <li>
+                      • Neuron Pass – Genesis is capped at ~3,000–5,000 wallets. Once it's gone, it's gone.
+                    </li>
+                    <li>
+                      • We'll publish the final Season-0 → DNDX mapping and band structure before the claim window opens
+                    </li>
+                    <li>
+                      • 1 point ≠ 1 DNDX. The mapping is curved to reward depth and consistency, not just raw point farming.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Season-0 download / links */}
+            <div className="mt-8 flex flex-col gap-4 border-t border-neutral-900 pt-6 text-[11px] text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-xl space-y-2">
+                <div className="text-xs font-medium uppercase tracking-[0.22em] text-neutral-400">
+                  Read the Full Guide
+                </div>
+                <p>
+                  The Season-0 Guide is accurate as of December 2025. Requirements and multipliers may be adjusted as Season-0 progresses. We'll publish all final rules before the claim window opens.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="/blogs/14"
+                  className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-100 shadow-sm shadow-black/40 transition hover:border-neutral-200 hover:bg-neutral-900"
+                >
+                  <span className="h-[1px] w-4 bg-neutral-300" />
+                  Read Full Guide
+                </a>
+                <a
+                  href="/blogs/blog-14.pdf"
+                  download
+                  className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-100 shadow-sm shadow-black/40 transition hover:border-neutral-200 hover:bg-neutral-900"
+                >
+                  Download PDF
+                  <span className="text-[13px]">↗</span>
+                </a>
               </div>
             </div>
           </div>

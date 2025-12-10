@@ -197,14 +197,14 @@ Receipt Layer.
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2 text-[11px]">
                   <a
-                    href="/blogs/14"
+                    href="#season0"
                     className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-3 py-1.5 font-medium uppercase tracking-[0.16em] hover:border-neutral-200 hover:bg-neutral-900"
                   >
                     <span className="h-[1px] w-4 bg-neutral-300" />
-                    Read Guide
+                    View section
                   </a>
                   <a
-                    href="/blogs/blog-14.pdf"
+                    href="/docs/dendrites_Season 0.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.16em] text-neutral-400 transition hover:text-neutral-100"
@@ -511,7 +511,7 @@ Receipt Layer.
               <div className="space-y-4 text-[13px] text-neutral-400">
                 <div>
                   <div className="text-xs font-medium text-neutral-100">
-                    What's Inside the Guide
+                    What the Guide covers
                   </div>
                   <ul className="mt-2 space-y-1.5 text-[12px]">
                     <li>
@@ -526,17 +526,11 @@ Receipt Layer.
                     <li>
                       • Prestige NFTs: Galaxy Crown (Top 10), Galaxy Crest (Top 30), and Galaxy Tokenmark 1K (Top 1,000)
                     </li>
-                    <li>
-                      • Multiplier system: How NFTs amplify your Season-0 Score
-                    </li>
-                    <li>
-                      • Step-by-step guide to claiming your NFTs on Base (ERC-1155, gas sponsored)
-                    </li>
                   </ul>
                 </div>
                 <div>
                   <div className="text-xs font-medium text-neutral-100">
-                    Key Highlights
+                    Key Requirements & NFT Info
                   </div>
                   <ul className="mt-2 space-y-1.5 text-[12px]">
                     <li>
@@ -552,18 +546,18 @@ Receipt Layer.
                       • We'll publish the final Season-0 → DNDX mapping and band structure before the claim window opens
                     </li>
                     <li>
-                      • 1 point ≠ 1 DNDX. The mapping is curved to reward depth and consistency, not just raw point farming.
+                      • 1 point ≠ 1 DNDX. The mapping is curved to reward depth and consistency.
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            {/* Season-0 download / links */}
+            {/* Season-0 download / disclaimer */}
             <div className="mt-8 flex flex-col gap-4 border-t border-neutral-900 pt-6 text-[11px] text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
               <div className="max-w-xl space-y-2">
                 <div className="text-xs font-medium uppercase tracking-[0.22em] text-neutral-400">
-                  Read the Full Guide
+                  Download Season-0 Guide
                 </div>
                 <p>
                   The Season-0 Guide is accurate as of December 2025. Requirements and multipliers may be adjusted as Season-0 progresses. We'll publish all final rules before the claim window opens.
@@ -571,20 +565,27 @@ Receipt Layer.
               </div>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="/blogs/14"
-                  className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-100 shadow-sm shadow-black/40 transition hover:border-neutral-200 hover:bg-neutral-900"
-                >
-                  <span className="h-[1px] w-4 bg-neutral-300" />
-                  Read Full Guide
-                </a>
-                <a
-                  href="/blogs/blog-14.pdf"
+                  href="/docs/dendrites_Season 0.pdf"
                   download
                   className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-neutral-100 shadow-sm shadow-black/40 transition hover:border-neutral-200 hover:bg-neutral-900"
                 >
-                  Download PDF
-                  <span className="text-[13px]">↗</span>
+                  <span className="h-[1px] w-4 bg-neutral-300" />
+                  Download Guide
                 </a>
+              </div>
+            </div>
+
+            {/* Season-0 PDF viewer */}
+            <div className="mt-8 space-y-4">
+              <h3 className="text-xs font-medium uppercase tracking-[0.22em] text-neutral-400">
+                Read Season-0 Guide
+              </h3>
+              <div className="overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950">
+                <iframe
+                  src="/docs/dendrites_Season 0.pdf"
+                  className="w-full h-[600px] md:h-[800px]"
+                  title="Season-0 Airdrop Guide PDF"
+                />
               </div>
             </div>
           </div>

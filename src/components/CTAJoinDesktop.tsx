@@ -59,7 +59,7 @@ export default function CTAJoinDesktop({
                       controlsList="nodownload noplaybackrate nofullscreen"
                       disablePictureInPicture
                     >
-                      <source src="/NeuralPass.mp4" type="video/mp4" />
+                      <source src="/NFT.mp4" type="video/mp4" />
                     </video>
                   ) : (
                     <div className="cta-media-skeleton">

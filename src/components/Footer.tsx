@@ -410,7 +410,7 @@ export default function Footer({ showCompanyInfo = false }: { showCompanyInfo?: 
               </svg>
             </a>
             <a
-              href="https://t.me/dendrites_ai"
+              href="https://t.me/Dendrites_Chat"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"

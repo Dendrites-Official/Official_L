@@ -19,56 +19,93 @@ const networkLanes = [
 
 const CONTRACT_ADDRESS = "0xA861beA2f4B2C1B8042cf7C31010ce55C20044f4";
 
+const EXPLORER_LINKS = [
+  {
+    label: "Etherscan",
+    href: `https://etherscan.io/token/${CONTRACT_ADDRESS}`,
+  },
+  {
+    label: "BaseScan",
+    href: "https://basescan.org/address/0xb476b0c8faa3066e4051421c0be7d762ba347b01",
+  },
+  {
+    label: "OpenSea",
+    href: "https://opensea.io/collection/dendrites-season-0-pass",
+  },
+];
+
 export default function TokenProofStrip() {
   return (
     <section className="token-proof-wrapper">
-      <div className="token-proof-strip">
-        <div className="token-proof-core">
-          <p className="token-proof-chip">DNDX PROOF</p>
-          <div>
-            <p className="token-proof-title">Official Token · Immutable Deploy</p>
-            <p className="token-proof-subtitle">
-              Settlement lives on Ethereum. No public trading yet. Everything routes through this contract until TGE.
-            </p>
+      <div className="token-proof-frame">
+        {/* TOP: LABEL + TITLE + STATS */}
+        <div className="token-proof-strip">
+          <div className="token-proof-top">
+            <div className="token-proof-core">
+              {/* <p className="token-proof-chip">DNDX PROOF</p> */}
+              <div className="token-proof-info">
+                <p className="token-proof-title">
+                  Official Token · Immutable Deploy
+                </p>
+                <p className="token-proof-subtitle">
+                  Settlement lives on Ethereum. No public trading yet. Everything
+                  routes through this contract until TGE.
+                </p>
+              </div>
+            </div>
+
+            <div className="token-proof-stats">
+              {tokenStats.map((stat) => (
+                <div key={stat.label} className="token-proof-stat">
+                  <span>{stat.label}</span>
+                  <strong>{stat.value}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* BOTTOM: CONTRACT + LINKS */}
+          <div className="token-proof-bottom">
+             <p className="token-proof-chip">DNDX PROOF</p>
+            <div className="token-proof-address">
+             
+              <span className="token-proof-address-label">Contract</span>
+              <span className="token-proof-address-value font-mono">
+                {CONTRACT_ADDRESS}
+              </span>
+            </div>
+
+            <div className="token-proof-actions">
+              <span className="token-proof-audited">Audited</span>
+              <div className="token-proof-links">
+                {EXPLORER_LINKS.map((link) => (
+                  <a
+                    key={link.label}
+                    className="token-proof-link"
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="token-proof-stats">
-          {tokenStats.map((stat) => (
-            <div key={stat.label} className="token-proof-stat">
-              <span>{stat.label}</span>
-              <strong>{stat.value}</strong>
-            </div>
+        {/* NETWORK LANES (inside same frame) */}
+        <div className="network-lane-strip">
+          {networkLanes.map((lane) => (
+            <article key={lane.title} className="network-lane-card">
+              <p className="network-lane-label">Network Lane</p>
+              <div>
+                <h3>{lane.title}</h3>
+                <p>{lane.copy}</p>
+              </div>
+            </article>
           ))}
         </div>
-
-        <div className="token-proof-address">
-          <span className="font-mono">{CONTRACT_ADDRESS}</span>
-        </div>
-
-        <div className="token-proof-actions">
-          <span className="token-proof-pill token-proof-pill--success">Audited</span>
-          <a
-            className="token-proof-pill"
-            href={`https://etherscan.io/token/${CONTRACT_ADDRESS}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on Etherscan ↗
-          </a>
-        </div>
-      </div>
-
-      <div className="network-lane-strip">
-        {networkLanes.map((lane) => (
-          <article key={lane.title} className="network-lane-card">
-            <p className="network-lane-label">Network Lane</p>
-            <div>
-              <h3>{lane.title}</h3>
-              <p>{lane.copy}</p>
-            </div>
-          </article>
-        ))}
       </div>
 
       <style>{`
@@ -78,296 +115,296 @@ export default function TokenProofStrip() {
           color: #fff;
         }
 
+        /* OUTER FRAME – capsule like your screenshot */
+        .token-proof-frame {
+          width: 100%;
+          border-radius: 999px;
+          border: 1px solid rgba(148,163,184,0.55);
+          padding: 1.15rem 2rem 1.1rem;
+          background: transparent;
+        }
+
         .token-proof-strip {
           width: 100%;
-          display: grid;
-          grid-template-columns: 1.6fr 1fr auto auto;
+          display: flex;
+          flex-direction: column;
           gap: 0.75rem;
-          padding: 0.85rem 1.35rem;
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 999px;
-          background: transparent;
+        }
+
+        .token-proof-top {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 1.25rem;
+          flex-wrap: nowrap;
         }
 
         .token-proof-core {
           display: flex;
-          gap: 1.15rem;
-          align-items: center;
+          gap: 1rem;
+          align-items: flex-start;
           min-width: 0;
+          max-width: 380px;
+          flex-shrink: 1;
         }
 
         .token-proof-chip {
-          padding: 0.32rem 0.85rem;
+          padding: 0.25rem 0.75rem;
           border-radius: 999px;
           border: 1px solid rgba(255,255,255,0.35);
-          font-size: 0.62rem;
-          letter-spacing: 0.45em;
+          font-size: 0.58rem;
+          letter-spacing: 0.28em;
           text-transform: uppercase;
           color: rgba(255,255,255,0.75);
           white-space: nowrap;
         }
 
         .token-proof-title {
-          font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+          font-size: 0.92rem;
           font-weight: 600;
+          line-height: 1.25;
+          margin-right: 1rem;
         }
 
         .token-proof-subtitle {
-          margin-top: 0.2rem;
-          font-size: 0.8rem;
+          margin-top: 0.25rem;
+          font-size: 0.72rem;
+          line-height: 1.4;
           color: rgba(255,255,255,0.7);
+          max-width: 30ch;
+        }
+
+        .token-proof-info {
+        margin-left: 2rem;
+          display: flex;
+          flex-direction: column;
         }
 
         .token-proof-stats {
-          display: flex;
-          gap: 1rem;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: minmax(100px, 1fr);
+          gap: 0.5rem;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-end;
+          flex: 1;
         }
 
         .token-proof-stat {
           text-transform: uppercase;
-          letter-spacing: 0.15em;
-          font-size: 0.7rem;
+          letter-spacing: 0.14em;
+          font-size: 0.62rem;
           color: rgba(255,255,255,0.6);
+        }
+
+        .token-proof-stat span {
+          display: block;
+          margin-bottom: 0.18rem;
         }
 
         .token-proof-stat strong {
           display: block;
-          margin-top: 0.25rem;
           color: #fff;
-          font-size: 0.9rem;
-          letter-spacing: 0.06em;
+          font-size: 0.8rem;
+          letter-spacing: 0.03em;
+          font-weight: 600;
         }
 
-        .token-proof-address {
+        .token-proof-bottom {
           display: flex;
           align-items: center;
-          padding: 0.5rem 1rem;
+          justify-content: space-between;
+          gap: 1rem;
+          margin-top: 0.4rem;
+          flex-wrap: wrap;
+        }
+
+        /* CONTRACT – outline only, no fill */
+        .token-proof-address {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.65rem;
+          padding: 0.5rem 1.1rem;
           border-radius: 999px;
-          border: 1px solid rgba(148,163,184,0.4);
-          font-size: 0.88rem;
+          border: 1px solid rgba(148,163,184,0.7);
+          background: transparent;
+          min-width: 0;
+        }
+
+        .token-proof-address-label {
+          font-size: 0.65rem;
+          text-transform: uppercase;
+          letter-spacing: 0.24em;
+          color: rgba(148,163,184,0.95);
+        }
+
+        .token-proof-address-value {
+          font-size: 0.8rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .token-proof-actions {
           display: flex;
-          gap: 0.55rem;
-          justify-content: flex-end;
+          gap: 0.75rem;
           align-items: center;
+          flex-wrap: wrap;
+          justify-content: flex-end;
         }
 
-        .token-proof-pill {
-          padding: 0.4rem 1.15rem;
-          border-radius: 0;
-          border: none;
-          font-size: 0.85rem;
-          color: rgba(255,255,255,0.85);
-          white-space: nowrap;
+        .token-proof-audited {
+          font-size: 0.8rem;
+          color: #22c55e;
+          font-weight: 500;
         }
 
-        .token-proof-pill--success {
-          color: rgb(190, 255, 210);
+        .token-proof-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.8rem;
         }
 
+        .token-proof-link {
+          font-size: 0.78rem;
+          color: rgba(209,213,219,0.9);
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          position: relative;
+        }
+
+        .token-proof-link::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.15rem;
+          width: 0%;
+          height: 1px;
+          background: rgba(229,231,235,0.9);
+          transition: width 0.18s ease;
+        }
+
+        .token-proof-link:hover {
+          color: #fff;
+        }
+
+        .token-proof-link:hover::after {
+          width: 100%;
+        }
+
+        /* NETWORK LANES – inside same frame, no extra borders */
         .network-lane-strip {
           width: 100%;
-          margin: 0.35rem auto 0;
+          margin-top: 0.9rem;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: 0.35rem;
+          gap: 0.5rem;
         }
 
         .network-lane-card {
-          border: none;
-          border-radius: 0;
-          padding: 0.35rem 0;
-          background: transparent;
+          padding: 0.25rem 0.1rem 0.15rem;
           display: flex;
           gap: 0.6rem;
-        }
-
-        .network-lane-card h3 {
-          margin-bottom: 0.15rem;
-          font-size: 1rem;
-          font-weight: 600;
-        }
-
-        .network-lane-card p {
-          margin: 0;
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.72);
         }
 
         .network-lane-label {
           font-size: 0.6rem;
           text-transform: uppercase;
           letter-spacing: 0.4em;
-          color: rgba(125,211,252,0.8);
+          color: rgba(148,163,184,0.9);
           white-space: nowrap;
         }
 
-        @media (max-width: 1280px) {
-          .token-proof-strip {
-            grid-template-columns: 1.5fr 1fr minmax(200px, 0.9fr);
-            grid-template-areas:
-              "core stats address"
-              "actions actions actions";
-          }
-          .token-proof-core { grid-area: core; }
-          .token-proof-stats { grid-area: stats; }
-          .token-proof-address { grid-area: address; }
-          .token-proof-actions {
-            grid-area: actions;
-            justify-content: flex-start;
+        .network-lane-card h3 {
+          margin-bottom: 0.15rem;
+          font-size: 0.95rem;
+          font-weight: 600;
+        }
+
+        .network-lane-card p {
+          margin: 0;
+          font-size: 0.8rem;
+          color: rgba(148,163,184,0.9);
+        }
+
+        /* RESPONSIVE – soften the pill on smaller screens */
+        @media (max-width: 1024px) {
+          .token-proof-frame {
+            border-radius: 72px;
+            padding: 1.25rem 1.8rem 1.1rem;
           }
         }
 
         @media (max-width: 900px) {
-          .token-proof-strip {
-            grid-template-columns: 1fr;
+          .token-proof-frame {
             border-radius: 40px;
-            padding: 0.9rem 1rem;
-            gap: 0.6rem;
+            padding: 1.1rem 1.3rem 1rem;
           }
-          .token-proof-core {
+          .token-proof-top {
             flex-direction: column;
-            align-items: flex-start;
-            gap: 0.5rem;
-          }
-          .token-proof-actions {
-            flex-wrap: wrap;
-            gap: 0.4rem;
-          }
-          .token-proof-address {
-            justify-content: flex-start;
+            gap: 1rem;
           }
           .token-proof-stats {
-            flex-wrap: wrap;
+            grid-auto-flow: row;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+          }
+          .token-proof-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .token-proof-actions {
             justify-content: flex-start;
           }
         }
 
-        @media (max-width: 680px) {
+        @media (max-width: 640px) {
           .token-proof-wrapper {
-            padding: 0.5rem 0.85rem 0;
+            padding: 0.9rem 0.9rem 0;
           }
-          .token-proof-strip {
-            border-radius: 0;
-            border: none;
-            padding: 0;
-            gap: 0.4rem;
-            display: flex;
-            flex-direction: column;
+          .token-proof-frame {
+            border-radius: 24px;
+            padding: 0.9rem 0.9rem 0.85rem;
           }
           .token-proof-core {
-            display: block;
-          }
-          .token-proof-chip {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            letter-spacing: 0.12em;
-            font-size: 0.56rem;
-            border: 1px solid rgba(255,255,255,0.3);
-            margin-bottom: 0.3rem;
-          }
-          .token-proof-title {
-            font-size: 0.85rem;
-            line-height: 1.3;
+            flex-direction: column;
+            gap: 0.4rem;
+            max-width: none;
           }
           .token-proof-subtitle {
-            display: none;
+            max-width: none;
           }
           .token-proof-stats {
-            display: flex;
-            flex-direction: row;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-          }
-          .token-proof-stat {
-            letter-spacing: 0.06em;
-            font-size: 0.62rem;
-          }
-          .token-proof-stat strong {
-            font-size: 0.78rem;
-            margin-top: 0.15rem;
+            grid-template-columns: 1fr;
+            gap: 0.45rem;
           }
           .token-proof-address {
             width: 100%;
-            border-radius: 0;
-            justify-content: flex-start;
-            font-size: 0.72rem;
-            padding: 0;
-            border: none;
+            justify-content: space-between;
           }
-          .token-proof-actions {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-          }
-          .token-proof-pill {
-            flex: 0 0 auto;
-            padding: 0;
-            font-size: 0.78rem;
-            border-radius: 0;
+          .token-proof-address-value {
+            white-space: normal;
+            word-break: break-all;
+            text-align: right;
           }
           .network-lane-strip {
-            margin-top: 0.5rem;
-            gap: 0.5rem;
-          }
-          .network-lane-card {
-            display: block;
-            padding: 0.25rem 0;
-          }
-          .network-lane-label {
-            font-size: 0.56rem;
-            letter-spacing: 0.12em;
-            margin-bottom: 0.2rem;
-          }
-          .network-lane-card h3 {
-            font-size: 0.85rem;
-            margin-bottom: 0.15rem;
-          }
-          .network-lane-card p {
-            font-size: 0.72rem;
-            line-height: 1.4;
+            margin-top: 0.75rem;
           }
         }
 
-        @media (max-width: 520px) {
-          .token-proof-wrapper {
-            padding: 0.4rem 0.65rem 0;
-          }
-          .token-proof-strip {
-            gap: 0.35rem;
+        @media (max-width: 480px) {
+          .token-proof-title {
+            font-size: 0.95rem;
           }
           .token-proof-chip {
-            font-size: 0.54rem;
-            padding: 0.18rem 0.45rem;
-          }
-          .token-proof-title {
-            font-size: 0.8rem;
-          }
-          .token-proof-stat {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
+            letter-spacing: 0.22em;
           }
           .token-proof-stat strong {
-            font-size: 0.75rem;
+            font-size: 0.82rem;
           }
-          .token-proof-address {
-            font-size: 0.68rem;
-            word-break: break-all;
-          }
-          .token-proof-pill {
-            font-size: 0.75rem;
-            padding: 0.32rem 0.75rem;
-          }
-          .network-lane-card h3 {
-            font-size: 0.8rem;
-          }
-          .network-lane-card p {
-            font-size: 0.7rem;
+          .token-proof-link {
+            font-size: 0.78rem;
           }
         }
       `}</style>

@@ -473,6 +473,10 @@ export default function Footer({ showCompanyInfo = false }: { showCompanyInfo?: 
             <Link to="/careers" className="footer-link">
               Careers
             </Link>
+            {/* NEW: About Us on mobile */}
+            <Link to="/about" className="footer-link">
+              About Us
+            </Link>
             <a
               href="https://shorturl.at/vpN6j"
               target="_blank"
@@ -692,7 +696,7 @@ export default function Footer({ showCompanyInfo = false }: { showCompanyInfo?: 
                 </a>
 
                 <a
-                  href="https://t.me/dendrites_ai"
+                  href="https://t.me/Dendrites_Chat"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 sm:gap-3 text-white/70 footer-link transition-colors group"
@@ -860,6 +864,13 @@ export default function Footer({ showCompanyInfo = false }: { showCompanyInfo?: 
                     className="block text-white/60 footer-link transition-colors"
                   >
                     Careers
+                  </Link>
+                  {/* NEW: About Us on desktop */}
+                  <Link
+                    to="/about"
+                    className="block text-white/60 footer-link transition-colors"
+                  >
+                    About Us
                   </Link>
                 </div>
               </div>

@@ -1,26 +1,26 @@
 // src/components/LandingPage.tsx
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import PremiumLogoMarquee from "@/components/ui/PremiumLogoMarquee";
 // import PainsSection from "@/components/PainsSection";
 import Footer from "@/components/Footer";
-import PainsComposite from "./pains/PainsComposite";
-import TokenAirdropAnnouncement from "./ui/TokenAirdropAnnouncement";
-import DndxRoadmapPremium from "./ui/DndxRoadmapPremium";
-// import SRLSignalHero from "./SRLSignalHero";
-import SRLCommunityReviews from "./SRLCommunityReviews";
-import ArticlesBlogs from "./ArticlesBlogs";
-import SRLLayer2Hero from "./SRLLayer2Hero";
-import CTAJoin from "./CTAJoinDesktop";
-import Hero1 from "./Hero1";
-import MobileSRL from "./MobileSRL";
 import { useIsMobile } from "@/hooks/useIsMobile"; 
-import CTAJoinMobile from "./CTAJoinMobile";
-import CTAJoinDesktop from "./CTAJoinDesktop";
-import TokenomicsSection from "./TokenomicsSection";
-// import TrustSignalStack from "./TrustSignalStack";
 import TokenProofStrip from "./TokenProofStrip";
+import { SectionLoader, ChartSkeleton } from "@/components/ui/SkeletonLoader";
+
+// Lazy load heavy components for better performance
+const PainsComposite = lazy(() => import("./pains/PainsComposite"));
+const TokenAirdropAnnouncement = lazy(() => import("./ui/TokenAirdropAnnouncement"));
+const DndxRoadmapPremium = lazy(() => import("./ui/DndxRoadmapPremium"));
+const SRLCommunityReviews = lazy(() => import("./SRLCommunityReviews"));
+const ArticlesBlogs = lazy(() => import("./ArticlesBlogs"));
+const SRLLayer2Hero = lazy(() => import("./SRLLayer2Hero"));
+const Hero1 = lazy(() => import("./Hero1"));
+const MobileSRL = lazy(() => import("./MobileSRL"));
+const CTAJoinMobile = lazy(() => import("./CTAJoinMobile"));
+const CTAJoinDesktop = lazy(() => import("./CTAJoinDesktop"));
+const TokenomicsSection = lazy(() => import("./TokenomicsSection"));
 
 type LandingPageProps = {
   introReady?: boolean;
@@ -39,7 +39,9 @@ export default function LandingPage({ introReady = true }: LandingPageProps) {
       }}
     >
 
-      <Hero1 introReady={introReady} />
+      <Suspense fallback={<SectionLoader />}>
+        <Hero1 introReady={introReady} />
+      </Suspense>
 
 
       {/* Page 1: Hero Section */}
@@ -86,15 +88,19 @@ export default function LandingPage({ introReady = true }: LandingPageProps) {
       {/* Page 3: Pains Section */}
       <section className="min-h-[100svh] w-full bg-black" style={{ overflow: 'visible' }}>
         <div className="w-full">
-          <PainsComposite />
+          <Suspense fallback={<SectionLoader />}>
+            <PainsComposite />
+          </Suspense>
         </div>
       </section>
 
-      {isMobile ? (
-        <MobileSRL />
-      ) : (
-        <SRLLayer2Hero />
-      )}
+      <Suspense fallback={<SectionLoader />}>
+        {isMobile ? (
+          <MobileSRL />
+        ) : (
+          <SRLLayer2Hero />
+        )}
+      </Suspense>
 
       {/* SRL Layer 2 Description Section */}
       <section className="w-full bg-black py-16 sm:py-20 md:py-24 lg:py-28">
@@ -124,37 +130,51 @@ export default function LandingPage({ introReady = true }: LandingPageProps) {
       </section>
 
       <section className="w-full bg-black text-white" style={{ overflow: 'visible' }}>
-        <DndxRoadmapPremium />
+        <Suspense fallback={<SectionLoader />}>
+          <DndxRoadmapPremium />
+        </Suspense>
       </section>
 
       {/* <TrustSignalStack /> */}
 
-      <TokenomicsSection />
+      <Suspense fallback={<ChartSkeleton height="80vh" />}>
+        <TokenomicsSection />
+      </Suspense>
 
-      <ArticlesBlogs />
+      <Suspense fallback={<SectionLoader />}>
+        <ArticlesBlogs />
+      </Suspense>
 
       <section className="min-h-[50svh] w-full flex items-center justify-center bg-black" style={{ overflow: 'visible' }}>
         <div className="w-full">
-          <TokenAirdropAnnouncement
-            totalGiveaway={1_000_000}
-            presaleHref="https://waitlist.dendrites.ai/"   // point this to your waitlist / signup
-            docsHref="/sla"
-            headline="1,000,000 Transactions free for early supporters"
-            subline="Pre-sale incentive • usage-first • anti-sybil"
-          />
+          <Suspense fallback={<SectionLoader />}>
+            <TokenAirdropAnnouncement
+              totalGiveaway={1_000_000}
+              presaleHref="https://waitlist.dendrites.ai/"   // point this to your waitlist / signup
+              docsHref="/sla"
+              headline="1,000,000 Transactions free for early supporters"
+              subline="Pre-sale incentive • usage-first • anti-sybil"
+            />
+          </Suspense>
         </div>
       </section>
 
-      <SRLCommunityReviews />
+      <Suspense fallback={<SectionLoader />}>
+        <SRLCommunityReviews />
+      </Suspense>
 
       {/* Desktop / large screens */}
       <div className="hidden md:block">
-        <CTAJoinDesktop />
+        <Suspense fallback={<SectionLoader />}>
+          <CTAJoinDesktop />
+        </Suspense>
       </div>
 
       {/* Mobile / tablets */}
       <div className="block md:hidden">
-        <CTAJoinMobile />
+        <Suspense fallback={<SectionLoader />}>
+          <CTAJoinMobile />
+        </Suspense>
       </div>
 
       {/* Page 5: Footer */}

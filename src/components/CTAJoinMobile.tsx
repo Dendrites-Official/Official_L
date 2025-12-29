@@ -53,12 +53,12 @@ export default function CTAJoinMobile({
                   loop
                   playsInline
                   preload="none"
-                  poster="/page_end_cta.png"
+                  poster="/page_end_cta.webp"
                   controls={false}
                   controlsList="nodownload noplaybackrate nofullscreen"
                   disablePictureInPicture
                 >
-                  <source src="/NeuralPass.mp4" type="video/mp4" />
+                  <source src="/NFT.mp4" type="video/mp4" />
                 </video>
               ) : (
                 <div className="cta-mobile-video-placeholder">

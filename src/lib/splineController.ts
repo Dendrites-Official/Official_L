@@ -43,15 +43,15 @@ export function shouldStreamSpline() {
 export function getFallbackAsset(section: "hero" | "srl" | "chatbot" | "cta" | "background") {
   switch (section) {
     case "hero":
-      return "/hero_spline.png";
+      return "/hero_spline.webp";
     case "srl":
-      return "/SRL_spline.png";
+      return "/SRL_spline.webp";
     case "chatbot":
-      return "/chatbot.png";
+      return "/chatbot.webp";
     case "cta":
-      return "/page_end_cta.png";
+      return "/page_end_cta.webp";
     case "background":
     default:
-      return "/backgrounddndx.png";
+      return "/backgrounddndx.webp";
   }
 }

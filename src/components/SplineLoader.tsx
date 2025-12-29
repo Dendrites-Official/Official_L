@@ -71,10 +71,13 @@ export default function SplineLoader({
       const canvas = document.querySelector('canvas');
       if (canvas) {
         canvas.style.pointerEvents = 'auto';
-        canvas.style.touchAction = 'auto';
+        canvas.style.touchAction = 'manipulation';
         // Ensure canvas is visible (mobile fix)
         canvas.style.visibility = 'visible';
         canvas.style.opacity = '1';
+        // Mobile-specific optimizations
+        (canvas.style as any).webkitTapHighlightColor = 'transparent';
+        canvas.style.cursor = 'pointer';
       }
     });
 

@@ -42,6 +42,11 @@ export default function Hero1({ introReady = true }: Hero1Props) {
         // Force visibility and interaction
         canvas.style.visibility = "visible";
         canvas.style.opacity = "1";
+        canvas.style.pointerEvents = "auto";
+        canvas.style.touchAction = "manipulation";
+        canvas.style.cursor = "pointer";
+        (canvas.style as any).webkitTapHighlightColor = "transparent";
+        
         // Trigger reflow to ensure browser processes the scene
         void canvas.offsetHeight;
       }
@@ -67,7 +72,11 @@ export default function Hero1({ introReady = true }: Hero1Props) {
       {/* --- Spline Stage --- */}
       <div 
         ref={splineAreaRef} 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-10"
+        style={{
+          pointerEvents: 'auto',
+          touchAction: 'manipulation'
+        }}
       >
         <div className="spline-target">
           {allowSpline && canRender ? (
@@ -107,7 +116,7 @@ export default function Hero1({ introReady = true }: Hero1Props) {
 
       {/* --- TOP-LEFT COPY (overlay, no pointer events) --- */}
       <motion.div 
-        className="absolute left-4 top-6 sm:left-10 sm:top-10 z-10 max-w-xl pointer-events-none"
+        className="absolute left-4 top-6 sm:left-10 sm:top-10 z-20 max-w-xl pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -130,7 +139,7 @@ export default function Hero1({ introReady = true }: Hero1Props) {
 
       {/* --- CENTERED HERO TEXT - Bottom Right --- */}
       <motion.div 
-        className="absolute right-4 bottom-6 sm:right-10 sm:bottom-10 z-10 max-w-4xl pointer-events-none text-right"
+        className="absolute right-4 bottom-6 sm:right-10 sm:bottom-10 z-20 max-w-4xl pointer-events-none text-right"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -159,7 +168,7 @@ export default function Hero1({ introReady = true }: Hero1Props) {
       {/* --- Floor gradient for legibility --- */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 md:h-56 z-5"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 md:h-56 z-15"
         style={{
           background:
             "linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%)",
@@ -180,7 +189,9 @@ export default function Hero1({ introReady = true }: Hero1Props) {
           height: 100% !important;
           overflow: hidden !important;
           pointer-events: auto !important;
-          touch-action: auto !important;
+          touch-action: manipulation !important;
+          -webkit-user-select: none !important;
+          user-select: none !important;
         }
 
         section[aria-label*="Hero"] .spline-target iframe[title="Spline"],
@@ -192,7 +203,36 @@ export default function Hero1({ introReady = true }: Hero1Props) {
           height: 100% !important;
           object-fit: contain !important;
           pointer-events: auto !important;
-          touch-action: auto !important;
+          touch-action: manipulation !important;
+          cursor: pointer !important;
+          -webkit-tap-highlight-color: transparent !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+
+        /* Ensure canvas is always interactive on mobile */
+        @media (max-width: 768px) {
+          section[aria-label*="Hero"] .spline-target canvas {
+            touch-action: manipulation !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+          }
+        }
+
+        /* iPhone 12 Pro and similar sizes (390x844) */
+        @media (max-width: 430px) and (max-height: 932px) {
+          section[aria-label*="Hero"] .spline-target canvas {
+            touch-action: manipulation !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
         }
 
         [data-hero],

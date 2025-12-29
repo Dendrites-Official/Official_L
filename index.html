@@ -3,15 +3,103 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
-  
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DNDX" />
+  <link rel="apple-touch-icon" href="/DX.jpg" />
+
   <!-- Permissions Policy: Disable browser extension interference -->
   <meta http-equiv="Permissions-Policy" content="unload=()">
-  
-  <link rel="stylesheet" href="/edge-reset.css"><!-- edge reset: loads last to remove side gaps -->
-<link rel="dns-prefetch" href="https://prod.spline.design">
-<link rel="preconnect" href="https://prod.spline.design" crossorigin>
 
+  <!-- SEO: Primary title + description -->
+  <title>Dendrites (DNDX) – Web3 Payments Trust Layer with Predictable Gas & SafetySend</title>
+  <meta name="description"
+    content="Dendrites (DNDX) is a Web3 payments trust layer with predictable gas, SafetySend (UNDO for mistaken sends), and escrow-like flows for freelancers, marketplaces, and crypto-native teams." />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://dendrites.ai/" />
+
+  <!-- Open Graph (for rich previews on X, Telegram, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dendrites.ai/" />
+  <meta property="og:title" content="Dendrites (DNDX) – Web3 Payments & Escrow with Predictable Gas" />
+  <meta property="og:description"
+    content="Dendrites is building a Web3 payments trust layer with predictable gas, SafetySend (UNDO) and escrow-like payment flows for safer on-chain commerce." />
+  <meta property="og:image" content="https://dendrites.ai/DX.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@dendrites_ai" />
+  <meta name="twitter:title" content="Dendrites (DNDX) – Web3 Payments Trust Layer" />
+  <meta name="twitter:description"
+    content="Predictable gas, SafetySend (UNDO), and escrow-like flows for Web3 payments built for real commerce." />
+  <meta name="twitter:image" content="https://dendrites.ai/DX.jpg" />
+
+  <!-- JSON-LD: Organization + WebSite schema for Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Dendrites",
+      "alternateName": "DNDX",
+      "url": "https://dendrites.ai/",
+      "logo": "https://dendrites.ai/DX.jpg",
+      "sameAs": [
+        "https://x.com/dendrites_ai",
+        "https://linkedin.com/company/dendrites-ai",
+        "https://t.me/Dendrites_Chat",
+        "https://discord.gg/2vPu6PerTU",
+        "https://github.com/Dendrites-Official",
+        "https://waitlist.dendrites.ai/"
+      ],
+      "description": "Dendrites (DNDX) is a Web3 payments trust layer with predictable gas, SafetySend (UNDO) and escrow-like flows for safer on-chain commerce.",
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://dendrites.ai/",
+      "name": "Dendrites — Commerce-grade predictable fees",
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
+
+  <!-- FIX 10: Resource Hints - Preload critical assets -->
+  <!-- DNS Prefetch: Resolve domain names early -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://prod.spline.design">
+
+  <!-- Preconnect: Establish early connections for critical third-party origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://prod.spline.design" crossorigin>
+
+  <!-- Preload: Critical fonts (reduce FOUT/FOIT) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap"
+    as="style">
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Inter:wght@100..900&family=Raleway:wght@100..900&display=swap"
+    as="style">
+
+  <!-- Preload: Hero images (above-the-fold content) -->
+  <link rel="preload" href="/backgrounddndx.webp" as="image" type="image/webp">
+  <link rel="preload" href="/robottt.webp" as="image" type="image/webp">
+  <link rel="preload" href="/videos/logo33.gif" as="image" type="image/gif">
+
+  <!-- Reset CSS -->
+  <link rel="stylesheet" href="/edge-reset.css">
 
   <!-- HAPE PRIME Style Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +112,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
 
-
-  <meta name="theme-color" content="#000000" />
-  <title>DNDX — Commerce-grade predictable fees</title>
   <link rel="icon" href="/DX.jpg" width="32" height="32" />
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,45 +129,62 @@
 <body class="bg-black">
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-  
+
   <!-- Suppress console errors -->
   <script>
-  const originalError = console.error;
-  const originalWarn = console.warn;
-  
-  console.error = function (...args) {
-    const errorMsg = args.join(' ');
-    if (
-      errorMsg.includes('Failed to load resource') || 
-      errorMsg.includes('text-l-') || 
-      errorMsg.includes('favicon.ico') ||
-      errorMsg.includes('missing property') ||
-      errorMsg.includes('ignore-listed frames') ||
-      errorMsg.includes('0dff') ||
-      errorMsg.includes('Show ignore-listed frames') ||
-      errorMsg.includes('react-dom') ||
-      errorMsg.includes('scheduler')
-    ) {
-      return;
-    }
-    originalError.apply(console, args);
-  };
+    const originalError = console.error;
+    const originalWarn = console.warn;
 
-  console.warn = function (...args) {
-    const warnMsg = args.join(' ');
-    // Suppress known warnings (add your new one here)
-    if (
-      warnMsg.includes('A component is changing') ||
-      warnMsg.includes('defaultValue') ||
-      warnMsg.includes('uncontrolled') ||
-      warnMsg.includes('updating from  ') ||              // 👈 catches "updating from  118 to  119"
-      warnMsg.includes('Your .splinecode file is more recent') // (optional) hide Spline version warning
-    ) {
-      return;
-    }
-    originalWarn.apply(console, args);
-  };
-</script>
+    console.error = function (...args) {
+      const errorMsg = args.join(' ');
+      if (
+        errorMsg.includes('Failed to load resource') ||
+        errorMsg.includes('text-l-') ||
+        errorMsg.includes('favicon.ico') ||
+        errorMsg.includes('missing property') ||         // Spline runtime error
+        errorMsg.includes('Missing property') ||         // Spline runtime error
+        errorMsg.includes('GL_INVALID') ||               // WebGL errors from Spline
+        errorMsg.includes('WebGL') ||                    // WebGL warnings
+        errorMsg.includes('Framebuffer') ||              // Framebuffer errors
+        errorMsg.includes('glDraw') ||                   // OpenGL draw errors
+        errorMsg.includes('glClear') ||                  // OpenGL clear errors
+        errorMsg.includes('glTexStorage') ||             // Texture errors
+        errorMsg.includes('ignore-listed frames') ||
+        errorMsg.includes('0dff') ||
+        errorMsg.includes('Show ignore-listed frames') ||
+        errorMsg.includes('react-dom') ||
+        errorMsg.includes('scheduler')
+      ) {
+        return;
+      }
+      originalError.apply(console, args);
+    };
+
+    console.warn = function (...args) {
+      const warnMsg = args.join(' ');
+      // Suppress known warnings (add your new one here)
+      if (
+        warnMsg.includes('A component is changing') ||
+        warnMsg.includes('defaultValue') ||
+        warnMsg.includes('uncontrolled') ||
+        warnMsg.includes('updating from  ') ||              // catches "updating from  118 to  119"
+        warnMsg.includes('Your .splinecode file is more recent') || // hide Spline version warning
+        warnMsg.includes('passive event listener') ||       // Spline passive listener warning
+        warnMsg.includes('apple-mobile-web-app-capable') || // Apple meta tag deprecation
+        warnMsg.includes('width(-1)') ||                    // Recharts dimension warnings
+        warnMsg.includes('height(-1)') ||                   // Recharts dimension warnings
+        warnMsg.includes('React Router Future Flag') ||     // React Router v7 migration warnings
+        warnMsg.includes('v7_startTransition') ||           // React Router future flag
+        warnMsg.includes('v7_relativeSplatPath') ||         // React Router future flag
+        warnMsg.includes('requestAnimationFrame') ||        // Performance warnings from Spline
+        warnMsg.includes('Violation') ||                    // All violation warnings (mostly Spline)
+        warnMsg.includes('scroll-blocking')                 // Scroll-blocking event warnings
+      ) {
+        return;
+      }
+      originalWarn.apply(console, args);
+    };
+  </script>
 
 </body>
 

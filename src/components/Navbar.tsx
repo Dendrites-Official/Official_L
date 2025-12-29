@@ -92,11 +92,60 @@ function CTA({
 }
 
 function TickerBar() {
+  const [duration, setDuration] = useState('30s');
+
+  useEffect(() => {
+    const updateDuration = () => {
+      // Use matchMedia for proper responsive detection (works with DevTools emulation)
+      const isSmallMobile = window.matchMedia('(max-width: 480px)').matches;
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      
+      if (isSmallMobile) {
+        setDuration('120s');
+      } else if (isMobile) {
+        setDuration('90s');
+      } else {
+        setDuration('30s');
+      }
+    };
+    
+    // Initial check
+    updateDuration();
+    
+    // Create media query listeners for responsive changes
+    const smallMobileQuery = window.matchMedia('(max-width: 480px)');
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    
+    // Modern approach with addEventListener
+    const handler = () => updateDuration();
+    smallMobileQuery.addEventListener('change', handler);
+    mobileQuery.addEventListener('change', handler);
+    
+    // Also listen to resize as backup
+    window.addEventListener('resize', updateDuration);
+    
+    return () => {
+      smallMobileQuery.removeEventListener('change', handler);
+      mobileQuery.removeEventListener('change', handler);
+      window.removeEventListener('resize', updateDuration);
+    };
+  }, []);
+
+  const animationStyle = {
+    animation: `marquee ${duration} linear infinite`,
+    willChange: 'transform' as const,
+    backfaceVisibility: 'hidden' as const,
+    WebkitBackfaceVisibility: 'hidden' as const,
+  };
+
   return (
     <div className="h-10 relative z-40 border-y border-white/10 bg-black/95 backdrop-blur-md overflow-hidden">
       <div className="whitespace-nowrap leading-10">
         {/* Duplicate for seamless loop */}
-        <div className="inline-block animate-marquee">
+        <div 
+          className="inline-block"
+          style={animationStyle}
+        >
           {Array.from({ length: 8 }).map((_, i) => (
             <span
               key={i}
@@ -107,7 +156,11 @@ function TickerBar() {
             </span>
           ))}
         </div>
-        <div className="inline-block animate-marquee" aria-hidden="true">
+        <div 
+          className="inline-block"
+          style={animationStyle}
+          aria-hidden="true"
+        >
           {Array.from({ length: 8 }).map((_, i) => (
             <span
               key={`dup-${i}`}
@@ -360,12 +413,6 @@ export default function Navbar() {
         @keyframes marquee { 
           0% { transform: translate3d(0, 0, 0); } 
           100% { transform: translate3d(-50%, 0, 0); } 
-        }
-        .animate-marquee { 
-          animation: marquee 30s linear infinite;
-          will-change: transform;
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
         }
 
         .grain-texture{

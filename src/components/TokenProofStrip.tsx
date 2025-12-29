@@ -26,11 +26,11 @@ const EXPLORER_LINKS = [
   },
   {
     label: "BaseScan",
-    href: "https://basescan.org/address/0xb476b0c8faa3066e4051421c0be7d762ba347b01",
+    href: "https://basescan.org/address/0x7236df1660a5972e0c46f7a23b716eaa84b9d629",
   },
   {
     label: "OpenSea",
-    href: "https://opensea.io/collection/dendrites-season-0-pass",
+    href: "https://opensea.io/collection/dendrites-season-0-pass-99332741",
   },
 ];
 

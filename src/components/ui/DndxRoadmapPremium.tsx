@@ -67,10 +67,10 @@ const ROADMAP = [
     title: "Public Preview · Foundation",
     content: (
       <div className="text-white">
-        <div className="mb-4 sm:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="mb-2 sm:mb-4 md:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
           <Pill tone="blue">Now</Pill><Pill>Interactive demos only</Pill><Pill>Predictable Gas™</Pill><Pill tone="green">UNDO demo</Pill>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="What's live right now">
             <BulletList items={[
               "QuickPay demo (instant 'card-swipe' payments with Predictable Gas illustration)",
@@ -88,7 +88,7 @@ const ROADMAP = [
             ]}/>
           </GlowCard>
         </div>
-        <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="mt-2 sm:mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="Legal & structure in this phase">
             <BulletList items={[
               "BVI issuer incorporated as token-issuing entity",
@@ -111,10 +111,10 @@ const ROADMAP = [
     title: "Mainnet Polishing · Audits · Patent · Testnets",
     content: (
       <div className="text-white">
-        <div className="mb-4 sm:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="mb-2 sm:mb-4 md:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
           <Pill tone="amber">Next</Pill><Pill>Protocol build</Pill><Pill>Security audits</Pill><Pill>Patent filing</Pill>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="Protocol build & internal testing">
             <BulletList items={[
               "Finalize v1: Base as primary execution, Ethereum as main settlement & liquidity",
@@ -133,7 +133,7 @@ const ROADMAP = [
             ]}/>
           </GlowCard>
         </div>
-        <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="mt-2 sm:mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="Patent filing – SRL L2">
             <BulletList items={[
               "Draft and file provisional patent covering SRL (Stamp & Receipt Layer) design",
@@ -158,10 +158,10 @@ const ROADMAP = [
     title: "Presale-1 · Mainnet v1",
     content: (
       <div className="text-white">
-        <div className="mb-4 sm:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="mb-2 sm:mb-4 md:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
           <Pill>Planned</Pill><Pill>Reg S / Reg D 506(c)</Pill><Pill>Mainnet launch</Pill><Pill>Design partners</Pill>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="PRESALE-1 (before mainnet)">
             <BulletList items={[
               "With testnets live and audits published, run Presale-1",
@@ -189,10 +189,10 @@ const ROADMAP = [
     title: "Listing · Season-0 · Scale",
     content: (
       <div className="text-white">
-        <div className="mb-4 sm:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="mb-2 sm:mb-4 md:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
           <Pill>Planned</Pill><Pill>Presale-2</Pill><Pill>Launchpads</Pill><Pill>VC</Pill><Pill>TGE</Pill>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="Growth between mainnet v1 and Presale-2">
             <BulletList items={[
               "Show real stats: QuickPay transactions, value protected by UNDO, escrow volume and refunds",
@@ -210,7 +210,7 @@ const ROADMAP = [
             ]}/>
           </GlowCard>
         </div>
-        <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="mt-2 sm:mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="Strategic VC rounds">
             <BulletList items={[
               "Close VC / strategic round to secure 18–24 months of runway",
@@ -226,7 +226,7 @@ const ROADMAP = [
             ]}/>
           </GlowCard>
         </div>
-        <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="mt-2 sm:mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="Token Generation Event (TGE) & listing">
             <BulletList items={[
               "TGE + first DEX listing: Uniswap on Ethereum as primary",
@@ -251,10 +251,10 @@ const ROADMAP = [
     title: "R&D · inPay · SRL L2",
     content: (
       <div className="text-white">
-        <div className="mb-4 sm:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="mb-2 sm:mb-4 md:mb-6 flex flex-wrap gap-1.5 sm:gap-2">
           <Pill>Long-term</Pill><Pill>Any-to-any commerce</Pill><Pill>Patent pending → live network</Pill>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
           <GlowCard title="inPay MVP – any-to-any commerce">
             <BulletList items={[
               "Build inPay on mainnet: payer sends X on chain A, merchant receives Y on chain B",
@@ -496,5 +496,204 @@ function BeamTimeline({ data }: { data: typeof ROADMAP }) {
 }
 
 export default function DndxRoadmapPremium() {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return <MobileRoadmap data={ROADMAP} />;
+  }
+
   return <BeamTimeline data={ROADMAP} />;
+}
+
+/* --------- Mobile Responsive Roadmap (Timeline Style) --------- */
+function MobileRoadmap({ data }: { data: typeof ROADMAP }) {
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+  const railMeasureRef = React.useRef<HTMLDivElement>(null);
+
+  const beamHeightMv = useMotionValue(0);
+  const beamOpacityMv = useMotionValue(0);
+
+  const measureRail = React.useCallback(() => {
+    const el = railMeasureRef.current;
+    if (!el) return 0;
+    return Math.max(el.scrollHeight, el.getBoundingClientRect().height);
+  }, []);
+
+  const recompute = React.useCallback(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    const startY = vh * 0.85;
+    const endY = vh * 0.20;
+    const total = rect.height + (startY - endY);
+    const passed = startY - rect.top;
+
+    const pRaw = passed / Math.max(1, total);
+    const p = Math.min(1, Math.max(0, pRaw));
+
+    const railH = measureRail();
+    beamHeightMv.set(p * railH);
+
+    let opacity = 1;
+    if (p <= 0.06) opacity = p / 0.06;
+    else if (p >= 0.93) opacity = 1 - (p - 0.93) / 0.07;
+    beamOpacityMv.set(Math.max(0, Math.min(1, opacity)));
+  }, [beamHeightMv, beamOpacityMv, measureRail]);
+
+  React.useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const scrollHost = getScrollParent(el);
+    let raf = 0;
+    let running = true;
+
+    const tick = () => {
+      if (!running) return;
+      recompute();
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    const onResize = () => recompute();
+    const onLoad = () => recompute();
+
+    if (scrollHost instanceof Window) {
+      window.addEventListener("scroll", recompute, { passive: true });
+      window.addEventListener("resize", onResize);
+      window.addEventListener("load", onLoad);
+    } else {
+      scrollHost.addEventListener("scroll", recompute, { passive: true });
+      window.addEventListener("resize", onResize);
+      window.addEventListener("load", onLoad);
+    }
+
+    const ro = new ResizeObserver(recompute);
+    if (railMeasureRef.current) ro.observe(railMeasureRef.current);
+
+    recompute();
+
+    return () => {
+      running = false;
+      cancelAnimationFrame(raf);
+      if (scrollHost instanceof Window) {
+        window.removeEventListener("scroll", recompute);
+        window.removeEventListener("resize", onResize);
+        window.removeEventListener("load", onLoad);
+      } else {
+        scrollHost.removeEventListener("scroll", recompute);
+        window.removeEventListener("resize", onResize);
+        window.removeEventListener("load", onLoad);
+      }
+      ro.disconnect();
+    };
+  }, [recompute]);
+
+  return (
+    <div ref={sectionRef} className="relative w-full px-3 sm:px-4">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto pt-8 sm:pt-12 pb-4 sm:pb-6 px-0">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2 sm:mb-3">
+          Roadmap
+        </h1>
+        <p className="text-sm sm:text-base text-white/70 leading-relaxed">
+          Our journey to build predictable, safe crypto commerce with DNDX.
+        </p>
+      </div>
+
+      {/* Timeline with Beam */}
+      <div ref={railMeasureRef} className="relative max-w-7xl mx-auto pb-8 sm:pb-12">
+        {data.map((item, index) => (
+          <div key={index} className="flex justify-start pt-6 sm:pt-10 gap-0">
+            {/* Timeline Dot */}
+            <div className="sticky top-20 sm:top-24 z-10 flex items-start self-start">
+              <div className="h-7 w-7 sm:h-8 sm:w-8 absolute left-2 sm:left-3 rounded-full bg-black flex items-center justify-center">
+                <div className="h-3 w-3 sm:h-3.5 sm:w-3.5 rounded-full bg-neutral-800 border border-neutral-700 p-1.5" />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="relative pl-12 sm:pl-14 pr-0 w-full">
+              <h3 className="text-lg sm:text-xl mb-2 sm:mb-3 text-left font-extrabold tracking-tight text-white/70">
+                {item.title}
+              </h3>
+              {item.content}
+            </div>
+          </div>
+        ))}
+
+
+        {/* Animated Beam */}
+        <div
+          className="pointer-events-none absolute left-5 sm:left-6 top-0"
+          style={{
+            height: railMeasureRef.current
+              ? Math.max(
+                  railMeasureRef.current.scrollHeight,
+                  railMeasureRef.current.getBoundingClientRect().height
+                )
+              : "100%",
+            width: "3px",
+            overflow: "hidden",
+          }}
+        >
+          {/* Hairline background */}
+          <div
+            className="absolute left-0 top-0 w-[1px] bg-white/10"
+            style={{ height: "100%" }}
+          />
+
+          {/* Glowing beam */}
+          <motion.div
+            className="absolute left-0 top-0 w-[2px] sm:w-[3px] rounded-full overflow-visible"
+            style={{ height: beamHeightMv, opacity: beamOpacityMv }}
+          >
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: `linear-gradient(180deg, ${CYAN} 0%, ${BLUE} 45%, ${VIOLET} 100%)`,
+                boxShadow: `0 0 6px ${BLUE}AA, 0 0 14px ${VIOLET}55`,
+              }}
+            />
+            <div
+              className="absolute -inset-x-[2px] sm:-inset-x-[3px] inset-y-0 rounded-full blur-[4px]"
+              style={{ background: `linear-gradient(180deg, ${CYAN}88 0%, ${BLUE}88 45%, ${VIOLET}88 100%)` }}
+            />
+            <div
+              className="absolute -inset-x-[6px] sm:-inset-x-[8px] inset-y-0 rounded-full blur-[8px] sm:blur-[10px]"
+              style={{ background: `linear-gradient(180deg, ${CYAN}44 0%, ${BLUE}44 45%, ${VIOLET}44 100%)` }}
+            />
+            <div
+              className="absolute left-1/2 -translate-x-1/2 w-[20px] sm:w-[24px] h-[20px] sm:h-[24px] rounded-full blur-[8px] sm:blur-[10px]"
+              style={{
+                bottom: -4,
+                background: `radial-gradient(circle, ${BLUE}CC 0%, transparent 70%)`,
+                animation: "dndx-pulse 1.4s ease-in-out infinite",
+              }}
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Animation Keyframes */}
+      <style>{`
+        @keyframes dndx-pulse {
+          0%, 100% { opacity: 0.9; transform: translate(-50%,0) scale(1); }
+          50%      { opacity: 0.4; transform: translate(-50%,0) scale(1.12); }
+        }
+      `}</style>
+    </div>
+  );
 }

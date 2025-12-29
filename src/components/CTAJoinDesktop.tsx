@@ -53,11 +53,17 @@ export default function CTAJoinDesktop({
                       muted
                       loop
                       playsInline
-                      preload="none"
-                      poster="/page_end_cta.png"
+                      preload="auto"
+                      poster="/page_end_cta.webp"
                       controls={false}
                       controlsList="nodownload noplaybackrate nofullscreen"
                       disablePictureInPicture
+                      onLoadedData={(e) => {
+                        const video = e.currentTarget;
+                        video.play().catch((err) => {
+                          console.log('Video autoplay prevented:', err);
+                        });
+                      }}
                     >
                       <source src="/NFT.mp4" type="video/mp4" />
                     </video>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 
 type Logo = {
@@ -7,17 +7,17 @@ type Logo = {
 };
 
 const nativeTokenLogos: Logo[] = [
-  { name: "Ethereum", src: "/logosmarquee/eth.png" },
-  { name: "Bitcoin", src: "/logosmarquee/bitcoin.png" },
-  { name: "Solana", src: "/logosmarquee/solona.png" },
-  { name: "Polygon", src: "/logosmarquee/polygon.png" },
-  { name: "BNB", src: "/logosmarquee/bnb.png" },
-  { name: "Dogecoin", src: "/logosmarquee/dodge.png" },
-  { name: "Red", src: "/logosmarquee/red.png" },
+  { name: "Ethereum", src: "/logosmarquee/eth.webp" },
+  { name: "Bitcoin", src: "/logosmarquee/bitcoin.webp" },
+  { name: "Solana", src: "/logosmarquee/solona.webp" },
+  { name: "Polygon", src: "/logosmarquee/polygon.webp" },
+  { name: "BNB", src: "/logosmarquee/bnb.webp" },
+  { name: "Dogecoin", src: "/logosmarquee/dodge.webp" },
+  { name: "Red", src: "/logosmarquee/red.webp" },
 ];
 
 const brandLogos: Logo[] = [
-  { name: "Company 2", src: "/logo1.png" },
+  { name: "Company 2", src: "/logo1.webp" },
   { name: "Company 3", src: "/logo2.png" },
   { name: "Company 4", src: "/logo3.png" },
   { name: "Company 7", src: "/logo1.png" },
@@ -82,6 +82,40 @@ const LogoMarqueeRow = ({
 };
 
 export default function PremiumLogoMarquee() {
+  // Responsive speeds - Lower number = SLOWER, Higher = FASTER
+  const [row1Speed, setRow1Speed] = useState(25); // Medium mobile speed
+  const [row2Speed, setRow2Speed] = useState(22);
+
+  useEffect(() => {
+    const updateSpeeds = () => {
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      
+      if (isMobile) {
+        // Medium speed for mobile
+        setRow1Speed(25);
+        setRow2Speed(22);
+      } else {
+        // Medium-fast desktop speeds
+        setRow1Speed(35);
+        setRow2Speed(30);
+      }
+    };
+    
+    // Initial check
+    updateSpeeds();
+    
+    // Listen for viewport changes
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const handler = () => updateSpeeds();
+    mobileQuery.addEventListener('change', handler);
+    window.addEventListener('resize', updateSpeeds);
+    
+    return () => {
+      mobileQuery.removeEventListener('change', handler);
+      window.removeEventListener('resize', updateSpeeds);
+    };
+  }, []);
+
   return (
     <section className="relative w-full bg-black py-10 md:py-14 overflow-hidden">
       {/* Subtle background glow */}
@@ -100,9 +134,9 @@ export default function PremiumLogoMarquee() {
       {/* Marquee rows */}
       <div className="relative z-10 space-y-2 md:space-y-4">
         {/* Row 1: chains */}
-        <LogoMarqueeRow logos={nativeTokenLogos} speed={35} />
+        <LogoMarqueeRow key={`chains-${row1Speed}`} logos={nativeTokenLogos} speed={row1Speed} />
         {/* Row 2: brands */}
-        <LogoMarqueeRow logos={brandLogos} reverse speed={30} />
+        <LogoMarqueeRow key={`brands-${row2Speed}`} logos={brandLogos} reverse speed={row2Speed} />
       </div>
     </section>
   );

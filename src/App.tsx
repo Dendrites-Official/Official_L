@@ -3,6 +3,7 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 // Global chrome
 import Navbar from "@/components/Navbar";
@@ -25,6 +26,7 @@ const HeroExample = lazy(() => import("@/pages/HeroExample"));
 const Careers = lazy(() => import("./components/Careers"));
 const InternshipApplyPage = lazy(() => import("./components/InternshipApplyPage"));
 const League = lazy(() => import("@/pages/League"));
+const AboutDendrites = lazy(() => import("@/pages/AboutDendrites")); // 👈 NEW
 
 /** Check if we should show intro (only once per session) */
 const shouldShowIntro = (): boolean => {
@@ -54,6 +56,23 @@ function ScrollToTop() {
 
 /** Premium page transition wrapper with smooth animations - OPTIMIZED */
 function PageTransition({ children }: { children: React.ReactNode }) {
+  const shouldReduce = useReducedMotion();
+
+  // Simplified transition for reduced motion or mobile
+  if (shouldReduce) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
+        className="min-h-[calc(100svh-4rem)]"
+      >
+        {children}
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -98,7 +117,7 @@ export default function App() {
       // Mark intro as shown immediately
       sessionStorage.setItem("introShown", "true");
       sessionStorage.setItem("dndx:introShown", "true");
-      
+
       // Lock scroll
       root.classList.add("intro-open");
       body.style.overflow = "hidden";
@@ -152,168 +171,185 @@ export default function App() {
       <ErrorBoundary>
         {/* Matrix Intro - fades out (only shows once per session) */}
         <AnimatePresence mode="wait">
-        {showIntro && (
+          {showIntro && (
+            <motion.div
+              key="matrix-intro"
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <MatrixIntro onHandoff={handleIntroComplete} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <ScrollToTop />
+        <Navbar />
+
+        <main className="bg-black text-white">
           <motion.div
-            key="matrix-intro"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            initial={showIntro ? { opacity: 0, y: "100vh" } : { opacity: 1, y: 0 }}
+            animate={introComplete ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              duration: 1.2,
+              ease: [0.22, 1, 0.36, 1],
+              opacity: { duration: 0.6, delay: 0.2 },
+            }}
           >
-            <MatrixIntro onHandoff={handleIntroComplete} />
+            <AnimatePresence mode="wait">
+              <Suspense fallback={<PageLoader />}>
+                <Routes location={location} key={location.pathname}>
+                  <Route
+                    path="/"
+                    element={
+                      <PageTransition>
+                        <HomePage introReady={introReady} />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/docs"
+                    element={
+                      <PageTransition>
+                        <Docs />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/sla"
+                    element={
+                      <PageTransition>
+                        <SLA />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/security"
+                    element={
+                      <PageTransition>
+                        <Security />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/blogs"
+                    element={
+                      <PageTransition>
+                        <Blogs />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/blogs/:id"
+                    element={
+                      <PageTransition>
+                        <BlogArticle />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/roadmap"
+                    element={
+                      <PageTransition>
+                        <Roadmap />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/launch"
+                    element={
+                      <PageTransition>
+                        <Launch />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/hero-example"
+                    element={
+                      <PageTransition>
+                        <HeroExample />
+                      </PageTransition>
+                    }
+                  />
+
+                  {/* Careers */}
+                  <Route
+                    path="/careers"
+                    element={
+                      <PageTransition>
+                        <Careers />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/careers/apply/:roleId"
+                    element={
+                      <PageTransition>
+                        <InternshipApplyPage />
+                      </PageTransition>
+                    }
+                  />
+
+                  {/* League */}
+                  <Route
+                    path="/league"
+                    element={
+                      <PageTransition>
+                        <League />
+                      </PageTransition>
+                    }
+                  />
+
+                  {/* NEW: About Dendrites */}
+                  <Route
+                    path="/about"
+                    element={
+                      <PageTransition>
+                        <AboutDendrites />
+                      </PageTransition>
+                    }
+                  />
+
+                  {/* External redirects */}
+                  <Route
+                    path="/airdrop"
+                    element={<ExternalRedirect to="https://waitlist.dendrites.ai" />}
+                  />
+                  <Route
+                    path="/leaderboard"
+                    element={
+                      <ExternalRedirect to="https://waitlist.dendrites.ai/leaderboard" />
+                    }
+                  />
+                  <Route
+                    path="/leadboard"
+                    element={
+                      <ExternalRedirect to="https://waitlist.dendrites.ai/leaderboard" />
+                    }
+                  />
+                </Routes>
+              </Suspense>
+            </AnimatePresence>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </main>
+        {chatbotReady && <ChatBotWidget />}
 
-      <ScrollToTop />
-      <Navbar />
-
-      <main className="bg-black text-white">
-        <motion.div
-          initial={showIntro ? { opacity: 0, y: "100vh" } : { opacity: 1, y: 0 }}
-          animate={introComplete ? { opacity: 1, y: 0 } : {}}
-          transition={{
-            duration: 1.2,
-            ease: [0.22, 1, 0.36, 1],
-            opacity: { duration: 0.6, delay: 0.2 },
-          }}
-        >
-          <AnimatePresence mode="wait">
-            <Suspense fallback={<PageLoader />}>
-              <Routes location={location} key={location.pathname}>
-                <Route
-                  path="/"
-                  element={
-                    <PageTransition>
-                      <HomePage introReady={introReady} />
-                    </PageTransition>
-                  }
-                />
-              <Route
-                path="/docs"
-                element={
-                  <PageTransition>
-                    <Docs />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/sla"
-                element={
-                  <PageTransition>
-                    <SLA />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/security"
-                element={
-                  <PageTransition>
-                    <Security />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/blogs"
-                element={
-                  <PageTransition>
-                    <Blogs />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/blogs/:id"
-                element={
-                  <PageTransition>
-                    <BlogArticle />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/roadmap"
-                element={
-                  <PageTransition>
-                    <Roadmap />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/launch"
-                element={
-                  <PageTransition>
-                    <Launch />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/hero-example"
-                element={
-                  <PageTransition>
-                    <HeroExample />
-                  </PageTransition>
-                }
-              />
-
-              {/* ✅ Careers route is now inside <Routes> */}
-              <Route
-                path="/careers"
-                element={
-                  <PageTransition>
-                    <Careers />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/careers/apply/:roleId"
-                element={
-                  <PageTransition>
-                    <InternshipApplyPage />
-                  </PageTransition>
-                  }
-                />
-              <Route
-                path="/league"
-                element={
-                  <PageTransition>
-                    <League />
-                  </PageTransition>
-                }
-              />
-              
-              {/* External redirects */}
-              <Route
-                path="/airdrop"
-                element={<ExternalRedirect to="https://waitlist.dendrites.ai" />}
-              />
-              <Route
-                path="/leaderboard"
-                element={<ExternalRedirect to="https://waitlist.dendrites.ai/leaderboard" />}
-              />
-              <Route
-                path="/leadboard"
-                element={<ExternalRedirect to="https://waitlist.dendrites.ai/leaderboard" />}
-              />
-              </Routes>
-            </Suspense>
-          </AnimatePresence>
-        </motion.div>
-      </main>      {chatbotReady && <ChatBotWidget />}
-
-      <style>{`
-        html.intro-open [data-navbar] > div > div:first-child,
-        html.intro-open [class*="ticker"],
-        html.intro-open [class*="marquee"],
-        html.intro-open #momo-widget,
-        html.intro-open [data-chatbot],
-        html.intro-open .chat-bubble {
-          opacity: 0 !important;
-          visibility: hidden !important;
-        }
-        html.intro-open #music-player {
-          opacity: 1 !important;
-          pointer-events: auto !important;
-          visibility: visible !important;
-        }
-      `}</style>
+        <style>{`
+          html.intro-open [data-navbar] > div > div:first-child,
+          html.intro-open [class*="ticker"],
+          html.intro-open [class*="marquee"],
+          html.intro-open #momo-widget,
+          html.intro-open [data-chatbot],
+          html.intro-open .chat-bubble {
+            opacity: 0 !important;
+            visibility: hidden !important;
+          }
+          html.intro-open #music-player {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            visibility: visible !important;
+          }
+        `}</style>
       </ErrorBoundary>
       <Analytics />
     </>

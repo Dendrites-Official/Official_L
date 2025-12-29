@@ -1,9 +1,17 @@
-import Spline from '@splinetool/react-spline';
-import { useRef, useState, useEffect } from 'react';
+import { lazy, useRef, useState, useEffect, Suspense } from 'react';
+import { useDeviceCapabilities, shouldUseSpline } from '@/lib/deviceCapabilities';
+import { SplineSkeleton } from '@/components/ui/SkeletonLoader';
+
+// Lazy load Spline for better performance
+const Spline = lazy(() => import('@splinetool/react-spline'));
 
 const isDev = import.meta.env.MODE === 'development';
 
 export default function BackgroundHero() {
+  // Device capability detection
+  const capabilities = useDeviceCapabilities();
+  const shouldShowSpline = capabilities ? shouldUseSpline(capabilities) : true;
+  
   const splineRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -149,19 +157,36 @@ export default function BackgroundHero() {
             transform: 'scale(1.2)', // FIXED: Additional scale to make robot larger
           }}
         >
-          <Spline 
-            scene="https://prod.spline.design/Zq3rlNh2yNqCja-H/scene.splinecode"
-            onLoad={onLoad}
-            onError={onError}
-            style={{ 
-              width: '100%', 
-              height: '100%',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              pointerEvents: 'none', // FIXED: Ensure Spline doesn't block scrolling
-            }}
-          />
+          {shouldShowSpline ? (
+            <Suspense fallback={<SplineSkeleton />}>
+              <Spline 
+                scene="https://prod.spline.design/Zq3rlNh2yNqCja-H/scene.splinecode"
+                onLoad={onLoad}
+                onError={onError}
+                style={{ 
+                  width: '100%', 
+                  height: '100%',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  pointerEvents: 'none', // FIXED: Ensure Spline doesn't block scrolling
+                }}
+              />
+            </Suspense>
+          ) : (
+            /* Fallback for mobile/low-end devices */
+            <div className="w-full h-full flex items-center justify-center">
+              <img
+                src="/hero_spline.webp"
+                alt="Hero Background"
+                className="w-full h-full object-cover"
+                style={{
+                  filter: 'saturate(1.2) brightness(1.1)',
+                  opacity: 0.85,
+                }}
+              />
+            </div>
+          )}
         </div>
       </div>
       

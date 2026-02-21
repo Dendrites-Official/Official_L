@@ -12,7 +12,7 @@ export default function BlogArticle() {
   const article = BLOG_ARTICLES.find((a) => a.id === articleId);
   const content = blogContent[articleId];
 
-  if (!article || !content) {
+  if (!article) {
     return (
       <div className="flex min-h-screen flex-col bg-black text-neutral-100">
         <main className="flex-1 flex items-center justify-center">
@@ -26,6 +26,91 @@ export default function BlogArticle() {
             </Link>
           </div>
         </main>
+      </div>
+    );
+  }
+
+  // If no markdown content, show PDF viewer
+  if (!content && article.pdfPath) {
+    return (
+      <div className="flex min-h-screen flex-col bg-black text-neutral-100">
+        <main className="flex-1">
+          {/* Article Header */}
+          <section className="border-b border-neutral-900 bg-black">
+            <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+              <Link
+                to="/blogs"
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-neutral-500 hover:text-neutral-300 mb-8"
+              >
+                ← Back to all blogs
+              </Link>
+              <div className="space-y-6">
+                <div className="inline-block rounded-full border border-neutral-800 bg-neutral-950/60 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-neutral-400">
+                  {article.categoryLabel}
+                </div>
+                <h1 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+                  {article.title}
+                </h1>
+                <div className="flex items-center gap-4 text-sm text-neutral-500">
+                  <span>{article.date}</span>
+                  <span>•</span>
+                  <span>{article.readMins} min read</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* PDF Viewer */}
+          <section className="bg-black">
+            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+              <div className="rounded-lg overflow-hidden border border-neutral-800" style={{ height: 'calc(100vh - 300px)', minHeight: '600px' }}>
+                <iframe
+                  src={article.pdfPath}
+                  className="w-full h-full"
+                  title={article.title}
+                  style={{ background: 'white' }}
+                />
+              </div>
+              <div className="mt-6 text-center">
+                <a
+                  href={article.pdfPath}
+                  download
+                  className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-6 py-3 text-sm font-medium text-neutral-100 transition hover:border-neutral-200 hover:bg-neutral-900"
+                >
+                  Download PDF
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* Article Footer */}
+          <section className="border-t border-neutral-900 bg-black">
+            <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between">
+                <Link
+                  to="/blogs"
+                  className="inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/80 px-4 py-2 text-xs font-medium uppercase tracking-[0.16em] text-neutral-100 transition hover:border-neutral-200 hover:bg-neutral-900"
+                >
+                  ← All Articles
+                </Link>
+                <div className="flex gap-3">
+                  <a
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                      article.title
+                    )}&url=${encodeURIComponent(window.location.href)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950/60 px-4 py-2 text-xs uppercase tracking-[0.16em] text-neutral-400 transition hover:border-neutral-600 hover:text-neutral-200"
+                  >
+                    Share on X
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <Footer />
       </div>
     );
   }

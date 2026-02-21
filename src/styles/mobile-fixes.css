@@ -246,10 +246,78 @@ header,
 }
 
 /* 15. INTRO STATE SCROLL LOCKING */
-html.intro-open,
-body.intro-open {
-  overflow: hidden !important;
-  touch-action: none !important;
+/* Only lock scroll on desktop, not mobile (below 700px) */
+@media (min-width: 701px) {
+  html.intro-open,
+  body.intro-open {
+    overflow: hidden !important;
+    touch-action: none !important;
+  }
+}
+
+/* NUCLEAR FIX: Force scrolling on mobile screens (below 700px) */
+@media (max-width: 700px) {
+  /* Maximum specificity - override ALL possible states */
+  html,
+  html.intro-open,
+  html.lenis,
+  html.lenis-stopped,
+  html.lenis-smooth,
+  html.lenis.lenis-stopped,
+  html.intro-open.lenis-stopped {
+    overflow: visible !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    position: static !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    scroll-behavior: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  body,
+  body.intro-open,
+  body[style*="position: fixed"],
+  body[style*="overflow: hidden"] {
+    overflow: visible !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    position: static !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    touch-action: pan-y pinch-zoom !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+  
+  /* Make sure #root doesn't block scroll */
+  #root {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    position: relative !important;
+  }
+  
+  /* Ensure main and sections are scrollable */
+  main,
+  section {
+    overflow: visible !important;
+    height: auto !important;
+  }
+  
+  /* Disable any scroll snapping on mobile */
+  *,
+  *::before,
+  *::after {
+    scroll-snap-type: none !important;
+    scroll-snap-align: none !important;
+  }
 }
 
 /* 16. ENSURE PADDING FOR NOTCHED DEVICES */

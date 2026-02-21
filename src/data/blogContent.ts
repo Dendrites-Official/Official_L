@@ -1,5 +1,168 @@
 // src/data/blogContent.ts
 export const blogContent: Record<number, string> = {
+  1: `# The Vision of Dendrites: Why Crypto Needs a Trust Layer
+
+Crypto solved the money layer.
+
+It didn't solve the **commerce layer.**
+
+Bitcoin gave us decentralized currency. Ethereum gave us programmable money. L2s gave us scale.
+
+But none of them made digital money **safe to use.**
+
+---
+
+## The Problem: Crypto Broke Commerce
+
+Today, crypto payments are:
+
+- **Unpredictable** — gas fees spike without warning
+- **Irreversible** — one wrong character = permanent loss
+- **Unstructured** — no escrow, refunds, or merchant tools
+- **Unsafe** — scams, errors, and volatility risk billions
+
+This is why mainstream commerce never adopted crypto.
+
+**It's not because people don't understand it.**
+
+**It's because it's not safe enough to trust.**
+
+---
+
+## Traditional Finance Got Trust Right
+
+Credit cards work because they have:
+
+✅ Predictable fees  
+✅ Chargeback protection  
+✅ Fraud detection  
+✅ Merchant infrastructure  
+✅ Consumer safeguards  
+
+Banks aren't better than blockchains at moving money.
+
+**They're better at making money movements trustworthy.**
+
+Crypto gave us censorship resistance and programmability.
+
+But it never gave us **commercial trust.**
+
+---
+
+## Enter Dendrites: The Trust Layer for Digital Money
+
+**Dendrites** is the first protocol designed to make crypto payments **commerce-grade.**
+
+We're not another L1, L2, or wallet.
+
+We're a **trust infrastructure layer** that sits between users and blockchains.
+
+### Our Mission
+
+Make digital money safe, predictable, and structured enough for **global commerce.**
+
+---
+
+## What Safe Commerce Actually Means
+
+Safe Commerce is not a marketing term.
+
+It's a new category of blockchain design.
+
+It means:
+
+### 1. **Predictable Gas™**
+Pre-quoted fee bands with SLA credits if reality exceeds the quote.
+
+### 2. **SafetySend (UNDO)**
+A 3-minute reversal window for mistakes — the first time crypto is reversible.
+
+### 3. **AckPay (Confirmation Flows)**
+Receivers must explicitly accept payments before they finalize.
+
+### 4. **APP Escrow (Trustless Holds)**
+Time-locked or condition-based payment holds — no middleman required.
+
+### 5. **PayCodes (Safe Payment Links)**
+Simple, shareable codes that can't be faked or front-run.
+
+### 6. **QuickPay (Instant Checkout)**
+One-tap payments with context, amount, and merchant verification built in.
+
+---
+
+## Why This Matters
+
+Every year, **billions of dollars** are lost to:
+
+- Wrong addresses
+- Phishing links
+- Gas fee shocks
+- Irreversible errors
+- Marketplace scams
+- Failed escrow attempts
+
+Dendrites fixes **all of them** with one unified system.
+
+---
+
+## The Bigger Vision
+
+Safe Commerce isn't just for crypto users.
+
+It's for:
+
+- **E-commerce platforms** that want crypto checkout
+- **Gig marketplaces** that need trustless escrow
+- **Remittance apps** that can't afford failed transactions
+- **Fintech companies** building on stablecoins
+- **L2 ecosystems** that want safer UX
+
+Dendrites is infrastructure for a world where digital money is the default — but only if it's safe enough to trust.
+
+---
+
+## What We're Building
+
+Dendrites is not vaporware.
+
+We're shipping:
+
+✅ A live testnet with real transactions  
+✅ An SDK for developers  
+✅ Multi-chain support (Ethereum, Base, Arbitrum, Polygon, Solana)  
+✅ A token ($DNDX) with real utility  
+✅ Season-0 airdrop campaign rewarding early users  
+
+We're not waiting for someone else to fix crypto payments.
+
+**We're doing it.**
+
+---
+
+## The Trust Layer Digital Money Always Needed
+
+Blockchains gave us decentralization.
+
+DeFi gave us permissionless finance.
+
+Dendrites gives us **Safe Commerce** — the layer that makes crypto usable for everyone.
+
+This is how digital money becomes the global standard.
+
+This is **Dendrites.**
+
+---
+
+**Want to join the movement?**
+
+- Try the testnet at [app.dendrites.io](https://app.dendrites.io)
+- Follow us on [X/Twitter](https://twitter.com/dendrites_ai)
+- Read the full [Litepaper](https://dendrites.io/docs/litepaper)
+- Join Season-0 and earn $DNDX rewards
+
+The future of payments starts here.
+`,
   14: `
 # Season-0 Airdrop: Your Complete Guide to Points, NFTs, Multipliers & DNDX Rewards
 

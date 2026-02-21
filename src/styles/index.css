@@ -1,9 +1,9 @@
 /* Import hero section styles */
 @import './hero.css';
-/* Import mobile fixes */
-@import './mobile-fixes.css';
 /* Import performance optimizations */
 @import './performance.css';
+/* Import mobile fixes LAST to override everything */
+@import './mobile-fixes.css';
 
 @tailwind base;
 @tailwind components;

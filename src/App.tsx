@@ -118,12 +118,24 @@ export default function App() {
       sessionStorage.setItem("introShown", "true");
       sessionStorage.setItem("dndx:introShown", "true");
 
-      // Lock scroll
+      // Lock scroll - but only on desktop (>700px)
+      const isMobile = window.innerWidth <= 700;
+      
       root.classList.add("intro-open");
-      body.style.overflow = "hidden";
-      body.style.position = "fixed";
-      body.style.width = "100%";
-      body.style.top = "0";
+      
+      if (!isMobile) {
+        // Only lock scroll on desktop
+        body.style.overflow = "hidden";
+        body.style.position = "fixed";
+        body.style.width = "100%";
+        body.style.top = "0";
+      } else {
+        // On mobile, forcefully ensure scroll is NOT blocked
+        body.style.overflow = "";
+        body.style.position = "";
+        body.style.width = "";
+        body.style.top = "";
+      }
     } else {
       // Unlock scroll
       root.classList.remove("intro-open");
@@ -142,6 +154,25 @@ export default function App() {
       body.style.top = "";
     };
   }, [showIntro]);
+
+  // CRITICAL: Force cleanup on window resize (if user rotates device or resizes window)
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 700;
+      if (isMobile) {
+        // Always ensure mobile can scroll
+        document.body.style.position = "";
+        document.body.style.overflow = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Run immediately
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleIntroComplete = () => {
     setIntroComplete(true);

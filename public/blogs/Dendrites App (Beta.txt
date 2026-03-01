@@ -1,0 +1,152 @@
+Dendrites App (Beta): Gasless Payments + Wallet Safety — With Receipts Built In
+
+Crypto didn’t fail because people don’t want digital money.
+It failed because the experience is still stressful:
+
+fees feel unpredictable
+
+one wrong address can be irreversible
+
+payouts are messy
+
+and most “payment tools” end at a transaction hash — not a real receipt
+
+Dendrites is building Safe Commerce: the trust layer for onchain payments.
+Today, we’re sharing the first tangible step of that vision:
+
+The Dendrites App (Beta) — a premium suite of payment rails and wallet safety tools, tied together by a receipts-first proof layer.
+
+What’s live in the Dendrites App (Beta)
+
+The beta is designed as a suite, not a single tool. Everything shares a consistent premium UX and a unified receipt format so it can scale from “first transaction” to real operations.
+
+1) QuickPay — premium send flow
+
+QuickPay is a modern send UI built to feel effortless:
+
+quotes refresh as you type
+
+clear Eco/Instant speed choice
+
+optional context fields (name/message/reason) when you need them
+
+receipts generated so payments don’t disappear into “tx hash land”
+
+Use cases: paying a contractor, reimbursing a friend, sending USDC to a teammate, or running lightweight ops.
+
+2) AckLink — pay-by-link with a security code
+
+AckLink lets you create a USDC payment link that the recipient can claim:
+
+you share the URL
+
+you share a security code separately (simple but powerful protection)
+
+recipient claims by entering the code
+
+a receipt is generated after claim
+
+Use cases: payouts over DM, paying someone without asking for an address, safer “pay-by-link” flows.
+
+3) Bulk Pay — payouts at scale
+
+Bulk Pay is built for operators:
+
+paste recipients as address amount (one per line)
+
+instant preview + totals
+
+fee handling options (ex: add fee on top)
+
+receipts for bulk events so accounting doesn’t become chaos
+
+Use cases: contributor payouts, community rewards, team distributions.
+
+Wallet safety tools (because payments need guardrails)
+
+Payments don’t exist in a vacuum. Wallets get stuck. Approvals get messy. People panic.
+So Dendrites ships utilities that reduce support issues and user mistakes.
+
+4) Wallet Health — snapshot + basic risk signals
+
+A quick, readable overview of:
+
+pending transactions
+
+unlimited approvals
+
+unknown contracts
+
+recent contract activity
+
+It’s meant to make wallet status understandable in seconds.
+
+5) Nonce Rescue — fix stuck or pending transactions
+
+Nonce Rescue helps users safely replace a stuck transaction:
+
+fetch by tx hash
+
+choose “speed up” or “cancel”
+
+guided EIP-1559 fee bump logic
+
+guardrails to prevent invalid replacements
+
+This is the “worst day UX” fix — the moment when most users lose confidence.
+
+Receipts-first: the proof layer
+
+This is the big difference.
+
+Most crypto payment experiences end with:
+
+“Here’s your tx hash.”
+
+Dendrites is receipts-first. That means:
+
+receipts are searchable and shareable
+
+payment context (who/why/notes) can exist alongside proof
+
+over time, receipts become the foundation for ops, exports, and dispute-friendly workflows
+
+A transaction without a receipt is like a purchase without an invoice — it doesn’t scale.
+
+Demo Mode: explore instantly
+
+Wallet-only apps have a problem: without connecting, everything looks empty.
+
+So the Dendrites App includes a Demo Mode:
+
+auto-filled examples (QuickPay, AckLink, Bulk)
+
+simulated flows (clearly labeled)
+
+simulated receipts appear instantly
+
+no wallet signatures, no transactions, no database writes
+
+Demo Mode is built for investor demos and first-time exploration — while keeping real transaction flows unchanged.
+
+What’s next
+
+This beta is focused on proof + polish:
+
+tighten UX and edge cases
+
+expand safe token support through allowlists
+
+strengthen guardrails (limits, monitoring, safety switches)
+
+prepare a gated mainnet beta after the first raise (caps + monitoring + controlled rollout)
+
+We’re building it the right way: product-first, safety-first, receipts-first.
+
+Try it
+
+Main site: dendrites.ai
+
+Join the waitlist: waitlist.dendrites.ai
+
+If you’re an operator, builder, or team that wants to pilot gasless payments + receipts-first rails, join the waitlist — we’ll onboard early users in controlled batches.

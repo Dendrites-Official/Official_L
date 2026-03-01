@@ -1,0 +1,215 @@
+DENDRITES – BLOG PAGE LAYOUT
+===============================
+PAGE TITLE
+
+Blog
+
+SUBTITLE
+
+Insights, updates, and deep dives from the Dendrites team.
+
+------------------------------------
+1. CATEGORY FILTER BAR (TOP TABS)
+------------------------------------
+
+All
+Vision & Narrative
+Safe Commerce
+Technical Papers
+Developer Guides
+Market Insights
+Announcements
+Founder Letters
+
+(User taps a category → filters the grid below)
+
+------------------------------------
+2. FEATURED ARTICLE (HERO BLOCK)
+------------------------------------
+
+[Large Thumbnail Image]
+
+TITLE (H1)
+2–3 line summary
+
+[ READ FULL → ]
+
+This block always highlights your most important or timely article such as:
+
+Vision of Dendrites
+
+Predictable Gas™ Explained
+
+UNDO (SafetySend)
+
+Why Crypto Commerce Is Broken
+
+High-Level Summary of All Features (Blog 13)
+
+------------------------------------
+3. MAIN BLOG GRID (2 OR 3 COLUMNS)
+------------------------------------
+
+Each blog card shows:
+
+[Thumbnail Image]
+Category
+Title (H2)
+Short excerpt (40–60 words)
+Publish date
+[ READ → ]
+
+Cards should be:
+
+uniform
+
+clean
+
+consistent
+
+optimized for dark mode
+
+scrollable
+
+Supports 2-column mobile → 3-column desktop.
+
+------------------------------------
+4. SIDEBAR (RIGHT SIDE — OPTIONAL BUT RECOMMENDED)
+------------------------------------
+
+Includes:
+
+Trending Posts
+
+Top 3 trending articles.
+
+Most Important
+
+Predictable Gas™ Explainer
+
+UNDO: Reversible Crypto
+
+APP Escrow Overview
+
+For Developers
+
+SDK Guide
+
+PayCode Integration
+(Add Testnet Guide once ready)
+
+On mobile, sidebar moves below the grid.
+
+------------------------------------
+5. PAGINATION
+------------------------------------
+
+← Previous Page
+Next Page →
+
+------------------------------------
+6. BLOG ARTICLE PAGE LAYOUT
+------------------------------------
+
+When a user clicks an article:
+
+TITLE (H1)
+
+Category • Date • Estimated read time (ex: 4 min read)
+
+[Hero Image]
+
+Full Article Content
+
+Includes:
+
+headings
+
+sub-headings
+
+code blocks (for SDK guides)
+
+diagrams
+
+quotes
+
+images
+
+Footer of Each Article
+
+[ Share on X ] [ Share on LinkedIn ]
+
+NEXT ARTICLE →
+
+(Shows title + arrow)
+
+------------------------------------
+7. BLOG CATEGORIES SUMMARY SECTION
+------------------------------------
+VISION & NARRATIVE
+
+Big-picture mission, why Dendrites exists, the future of Safe Commerce.
+
+SAFE COMMERCE
+
+Predictable Gas™, UNDO, AckPay, APP Escrow, Safety features.
+
+TECHNICAL PAPERS
+
+Deep-dive mechanics, state machines, architectural design.
+
+DEVELOPER GUIDES
+
+SDK tutorials, PayCodes, QuickPay, API usage.
+
+MARKET INSIGHTS
+
+Gas volatility, scam statistics, failure analysis, real-world data.
+
+ANNOUNCEMENTS
+
+Updates, release notes, partnerships, presale info.
+
+FOUNDER LETTERS
+
+Personal stories, emotional notes, monthly progress updates.
+
+------------------------------------
+8. REQUIRED ELEMENTS ON EVERY BLOG PAGE
+------------------------------------
+
+Clean dark background
+
+Proper spacing/padding
+
+Line-height 1.6–1.8
+
+No clutter
+
+Professional, consistent typography
+
+Sharp thumbnails
+
+Easy navigation back to Blog Index
+
+Responsive mobile layout
+
+------------------------------------
+9. FOOTER (BOTTOM OF BLOG PAGE)
+------------------------------------
+
+Links:
+
+Litepaper
+
+Whitepaper
+
+Tokenomics
+
+Docs
+
+Risk Disclaimer
+
+Contact
+
+END OF FILE

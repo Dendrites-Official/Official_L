@@ -1,0 +1,126 @@
+Nonce Rescue: Fix Stuck Transactions Safely (Speed Up or Cancel)
+
+Everyone who uses crypto long enough hits the same nightmare:
+
+a transaction gets stuck
+
+nothing else goes through
+
+your wallet feels frozen
+
+and you have no idea what to do without fear of making it worse
+
+Nonce Rescue is Dendrites’ guided tool to fix stuck or pending transactions by safely replacing the same nonce — with guardrails, clear explanations, and correct EIP-1559 fee logic.
+
+It’s built for the “worst day UX.”
+
+The problem: stuck transactions kill trust
+
+When a tx is pending too long, users panic because:
+
+wallets don’t explain why it’s stuck
+
+fee settings are confusing
+
+most people don’t know what a nonce is
+
+“speed up” sometimes fails
+
+“cancel” sometimes fails
+
+replacing the wrong tx can be catastrophic
+
+Stuck transactions are one of the fastest ways to make someone lose confidence in crypto.
+
+Nonce Rescue exists to make recovery simple and safe.
+
+How it works (simple explanation)
+
+Ethereum-style chains use a nonce sequence.
+A stuck tx blocks later txs with higher nonces.
+
+To fix it, you replace the stuck tx by sending a new transaction using the same nonce but higher fees.
+
+Nonce Rescue supports two safe actions:
+
+1) Speed Up (replace with the same intent)
+
+You replace the stuck tx with the same to/value/data but higher fees.
+Result: the new tx gets mined faster, and the old one disappears.
+
+2) Cancel (replace with a “no-op”)
+
+You replace the stuck tx with a simple transaction that sends 0 ETH to yourself using the same nonce, with higher fees.
+Result: the cancel tx mines, and the original stuck tx is invalidated.
+
+What makes Nonce Rescue safer than random wallet buttons
+
+Nonce Rescue is intentionally built with guardrails:
+
+Guardrail #1: Don’t replace confirmed transactions
+
+If a tx hash is already mined/confirmed, replacing it is impossible.
+Nonce Rescue checks this and disables speed-up/cancel when the tx is not actually pending.
+
+Guardrail #2: Correct EIP-1559 replacement fees
+
+Replacement transactions must have higher fees — but EIP-1559 has rules.
+Nonce Rescue computes valid fee bumps so users don’t hit confusing RPC errors.
+
+Guardrail #3: “Danger zone” warnings
+
+Nonce replacement is powerful. The tool emphasizes:
+
+double-check to/value/data
+
+cancel is not guaranteed if the tx is already mined
+
+speed-up must match intent
+
+This reduces “I made it worse” failures.
+
+Why Dendrites ships this in a payments suite
+
+Because payments are not just “happy path sends.”
+
+Real products support:
+
+sending
+
+payouts
+
+receipts
+
+and recovery when things go wrong
+
+Nonce Rescue reduces:
+
+user panic
+
+failed payments
+
+support burden
+
+trust loss
+
+It’s a small tool that signals a big thing: Dendrites is built for real users, not just crypto-native power users.
+
+Demo Mode
+
+Nonce Rescue is also demo-friendly:
+
+it shows a realistic workflow with explanations
+
+it can be prefilled with sample data
+
+and it demonstrates the safety-first philosophy of the suite
+
+In demo mode, sending is disabled — but the learning and UX are fully visible.
+
+Try it
+
+Main site: dendrites.ai
+
+Join the waitlist: waitlist.dendrites.ai
+
+If you’ve ever had a stuck tx and felt helpless, Nonce Rescue is built for you.

@@ -1,0 +1,161 @@
+Security + Guardrails: How Dendrites Makes Sponsored Payments Safe
+
+Building “gasless” payments is easy to demo — and hard to ship safely.
+
+The moment you sponsor gas, you introduce new risks:
+
+spam and abuse
+
+draining sponsorship budgets
+
+malicious tokens
+
+unexpected edge cases
+
+denial-of-service on your relayer/paymaster infrastructure
+
+That’s why Dendrites treats security and guardrails as a product feature, not an afterthought.
+
+This post explains the principles and guardrails we use to keep sponsored payments safe — while still delivering a premium, frictionless experience.
+
+The core rule: users should never be forced to pay gas
+
+Dendrites is built on one non-negotiable product rule:
+
+A user should never be forced to pay gas to use supported flows.
+
+That doesn’t mean “sponsor everything blindly.”
+It means we sponsor safely, with strict controls.
+
+Guardrail #1: Allowlists (tokens + methods)
+
+Not all tokens behave the same. Not all methods are safe to sponsor.
+
+Dendrites uses allowlists such as:
+
+token allowlists (only sponsor transfers for liquid, known tokens)
+
+method allowlists (paymaster can sponsor only Dendrites router methods)
+
+lane allowlists (only sponsor lanes with predictable verification)
+
+This prevents the paymaster from being used as a general-purpose gas faucet.
+
+Guardrail #2: Hard caps (per tx, per wallet, per day)
+
+To prevent abuse and contain worst-case scenarios, Dendrites enforces caps like:
+
+max sponsored value per transaction
+
+max transactions per wallet per time window
+
+daily sponsorship budgets and circuit breakers
+
+Caps don’t reduce UX — they reduce existential risk.
+
+Guardrail #3: Rate limits (per IP + per wallet)
+
+Gas sponsorship endpoints attract bots.
+
+So Dendrites applies:
+
+per-IP burst limits
+
+per-wallet burst limits
+
+sustained rate limits
+
+cooldowns for suspicious patterns
+
+This keeps the system usable for real users even under attack.
+
+Guardrail #4: Monitoring, telemetry, and “kill switches”
+
+A safe sponsored system needs observability.
+
+Dendrites tracks:
+
+request IDs and outcomes (success/fail)
+
+sponsorship cost per operation
+
+token usage patterns
+
+anomaly detection signals
+
+And most importantly:
+
+the ability to pause sponsorship routes quickly if something looks wrong
+
+In other words: ship speed without losing control.
+
+Guardrail #5: Clear user-facing honesty
+
+Security also means UX honesty:
+
+fee breakdown shown before sending
+
+whether a flow is sponsored or self-pay is obvious
+
+receipts show what happened (amount, fee, proof)
+
+demo mode is clearly labeled
+
+Users trust what they can understand.
+
+Guardrail #6: Receipts-first proof
+
+Receipts are not only for users — they’re part of safety.
+
+Receipts provide:
+
+an auditable record of payment intent and execution
+
+structured metadata for later investigation
+
+a clean foundation for support and dispute workflows
+
+When something goes wrong, proof and context reduce chaos.
+
+Why this matters for investors
+
+Sponsored payments are a wedge.
+Guardrails are what make it investable.
+
+If you can’t control:
+
+who can use sponsorship
+
+what can be sponsored
+
+how much can be spent
+
+how fast attacks can scale
+
+…then you don’t have a product. You have a liability.
+
+Dendrites is building this as infrastructure: safe, monitored, and scalable.
+
+What’s next
+
+As we move from testnet to a gated mainnet beta, guardrails evolve:
+
+tighter allowlists
+
+stricter per-wallet budgets
+
+deeper anomaly detection
+
+staged rollout to pilots
+
+progressive decentralization only when safety is proven
+
+We’ll always prioritize safety over hype.
+
+Try it
+
+Main site: dendrites.ai
+
+Join the waitlist: waitlist.dendrites.ai
+
+If you’re a team that wants to pilot gasless USDC flows with receipts-first proof and real guardrails, join the waitlist — we’re onboarding in controlled batches.

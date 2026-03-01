@@ -1,0 +1,147 @@
+Wallet Health: A Simple Safety Snapshot for Your Wallet
+
+Most wallet tools assume users are fine living in chaos.
+
+But the truth is:
+
+approvals accumulate silently
+
+unknown contracts get touched once and forgotten
+
+pending transactions confuse people
+
+and when something feels “off,” users don’t know where to start
+
+Wallet Health is Dendrites’ lightweight safety snapshot — built to reduce confusion, prevent common mistakes, and give users a clear starting point.
+
+It’s not trying to replace full security platforms.
+It’s designed to be the first 30 seconds of clarity.
+
+The problem: wallets don’t explain themselves
+
+When something goes wrong, users ask the same questions:
+
+“Do I have a stuck transaction?”
+
+“Did I approve something dangerous?”
+
+“Why is my wallet behaving weird?”
+
+“What contracts have I interacted with recently?”
+
+Answers exist, but they’re scattered across:
+
+explorers
+
+wallet histories
+
+approval dashboards
+
+random security sites
+
+Wallet Health pulls the most important signals into one clean view.
+
+What Wallet Health shows (fast, readable signals)
+1) Connection + chain context
+
+You immediately see:
+
+connected address
+
+current chain
+
+whether the app is looking at the correct network
+
+This matters more than people think — half of “broken” experiences are just wrong chain/wrong context.
+
+2) Pending transactions (and whether you’re stuck)
+
+Wallet Health highlights:
+
+whether you have pending txs
+
+whether your nonce state suggests you’re stuck
+
+This becomes the bridge into Tx Queue / Nonce Rescue when needed.
+
+3) Approvals: “unlimited approvals” signal
+
+Unlimited approvals are one of the most common long-term risks in wallets.
+
+Wallet Health surfaces a simple summary count so users know:
+
+do I have any unlimited approvals?
+
+should I review/revoke?
+
+This is the difference between “I hope I’m safe” and “I can check.”
+
+4) Unknown contracts + recent activity
+
+Wallet Health groups recent interactions so users can recognize:
+
+familiar apps (DEX, bridge, NFT mint)
+
+unknown contracts worth investigating
+
+For most users, that alone prevents the “I don’t recognize this” panic.
+
+Why Dendrites includes wallet safety in a payments suite
+
+Because payment rails alone aren’t enough.
+
+Real commerce needs:
+
+smoother sends
+
+clearer payouts
+
+and safety utilities to reduce failure + support cost
+
+Wallet Health makes the product feel like a real companion for the worst moments:
+
+confusion
+
+stuck txs
+
+approvals risk
+
+unknown interactions
+
+This is “trust layer UX” applied to wallets.
+
+Demo Mode: instant exploration
+
+Wallet Health is also ideal for Demo Mode:
+
+it can show a realistic “investor snapshot”
+
+it makes the suite feel alive without wallet connection
+
+and it tells a clean story: “payments + safety + receipts”
+
+In live mode, it becomes actionable and personal.
+
+Where this goes next
+
+Wallet Health is designed to grow into a richer console over time:
+
+approvals scanner + one-click revoke flows
+
+contract labeling (DEX/bridge/lending/unknown)
+
+signature/permit risk feed
+
+deeper activity timelines
+
+a “recommended actions” checklist
+
+But even the simple snapshot already solves the most common wallet confusion.
+
+Try it
+
+Main site: dendrites.ai
+
+Join the waitlist: waitlist.dendrites.ai
+
+If you’ve ever had a stuck transaction, random approval anxiety, or “what did I just sign?” moments — Wallet Health is built for you.

@@ -1,0 +1,130 @@
+QuickPay: Premium Gasless Sends — With Receipts Built In
+
+Most crypto “send” experiences still feel like 2017:
+
+you paste an address and pray
+
+fees feel unclear
+
+there’s no context
+
+and after it’s done, you’re left with… a tx hash
+
+QuickPay is Dendrites’ answer: a premium payments UI designed to feel effortless, predictable, and verifiable — from the first send to real ops.
+
+The problem: sending crypto is still stressful
+
+Even experienced users hesitate before hitting “Send” because:
+
+fee anxiety: “How much will this cost?”
+
+mistake anxiety: “Is this the right address?”
+
+context loss: “What was this payment for?”
+
+proof problems: “How do I show this payment cleanly?”
+
+QuickPay is built to remove that friction.
+
+What QuickPay does
+
+QuickPay is a modern send flow that combines three things into one experience:
+
+1) Premium send UX
+
+QuickPay is intentionally designed to feel “Stripe-level”:
+
+quote-style UI that refreshes as you type
+
+clean, minimal fields
+
+clear speed selection (Eco / Instant)
+
+fast “what will happen” summary before you send
+
+The goal is simple: users should understand the transaction before it happens.
+
+2) Gasless mode (Sponsored) + optional Self-Pay
+
+QuickPay supports two modes:
+
+Sponsored (default): Dendrites pays the gas so the user isn’t forced to hold ETH for fees
+
+Self-Pay (advanced): user pays their own network gas (fee = 0)
+
+This matters because the #1 onboarding killer is still:
+
+“You need ETH for gas.”
+
+QuickPay is built to eliminate that requirement for supported flows.
+
+(In beta, the exact lane depends on token support and safety allowlists.)
+
+3) Receipts-first proof
+
+QuickPay doesn’t end at “tx hash.”
+It generates a receipt that can include:
+
+token + amount
+
+fee (and mode)
+
+chain + timestamp
+
+and optional payment context (name/message/reason/notes)
+
+Receipts turn a transaction into something that can actually be used for:
+
+reimbursements
+
+contractor payments
+
+ops logs
+
+shareable proof
+
+Speed: Eco vs Instant (simple, predictable choice)
+
+Most users don’t want gas settings. They want a choice that maps to intent.
+
+QuickPay uses two understandable options:
+
+Eco: optimized for lower cost
+
+Instant: optimized for faster inclusion
+
+The UI makes it obvious, without exposing complexity.
+
+Why this matters (beyond a nice UI)
+
+QuickPay is not “just a send form.” It’s the wedge into something bigger:
+
+payments become auditable
+
+ops becomes repeatable
+
+support load drops
+
+and receipts become a foundation for disputes, exports, and structured commerce
+
+In other words: QuickPay is the front door to Safe Commerce.
+
+Demo Mode (investor-friendly)
+
+QuickPay includes a Demo Mode so anyone can explore instantly:
+
+fields auto-fill with realistic examples
+
+sending is simulated (no signatures, no transactions)
+
+a simulated receipt appears immediately
+
+It’s designed to show the full experience in seconds — while keeping real mode untouched.
+
+Try QuickPay
+
+Main site: dendrites.ai
+
+Join the waitlist: waitlist.dendrites.ai
+
+If you’re building on Base or running USDC flows and want early access, join the waitlist — we’re onboarding pilots in controlled batches.

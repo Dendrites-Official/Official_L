@@ -1,0 +1,143 @@
+Bulk Pay: Crypto Payouts at Scale — With Receipts You Can Actually Use
+
+One-off payments are easy.
+What breaks teams is payouts:
+
+10 recipients becomes 50
+
+formatting becomes messy
+
+someone gets missed
+
+totals don’t match
+
+and later you can’t prove who got what without digging through explorers
+
+Bulk Pay is Dendrites’ payouts rail: paste a list of recipients, get a clean preview, send in one flow, and generate receipts that make ops and accounting sane.
+
+The problem: payouts are operational chaos
+
+Most payout workflows today look like this:
+
+copy/paste addresses from a spreadsheet
+
+manually type amounts
+
+“Did we include everyone?”
+
+“Why doesn’t this total match?”
+
+“Where’s the proof for finance?”
+
+Even with good intentions, it’s fragile.
+
+Bulk Pay exists because operators need payments that behave like tooling, not like a gamble.
+
+What Bulk Pay does
+
+Bulk Pay is designed for a simple input format that works everywhere:
+
+Paste recipients as one per line:
+
+0xabc... 12.34
+0xdef... 5.00
+
+Then Bulk Pay gives you:
+
+an instant preview (recipient count, totals, fees)
+
+clear fee handling (example: “add fee on top”)
+
+optional metadata (name/reason/message/private note)
+
+and receipts after execution
+
+That’s the difference between “sending funds” and “running payouts.”
+
+Fee handling that doesn’t surprise users
+
+Payout tools fail when fees are ambiguous.
+
+Bulk Pay makes the fee model explicit so operators can choose how to handle it:
+
+Plus fee (add fee on top): recipients receive exact amounts, sender pays fee separately
+
+(If you later add other modes, keep the labels extremely clear.)
+
+This is important for payouts where amounts are contractual (e.g., payroll, rewards, reimbursements).
+
+Metadata: the difference between a payment and an operation
+
+Bulk Pay supports optional metadata such as:
+
+name (what this payout is)
+
+reason (invoice, rewards round, payroll)
+
+message (public)
+
+private note (for internal tracking)
+
+It sounds small, but it prevents the “what was this transfer?” problem that kills operational clarity later.
+
+Receipts-first: proof that scales
+
+Bulk payments without receipts become pain later.
+
+Bulk Pay receipts are designed to answer:
+
+how many recipients
+
+total distributed
+
+what fee was paid
+
+timestamps + chain proof
+
+and a record of the payout intent (via metadata)
+
+That makes it possible to:
+
+audit payouts
+
+resolve disputes
+
+export later (accounting / ops)
+
+prove rewards distribution cleanly
+
+Demo Mode: instant investor clarity
+
+Bulk Pay is also a strong investor demo:
+
+demo mode auto-fills 3–5 recipients
+
+totals and summary populate instantly
+
+“Send Bulk” simulates execution
+
+a bulk receipt appears immediately
+
+No wallet required, no signatures, no transactions — just a clear product story.
+
+Who Bulk Pay is for
+
+Bulk Pay is built for:
+
+communities distributing rewards
+
+teams paying contributors
+
+creators paying collaborators
+
+operators doing repeated USDC payout batches
+
+If your payouts live in spreadsheets today, Bulk Pay is the bridge to something safer and cleaner.
+
+Try Bulk Pay
+
+Main site: dendrites.ai
+
+Join the waitlist: waitlist.dendrites.ai
+
+We’re onboarding pilots in controlled batches — especially teams running USDC payout workflows on Base.

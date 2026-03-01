@@ -902,4 +902,910 @@ This is Safe Commerce.
 
 **This is Dendrites.**
 `,
+
+  15: `# Bulk Pay: Crypto Payouts at Scale — With Receipts You Can Actually Use
+
+One-off payments are easy.
+
+**What breaks teams is payouts.**
+
+- 10 recipients becomes 50
+- Formatting becomes messy
+- Someone gets missed
+- Totals don't match
+- And later you can't prove who got what without digging through explorers
+
+Bulk Pay is Dendrites' payouts rail: paste a list of recipients, get a clean preview, send in one flow, and generate receipts that make ops and accounting sane.
+
+---
+
+## The Problem: Payouts Are Operational Chaos
+
+Most payout workflows today look like this:
+
+- Copy/paste addresses from a spreadsheet
+- Manually type amounts
+- "Did we include everyone?"
+- "Why doesn't this total match?"
+- "Where's the proof for finance?"
+
+Even with good intentions, it's fragile.
+
+**Bulk Pay exists because operators need payments that behave like tooling, not like a gamble.**
+
+---
+
+## What Bulk Pay Does
+
+Bulk Pay is designed for a simple input format that works everywhere.
+
+Paste recipients as one per line:
+
+\`\`\`
+0xabc... 12.34
+0xdef... 5.00
+\`\`\`
+
+Then Bulk Pay gives you:
+
+- An instant **preview** (recipient count, totals, fees)
+- Clear **fee handling** (example: "add fee on top")
+- Optional **metadata** (name / reason / message / private note)
+- **Receipts** after execution
+
+That's the difference between "sending funds" and "running payouts."
+
+---
+
+## Fee Handling That Doesn't Surprise Users
+
+Payout tools fail when fees are ambiguous.
+
+Bulk Pay makes the fee model explicit so operators can choose how to handle it:
+
+> **Plus fee (add fee on top):** recipients receive exact amounts, sender pays fee separately
+
+This is important for payouts where amounts are contractual — payroll, rewards, reimbursements. No surprises, no shortfalls.
+
+---
+
+## Metadata: The Difference Between a Payment and an Operation
+
+Bulk Pay supports optional metadata such as:
+
+- **Name** — what this payout is
+- **Reason** — invoice, rewards round, payroll
+- **Message** — public-facing note
+- **Private note** — for internal tracking only
+
+It sounds small, but it prevents the *"what was this transfer?"* problem that kills operational clarity later.
+
+---
+
+## Receipts-First: Proof That Scales
+
+Bulk payments without receipts become pain later.
+
+Bulk Pay receipts are designed to answer:
+
+- How many recipients
+- Total distributed
+- What fee was paid
+- Timestamps + chain proof
+- A record of the payout intent (via metadata)
+
+That makes it possible to:
+
+✅ Audit payouts  
+✅ Resolve disputes  
+✅ Export later (accounting / ops)  
+✅ Prove rewards distribution cleanly  
+
+---
+
+## Demo Mode: Instant Investor Clarity
+
+Bulk Pay is also a strong investor demo:
+
+- Demo mode auto-fills 3–5 recipients
+- Totals and summary populate instantly
+- "Send Bulk" simulates execution
+- A bulk receipt appears immediately
+
+No wallet required, no signatures, no transactions — just a clear product story.
+
+---
+
+## Who Bulk Pay Is For
+
+Bulk Pay is built for:
+
+- **Communities** distributing rewards
+- **Teams** paying contributors
+- **Creators** paying collaborators
+- **Operators** doing repeated USDC payout batches
+
+If your payouts live in spreadsheets today, Bulk Pay is the bridge to something safer and cleaner.
+
+---
+
+## Try Bulk Pay
+
+- Main site: [dendrites.ai](https://dendrites.ai)
+- Join the waitlist: [waitlist.dendrites.ai](https://waitlist.dendrites.ai)
+
+We're onboarding pilots in controlled batches — especially teams running USDC payout workflows on Base.
+`,
+
+  16: `# Wallet Health: A Simple Safety Snapshot for Your Wallet
+
+Most wallet tools assume users are fine living in chaos.
+
+But the truth is:
+
+- Approvals accumulate silently
+- Unknown contracts get touched once and forgotten
+- Pending transactions confuse people
+- And when something feels "off," users don't know where to start
+
+Wallet Health is Dendrites' lightweight safety snapshot — built to reduce confusion, prevent common mistakes, and give users a clear starting point.
+
+It's not trying to replace full security platforms.  
+**It's designed to be the first 30 seconds of clarity.**
+
+---
+
+## The Problem: Wallets Don't Explain Themselves
+
+When something goes wrong, users ask the same questions:
+
+- "Do I have a stuck transaction?"
+- "Did I approve something dangerous?"
+- "Why is my wallet behaving weird?"
+- "What contracts have I interacted with recently?"
+
+Answers exist, but they're scattered across explorers, wallet histories, approval dashboards, and random security sites.
+
+**Wallet Health pulls the most important signals into one clean view.**
+
+---
+
+## What Wallet Health Shows (Fast, Readable Signals)
+
+### 1) Connection + Chain Context
+
+You immediately see:
+
+- Connected address
+- Current chain
+- Whether the app is looking at the correct network
+
+This matters more than people think — half of "broken" experiences are just wrong chain / wrong context.
+
+### 2) Pending Transactions (And Whether You're Stuck)
+
+Wallet Health highlights:
+
+- Whether you have pending txs
+- Whether your nonce state suggests you're stuck
+
+This becomes the bridge into Tx Queue / Nonce Rescue when needed.
+
+### 3) Approvals: "Unlimited Approvals" Signal
+
+Unlimited approvals are one of the most common long-term risks in wallets.
+
+Wallet Health surfaces a simple summary count so users know:
+
+- Do I have any unlimited approvals?
+- Should I review / revoke?
+
+This is the difference between *"I hope I'm safe"* and *"I can check."*
+
+### 4) Unknown Contracts + Recent Activity
+
+Wallet Health groups recent interactions so users can recognize:
+
+- Familiar apps (DEX, bridge, NFT mint)
+- Unknown contracts worth investigating
+
+For most users, that alone prevents the "I don't recognize this" panic.
+
+---
+
+## Why Dendrites Includes Wallet Safety in a Payments Suite
+
+Because payment rails alone aren't enough.
+
+Real commerce needs:
+
+✅ Smoother sends  
+✅ Clearer payouts  
+✅ Safety utilities to reduce failure + support cost  
+
+Wallet Health makes the product feel like a real companion for the worst moments — confusion, stuck txs, approvals risk, unknown interactions.
+
+**This is "trust layer UX" applied to wallets.**
+
+---
+
+## Demo Mode: Instant Exploration
+
+Wallet Health is also ideal for Demo Mode:
+
+- It can show a realistic "investor snapshot"
+- It makes the suite feel alive without wallet connection
+- It tells a clean story: "payments + safety + receipts"
+
+In live mode, it becomes actionable and personal.
+
+---
+
+## Where This Goes Next
+
+Wallet Health is designed to grow into a richer console over time:
+
+- Approvals scanner + one-click revoke flows
+- Contract labeling (DEX / bridge / lending / unknown)
+- Signature / permit risk feed
+- Deeper activity timelines
+- A "recommended actions" checklist
+
+But even the simple snapshot already solves the most common wallet confusion.
+
+---
+
+## Try It
+
+- Main site: [dendrites.ai](https://dendrites.ai)
+- Join the waitlist: [waitlist.dendrites.ai](https://waitlist.dendrites.ai)
+
+If you've ever had a stuck transaction, random approval anxiety, or *"what did I just sign?"* moments — Wallet Health is built for you.
+`,
+
+  17: `# Receipts Explorer: The Proof Layer for Onchain Payments
+
+A transaction hash is not a receipt.
+
+That's the uncomfortable truth behind most "crypto payments" today: once the transfer is done, you're left with a block explorer link and no clean way to answer basic questions like:
+
+- Who was this payment for?
+- What was the reason?
+- Was there a fee?
+- Can I share proof without sending someone into Etherscan?
+- Can I find this later?
+
+**Receipts Explorer is Dendrites' proof layer:** a clean, searchable, shareable receipt system built directly into payment rails.
+
+This is the difference between "sending crypto" and running real commerce.
+
+---
+
+## The Problem: Block Explorers Are Not User Receipts
+
+Block explorers are built for engineers, not operations.
+
+They're great for verifying *"did it happen?"*  
+They're terrible for everything else:
+
+- Context gets lost
+- The UX is intimidating
+- Proofs are hard to share
+- Teams can't easily audit or export
+
+**Receipts Explorer exists because payments need a human layer.**
+
+---
+
+## What Receipts Explorer Does
+
+Receipts Explorer gives you a premium record of activity across Dendrites rails like:
+
+- QuickPay
+- AckLink
+- Bulk Pay
+
+Each receipt is designed to show:
+
+- Token + amount
+- Fee + mode (eco/instant, sponsored/self-pay if applicable)
+- Chain + timestamp
+- Proof identifiers (tx hash / reference IDs)
+- Optional context fields (name / message / reason / note)
+
+So the payment becomes something you can actually **use**, not just verify.
+
+---
+
+## Why Receipts Matter (Even More Than the Payment UI)
+
+This is the key insight:
+
+> Payment UX gets someone to click "Send."  
+> Receipts let a system scale into operations.
+
+Receipts enable:
+
+- Reimbursement workflows
+- Contractor payments with clear proof
+- Bulk payout auditing
+- Support tickets resolved faster
+- Future exports for accounting
+- Future dispute resolution primitives
+
+**In the long run, receipts become the foundation for Safe Commerce.**
+
+---
+
+## Shareability: Proof That Works Outside Crypto Circles
+
+Receipts Explorer is built to be shared.
+
+Instead of sending someone:
+
+> *"here's a tx hash, go figure it out"*
+
+You send a clean, readable receipt view that explains:
+
+- What happened
+- How much
+- Why
+- And the network proof underneath
+
+**This is how onchain payments become normal for non-crypto users.**
+
+---
+
+## Demo Mode: Explore Instantly
+
+Receipts Explorer is also one of the strongest first impressions:
+
+- Demo mode seeds realistic receipts automatically
+- Clicking into a receipt shows full details
+- Simulated flows generate new receipts instantly
+
+No wallet, no signatures, no transactions — just a clear *"this is real product"* experience.
+
+---
+
+## Where This Goes Next
+
+Receipts Explorer is intentionally the backbone of the suite. Next steps are obvious and powerful:
+
+- Export formats (CSV / PDF) for ops + accounting
+- Receipt links with verified metadata and anti-tamper proof
+- Richer merchant fields (invoice IDs, order IDs, delivery notes)
+- Dispute-friendly formats for escrow and confirmation rails
+
+**The rails move money. The receipts move trust.**
+
+---
+
+## Try It
+
+- Main site: [dendrites.ai](https://dendrites.ai)
+- Join the waitlist: [waitlist.dendrites.ai](https://waitlist.dendrites.ai)
+
+If you're an operator, community, or team running USDC flows and want cleaner proof for payments, join the waitlist — we're onboarding pilots in controlled batches.
+`,
+
+  18: `# Nonce Rescue: Fix Stuck Transactions Safely (Speed Up or Cancel)
+
+Everyone who uses crypto long enough hits the same nightmare:
+
+- A transaction gets stuck
+- Nothing else goes through
+- Your wallet feels frozen
+- And you have no idea what to do without fear of making it worse
+
+**Nonce Rescue is Dendrites' guided tool** to fix stuck or pending transactions by safely replacing the same nonce — with guardrails, clear explanations, and correct EIP-1559 fee logic.
+
+It's built for the **"worst day UX."**
+
+---
+
+## The Problem: Stuck Transactions Kill Trust
+
+When a tx is pending too long, users panic because:
+
+- Wallets don't explain why it's stuck
+- Fee settings are confusing
+- Most people don't know what a nonce is
+- "Speed up" sometimes fails
+- "Cancel" sometimes fails
+- Replacing the wrong tx can be catastrophic
+
+Stuck transactions are one of the fastest ways to make someone lose confidence in crypto.
+
+**Nonce Rescue exists to make recovery simple and safe.**
+
+---
+
+## How It Works (Simple Explanation)
+
+Ethereum-style chains use a nonce sequence.  
+A stuck tx blocks later txs with higher nonces.
+
+To fix it, you replace the stuck tx by sending a new transaction using the **same nonce** but higher fees.
+
+Nonce Rescue supports two safe actions:
+
+### 1) Speed Up (Replace With the Same Intent)
+
+You replace the stuck tx with the same **to / value / data** but higher fees.  
+**Result:** the new tx gets mined faster, and the old one disappears.
+
+### 2) Cancel (Replace With a "No-Op")
+
+You replace the stuck tx with a simple transaction that sends 0 ETH to yourself using the same nonce, with higher fees.  
+**Result:** the cancel tx mines, and the original stuck tx is invalidated.
+
+---
+
+## What Makes Nonce Rescue Safer Than Random Wallet Buttons
+
+Nonce Rescue is intentionally built with guardrails:
+
+**Guardrail #1: Don't replace confirmed transactions**
+
+If a tx hash is already mined/confirmed, replacing it is impossible. Nonce Rescue checks this and disables speed-up/cancel when the tx is not actually pending.
+
+**Guardrail #2: Correct EIP-1559 replacement fees**
+
+Replacement transactions must have higher fees — but EIP-1559 has rules. Nonce Rescue computes valid fee bumps so users don't hit confusing RPC errors.
+
+**Guardrail #3: "Danger zone" warnings**
+
+Nonce replacement is powerful. The tool emphasizes:
+
+- Double-check to / value / data
+- Cancel is not guaranteed if the tx is already mined
+- Speed-up must match intent
+
+This reduces *"I made it worse"* failures.
+
+---
+
+## Why Dendrites Ships This in a Payments Suite
+
+Because payments are not just "happy path sends."
+
+Real products support:
+
+✅ Sending  
+✅ Payouts  
+✅ Receipts  
+✅ And **recovery** when things go wrong  
+
+Nonce Rescue reduces:
+
+- User panic
+- Failed payments
+- Support burden
+- Trust loss
+
+It's a small tool that signals a big thing: **Dendrites is built for real users, not just crypto-native power users.**
+
+---
+
+## Demo Mode
+
+Nonce Rescue is also demo-friendly:
+
+- It shows a realistic workflow with explanations
+- It can be prefilled with sample data
+- It demonstrates the safety-first philosophy of the suite
+
+In demo mode, sending is disabled — but the learning and UX are fully visible.
+
+---
+
+## Try It
+
+- Main site: [dendrites.ai](https://dendrites.ai)
+- Join the waitlist: [waitlist.dendrites.ai](https://waitlist.dendrites.ai)
+
+If you've ever had a stuck tx and felt helpless, Nonce Rescue is built for you.
+`,
+
+  19: `# QuickPay: Premium Gasless Sends — With Receipts Built In
+
+Most crypto "send" experiences still feel like 2017:
+
+- You paste an address and pray
+- Fees feel unclear
+- There's no context
+- And after it's done, you're left with… a tx hash
+
+**QuickPay is Dendrites' answer:** a premium payments UI designed to feel effortless, predictable, and verifiable — from the first send to real ops.
+
+---
+
+## The Problem: Sending Crypto Is Still Stressful
+
+Even experienced users hesitate before hitting "Send" because:
+
+- **Fee anxiety** — "How much will this cost?"
+- **Mistake anxiety** — "Is this the right address?"
+- **Context loss** — "What was this payment for?"
+- **Proof problems** — "How do I show this payment cleanly?"
+
+**QuickPay is built to remove that friction.**
+
+---
+
+## What QuickPay Does
+
+QuickPay is a modern send flow that combines three things into one experience:
+
+### 1) Premium Send UX
+
+QuickPay is intentionally designed to feel "Stripe-level":
+
+- Quote-style UI that refreshes as you type
+- Clean, minimal fields
+- Clear speed selection (Eco / Instant)
+- Fast "what will happen" summary before you send
+
+The goal is simple: **users should understand the transaction before it happens.**
+
+### 2) Gasless Mode (Sponsored) + Optional Self-Pay
+
+QuickPay supports two modes:
+
+- **Sponsored (default):** Dendrites pays the gas so the user isn't forced to hold ETH for fees
+- **Self-Pay (advanced):** user pays their own network gas (fee = 0)
+
+This matters because the #1 onboarding killer is still:
+
+> *"You need ETH for gas."*
+
+QuickPay is built to eliminate that requirement for supported flows.
+
+### 3) Receipts-First Proof
+
+QuickPay doesn't end at "tx hash." It generates a receipt that can include:
+
+- Token + amount
+- Fee (and mode)
+- Chain + timestamp
+- Optional payment context (name / message / reason / notes)
+
+Receipts turn a transaction into something that can actually be used for reimbursements, contractor payments, ops logs, and shareable proof.
+
+---
+
+## Speed: Eco vs Instant (Simple, Predictable Choice)
+
+Most users don't want gas settings. They want a choice that maps to intent.
+
+QuickPay uses two understandable options:
+
+| Option | Best for |
+|--------|----------|
+| **Eco** | Optimized for lower cost |
+| **Instant** | Optimized for faster inclusion |
+
+The UI makes it obvious, without exposing complexity.
+
+---
+
+## Why This Matters (Beyond a Nice UI)
+
+QuickPay is not "just a send form." It's the wedge into something bigger:
+
+- Payments become auditable
+- Ops becomes repeatable
+- Support load drops
+- Receipts become a foundation for disputes, exports, and structured commerce
+
+**In other words: QuickPay is the front door to Safe Commerce.**
+
+---
+
+## Demo Mode (Investor-Friendly)
+
+QuickPay includes a Demo Mode so anyone can explore instantly:
+
+- Fields auto-fill with realistic examples
+- Sending is simulated (no signatures, no transactions)
+- A simulated receipt appears immediately
+
+It's designed to show the full experience in seconds — while keeping real mode untouched.
+
+---
+
+## Try QuickPay
+
+- Main site: [dendrites.ai](https://dendrites.ai)
+- Join the waitlist: [waitlist.dendrites.ai](https://waitlist.dendrites.ai)
+
+If you're building on Base or running USDC flows and want early access, join the waitlist — we're onboarding pilots in controlled batches.
+`,
+
+  20: `# Security + Guardrails: How Dendrites Makes Sponsored Payments Safe
+
+Building "gasless" payments is easy to demo — and hard to ship safely.
+
+The moment you sponsor gas, you introduce new risks:
+
+- Spam and abuse
+- Draining sponsorship budgets
+- Malicious tokens
+- Unexpected edge cases
+- Denial-of-service on your relayer / paymaster infrastructure
+
+**That's why Dendrites treats security and guardrails as a product feature, not an afterthought.**
+
+This post explains the principles and guardrails we use to keep sponsored payments safe — while still delivering a premium, frictionless experience.
+
+---
+
+## The Core Rule: Users Should Never Be Forced to Pay Gas
+
+Dendrites is built on one non-negotiable product rule:
+
+> **A user should never be forced to pay gas to use supported flows.**
+
+That doesn't mean "sponsor everything blindly."  
+It means we sponsor **safely**, with strict controls.
+
+---
+
+## Guardrail #1: Allowlists (Tokens + Methods)
+
+Not all tokens behave the same. Not all methods are safe to sponsor.
+
+Dendrites uses allowlists such as:
+
+- **Token allowlists** — only sponsor transfers for liquid, known tokens
+- **Method allowlists** — paymaster can sponsor only Dendrites router methods
+- **Lane allowlists** — only sponsor lanes with predictable verification
+
+This prevents the paymaster from being used as a general-purpose gas faucet.
+
+---
+
+## Guardrail #2: Hard Caps (Per Tx, Per Wallet, Per Day)
+
+To prevent abuse and contain worst-case scenarios, Dendrites enforces caps like:
+
+- Max sponsored value per transaction
+- Max transactions per wallet per time window
+- Daily sponsorship budgets and circuit breakers
+
+**Caps don't reduce UX — they reduce existential risk.**
+
+---
+
+## Guardrail #3: Rate Limits (Per IP + Per Wallet)
+
+Gas sponsorship endpoints attract bots.
+
+So Dendrites applies:
+
+- Per-IP burst limits
+- Per-wallet burst limits
+- Sustained rate limits
+- Cooldowns for suspicious patterns
+
+This keeps the system usable for real users even under attack.
+
+---
+
+## Guardrail #4: Monitoring, Telemetry, and "Kill Switches"
+
+A safe sponsored system needs observability.
+
+Dendrites tracks:
+
+- Request IDs and outcomes (success / fail)
+- Sponsorship cost per operation
+- Token usage patterns
+- Anomaly detection signals
+
+And most importantly: **the ability to pause sponsorship routes quickly if something looks wrong.**
+
+In other words: ship speed without losing control.
+
+---
+
+## Guardrail #5: Clear User-Facing Honesty
+
+Security also means UX honesty:
+
+- Fee breakdown shown before sending
+- Whether a flow is sponsored or self-pay is obvious
+- Receipts show what happened (amount, fee, proof)
+- Demo mode is clearly labeled
+
+**Users trust what they can understand.**
+
+---
+
+## Guardrail #6: Receipts-First Proof
+
+Receipts are not only for users — they're part of safety.
+
+Receipts provide:
+
+- An auditable record of payment intent and execution
+- Structured metadata for later investigation
+- A clean foundation for support and dispute workflows
+
+When something goes wrong, proof and context reduce chaos.
+
+---
+
+## Why This Matters for Investors
+
+Sponsored payments are a wedge.  
+**Guardrails are what make it investable.**
+
+If you can't control who can use sponsorship, what can be sponsored, how much can be spent, and how fast attacks can scale — you don't have a product. You have a liability.
+
+**Dendrites is building this as infrastructure: safe, monitored, and scalable.**
+
+---
+
+## What's Next
+
+As we move from testnet to a gated mainnet beta, guardrails evolve:
+
+- Tighter allowlists
+- Stricter per-wallet budgets
+- Deeper anomaly detection
+- Staged rollout to pilots
+- Progressive decentralization only when safety is proven
+
+We'll always prioritize safety over hype.
+
+---
+
+## Try It
+
+- Main site: [dendrites.ai](https://dendrites.ai)
+- Join the waitlist: [waitlist.dendrites.ai](https://waitlist.dendrites.ai)
+
+If you're a team that wants to pilot gasless USDC flows with receipts-first proof and real guardrails, join the waitlist — we're onboarding in controlled batches.
+`,
+
+  21: `# Dendrites App (Beta): Gasless Payments + Wallet Safety — With Receipts Built In
+
+Crypto didn't fail because people don't want digital money.  
+It failed because the experience is still stressful:
+
+- Fees feel unpredictable
+- One wrong address can be irreversible
+- Payouts are messy
+- And most "payment tools" end at a transaction hash — not a real receipt
+
+**Dendrites is building Safe Commerce:** the trust layer for onchain payments.
+
+Today, we're sharing the first tangible step of that vision:
+
+**The Dendrites App (Beta)** — a premium suite of payment rails and wallet safety tools, tied together by a receipts-first proof layer.
+
+---
+
+## What's Live in the Dendrites App (Beta)
+
+The beta is designed as a suite, not a single tool. Everything shares a consistent premium UX and a unified receipt format so it can scale from "first transaction" to real operations.
+
+### 1) QuickPay — Premium Send Flow
+
+QuickPay is a modern send UI built to feel effortless:
+
+- Quotes refresh as you type
+- Clear Eco / Instant speed choice
+- Optional context fields (name / message / reason) when you need them
+- Receipts generated so payments don't disappear into "tx hash land"
+
+**Use cases:** paying a contractor, reimbursing a friend, sending USDC to a teammate, or running lightweight ops.
+
+### 2) AckLink — Pay-by-Link With a Security Code
+
+AckLink lets you create a USDC payment link that the recipient can claim:
+
+- You share the URL
+- You share a security code separately (simple but powerful protection)
+- Recipient claims by entering the code
+- A receipt is generated after claim
+
+**Use cases:** payouts over DM, paying someone without asking for an address, safer "pay-by-link" flows.
+
+### 3) Bulk Pay — Payouts at Scale
+
+Bulk Pay is built for operators:
+
+- Paste recipients as **address amount** (one per line)
+- Instant preview + totals
+- Fee handling options (ex: add fee on top)
+- Receipts for bulk events so accounting doesn't become chaos
+
+**Use cases:** contributor payouts, community rewards, team distributions.
+
+---
+
+## Wallet Safety Tools (Because Payments Need Guardrails)
+
+Payments don't exist in a vacuum. Wallets get stuck. Approvals get messy. People panic. So Dendrites ships utilities that reduce support issues and user mistakes.
+
+### 4) Wallet Health — Snapshot + Basic Risk Signals
+
+A quick, readable overview of:
+
+- Pending transactions
+- Unlimited approvals
+- Unknown contracts
+- Recent contract activity
+
+It's meant to make wallet status understandable in seconds.
+
+### 5) Nonce Rescue — Fix Stuck or Pending Transactions
+
+Nonce Rescue helps users safely replace a stuck transaction:
+
+- Fetch by tx hash
+- Choose "speed up" or "cancel"
+- Guided EIP-1559 fee bump logic
+- Guardrails to prevent invalid replacements
+
+This is the **"worst day UX"** fix — the moment when most users lose confidence.
+
+---
+
+## Receipts-First: The Proof Layer
+
+This is the big difference.
+
+Most crypto payment experiences end with:
+
+> *"Here's your tx hash."*
+
+**Dendrites is receipts-first.** That means:
+
+- Receipts are searchable and shareable
+- Payment context (who / why / notes) can exist alongside proof
+- Over time, receipts become the foundation for ops, exports, and dispute-friendly workflows
+
+A transaction without a receipt is like a purchase without an invoice — it doesn't scale.
+
+---
+
+## Demo Mode: Explore Instantly
+
+Wallet-only apps have a problem: without connecting, everything looks empty.
+
+So the Dendrites App includes a **Demo Mode:**
+
+- Auto-filled examples (QuickPay, AckLink, Bulk)
+- Simulated flows (clearly labeled)
+- Simulated receipts appear instantly
+- No wallet signatures, no transactions, no database writes
+
+Demo Mode is built for investor demos and first-time exploration — while keeping real transaction flows unchanged.
+
+---
+
+## What's Next
+
+This beta is focused on proof + polish:
+
+- Tighten UX and edge cases
+- Expand safe token support through allowlists
+- Strengthen guardrails (limits, monitoring, safety switches)
+- Prepare a gated mainnet beta after the first raise (caps + monitoring + controlled rollout)
+
+**We're building it the right way: product-first, safety-first, receipts-first.**
+
+---
+
+## Try It
+
+- Main site: [dendrites.ai](https://dendrites.ai)
+- Join the waitlist: [waitlist.dendrites.ai](https://waitlist.dendrites.ai)
+
+If you're an operator, builder, or team that wants to pilot gasless payments + receipts-first rails, join the waitlist — we'll onboard early users in controlled batches.
+`,
 };

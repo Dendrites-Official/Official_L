@@ -1,0 +1,137 @@
+Receipts Explorer: The Proof Layer for Onchain Payments
+
+A transaction hash is not a receipt.
+
+That’s the uncomfortable truth behind most “crypto payments” today: once the transfer is done, you’re left with a block explorer link and no clean way to answer basic questions like:
+
+Who was this payment for?
+
+What was the reason?
+
+Was there a fee?
+
+Can I share proof without sending someone into Etherscan?
+
+Can I find this later?
+
+Receipts Explorer is Dendrites’ proof layer: a clean, searchable, shareable receipt system built directly into payment rails.
+
+This is the difference between “sending crypto” and running real commerce.
+
+The problem: block explorers are not user receipts
+
+Block explorers are built for engineers, not operations.
+
+They’re great for verifying “did it happen?”
+They’re terrible for everything else:
+
+context gets lost
+
+the UX is intimidating
+
+proofs are hard to share
+
+teams can’t easily audit or export
+
+Receipts Explorer exists because payments need a human layer.
+
+What Receipts Explorer does
+
+Receipts Explorer gives you a premium record of activity across Dendrites rails like:
+
+QuickPay
+
+AckLink
+
+Bulk Pay
+
+Each receipt is designed to show:
+
+token + amount
+
+fee + mode (eco/instant, sponsored/self-pay if applicable)
+
+chain + timestamp
+
+proof identifiers (tx hash / reference IDs)
+
+optional context fields (name / message / reason / note)
+
+So the payment becomes something you can actually use, not just verify.
+
+Why receipts matter (even more than the payment UI)
+
+This is the key insight:
+
+Payment UX gets someone to click “Send.”
+Receipts let a system scale into operations.
+
+Receipts enable:
+
+reimbursement workflows
+
+contractor payments with clear proof
+
+bulk payout auditing
+
+support tickets resolved faster
+
+future exports for accounting
+
+future dispute resolution primitives
+
+In the long run, receipts become the foundation for Safe Commerce.
+
+Shareability: proof that works outside crypto circles
+
+Receipts Explorer is built to be shared.
+
+Instead of sending someone:
+
+“here’s a tx hash, go figure it out”
+
+You send a clean, readable receipt view that explains:
+
+what happened
+
+how much
+
+why
+
+and the network proof underneath
+
+This is how onchain payments become normal for non-crypto users.
+
+Demo Mode: explore instantly
+
+Receipts Explorer is also one of the strongest first impressions:
+
+Demo mode seeds realistic receipts automatically
+
+clicking into a receipt shows full details
+
+simulated flows generate new receipts instantly
+
+No wallet, no signatures, no transactions — just a clear “this is real product” experience.
+
+Where this goes next
+
+Receipts Explorer is intentionally the backbone of the suite. Next steps are obvious and powerful:
+
+export formats (CSV/PDF) for ops + accounting
+
+receipt links with verified metadata and anti-tamper proof
+
+richer merchant fields (invoice IDs, order IDs, delivery notes)
+
+dispute-friendly formats for escrow and confirmation rails
+
+The rails move money. The receipts move trust.
+
+Try it
+
+Main site: dendrites.ai
+
+Join the waitlist: waitlist.dendrites.ai
+
+If you’re an operator, community, or team running USDC flows and want cleaner proof for payments, join the waitlist — we’re onboarding pilots in controlled batches.

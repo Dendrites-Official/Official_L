@@ -45,7 +45,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Ecosystem / Airdrop",
     date: "Nov 2025",
     readMins: 9,
-    pdfPath: "/blogs/blog-14.pdf",
+    pdfPath: "",
     featured: true,
     heroImage: "/airdrop1.jpg",
   },
@@ -57,7 +57,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Vision & Narrative",
     date: "Nov 2025",
     readMins: 8,
-    pdfPath: "/blogs/blog-13.pdf",
+    pdfPath: "",
     heroImage: "/image.png",
     featured: true,
   },
@@ -69,7 +69,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Vision & Narrative",
     date: "Oct 2025",
     readMins: 6,
-    pdfPath: "/blogs/blog-1.pdf",
+    pdfPath: "",
   },
   {
     id: 2,
@@ -79,7 +79,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Safe Commerce",
     date: "Oct 2025",
     readMins: 5,
-    pdfPath: "/blogs/blog-2.pdf",
+    pdfPath: "",
   },
   {
     id: 3,
@@ -89,7 +89,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Safe Commerce",
     date: "Oct 2025",
     readMins: 6,
-    pdfPath: "/blogs/blog-3.pdf",
+    pdfPath: "",
   },
   {
     id: 4,
@@ -99,7 +99,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Safe Commerce",
     date: "Oct 2025",
     readMins: 5,
-    pdfPath: "/blogs/blog-4.pdf",
+    pdfPath: "",
   },
   {
     id: 5,
@@ -129,7 +129,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Market Insights",
     date: "Oct 2025",
     readMins: 7,
-    pdfPath: "/blogs/blog-7.pdf",
+    pdfPath: "",
   },
   {
     id: 8,
@@ -139,7 +139,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Market Insights",
     date: "Oct 2025",
     readMins: 6,
-    pdfPath: "/blogs/blog-8.pdf",
+    pdfPath: "",
   },
   {
     id: 9,
@@ -149,7 +149,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Developer Guides",
     date: "Nov 2025",
     readMins: 8,
-    pdfPath: "/blogs/blog-9.pdf",
+    pdfPath: "",
   },
   {
     id: 10,
@@ -159,7 +159,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Developer Guides",
     date: "Nov 2025",
     readMins: 5,
-    pdfPath: "/blogs/blog-10.pdf",
+    pdfPath: "",
   },
   {
     id: 11,
@@ -169,7 +169,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Founder Letters",
     date: "Nov 2025",
     readMins: 7,
-    pdfPath: "/blogs/blog-11.pdf",
+    pdfPath: "",
   },
   {
     id: 12,
@@ -179,7 +179,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Announcements",
     date: "Nov 2025",
     readMins: 6,
-    pdfPath: "/blogs/blog-12.pdf",
+    pdfPath: "",
   },
   {
     id: 15,

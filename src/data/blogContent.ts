@@ -468,6 +468,960 @@ This is **Dendrites.**
 
 The future of payments starts here.
 `,
+
+  2: `# Why Crypto Payments Are Broken (And How We Fix Them)
+
+## Crypto Was Built for Decentralization — Not for Payments
+
+Let's be brutally honest.
+
+Crypto has created trillion-dollar ecosystems, but everyday payments? They're still stuck in 2015.
+
+A simple transfer — something that should feel instant and safe — is filled with uncertainty, risk, and complexity. And the industry pretends this is normal.
+
+But it's not. It's broken.
+
+---
+
+## The 5 Fatal Flaws of Crypto Payments
+
+These are not small UX issues. These are structural reasons merchants, apps, creators, and real users can't rely on crypto for commerce.
+
+### 1. Unpredictable Fees
+
+Gas costs can jump 3× to 40× within minutes. Apps can't quote users confidently. Merchants can't predict margins. Users don't trust what they can't understand.
+
+Crypto feels cheap one minute — and unbelievably expensive the next.
+
+### 2. No Undo. No Safety. No Second Chances.
+
+A mistyped address? A drained wallet? A wrong-chain transfer? Final. Gone. Irreversible.
+
+Billions are lost every year because humans make human mistakes — and blockchains offer zero forgiveness.
+
+### 3. Refunds Don't Exist On-Chain
+
+There is no standard refund system in crypto. Every app, wallet, marketplace, or merchant must reinvent their own workaround.
+
+It's messy. It's inconsistent. It's dangerous. This alone kills enterprise adoption.
+
+### 4. No Native Escrow
+
+Escrow is not optional in real commerce.
+
+Uber uses escrow. Upwork uses escrow. Amazon uses escrow. Airbnb uses escrow. Stripe uses structured flows.
+
+Crypto? "Just send the funds and hope for the best."
+
+Every marketplace builds their own fragile escrow logic — usually centralized, unscalable, and risky.
+
+### 5. The UX Is Unacceptable for Real Humans
+
+Normal users need: predictable costs, refund options, order tracking, dispute processes, and finalization receipts.
+
+Crypto gives them: hex strings, confusion, irreversible errors, and fluctuating fees.
+
+This is why merchants don't accept crypto, businesses avoid it, and the average user fears touching it.
+
+---
+
+## Dendrites Fixes All 5 — With One Unified System
+
+Crypto doesn't need a new chain. It needs a trust layer — a safety layer — a commerce layer.
+
+That is Dendrites.
+
+### Predictable Gas™ — Finally, Reliable Fees
+
+Stable fee bands before the transaction. If fees spike unexpectedly, the protocol issues SLA Credits automatically.
+
+You always know the cost. Every time. No surprises.
+
+### SafetySend (UNDO) — Reversible Payments
+
+A 3-minute window to cancel accidental transfers.
+
+Mistyped address? Cancel. Wrong amount? Cancel. Scam link? Cancel.
+
+A simple idea that should have existed years ago.
+
+### APP Escrow — Payments That Behave Like Workflows
+
+Milestones. Approvals. Auto-refunds. Delivery-based unlocks.
+
+Crypto finally gets the structure that every modern commerce system uses.
+
+### AckPay — Confirmation-Based Settlement
+
+A payment isn't final until the receiver accepts it.
+
+Perfect for deliveries, freelancers, creators, merchant apps, and subscription flows. This stops fraud before it happens.
+
+---
+
+## When You Fix Payments, You Unlock Adoption
+
+Blockchain has already solved speed, finality, transparency, and global reach.
+
+But none of that matters without trust, predictability, and commercial logic.
+
+Dendrites brings these missing pieces to crypto — without sacrificing decentralization.
+
+---
+
+## Closing: Crypto Doesn't Need More Innovation — It Needs Reliability
+
+For crypto to power everyday commerce, it must feel safe, predictable, structured, reversible, business-friendly, and human-friendly.
+
+That's exactly what Dendrites delivers.
+
+The world doesn't avoid crypto because it's slow. It avoids crypto because it's unpredictable and unforgiving.
+
+We're here to fix that — permanently.
+`,
+
+  3: `# Introducing Predictable Gas™: Ending Fee Anxiety Forever
+
+## Crypto Didn't Fail Because Fees Are High. Crypto Failed Because Fees Are Unpredictable.
+
+Ask any normal user why crypto payments feel stressful. They won't mention decentralization or cryptography.
+
+They'll say:
+
+- "What will the fee be?"
+- "Why does it keep changing?"
+- "Why did it cost $0.40 yesterday and $1.70 today?"
+- "Why did the fee spike at the last second?"
+
+It's not the amount that scares people. It's the uncertainty.
+
+You cannot build global commerce on top of a system where users never know what they'll pay until after they press Send.
+
+This single problem alone kills merchant adoption, subscription systems, cross-border apps, startup integrations, and mainstream payments.
+
+This is the barrier that has held crypto back for an entire decade. So we removed it.
+
+---
+
+## Introducing Predictable Gas™ — The End of Fee Anxiety
+
+**Predictable Gas™** is the world's first system designed to make blockchain fees feel stable, trustworthy, and commercial-grade.
+
+It solves the #1 problem in crypto:
+
+> You will always know your fee before the transaction — and if reality exceeds it, you're protected.
+
+Crypto has never offered this guarantee. Now it does.
+
+---
+
+## How Predictable Gas™ Works
+
+### 1. Fee Bands
+
+Before sending money, Dendrites shows you a stable, pre-quoted fee range:
+
+- **Instant Tier** — fast settlement, tight band
+- **Eco Tier** — slower settlement, wider band
+
+These bands are generated using real-time fee data, historical volatility, variance modeling, congestion pressure, and risk buffers.
+
+This means the protocol isn't guessing — it's forecasting.
+
+### 2. Final Settlement Cost Is Checked Against the Band
+
+After the transaction settles, Dendrites compares the actual fee paid against the fee band you were quoted.
+
+If the actual fee stays inside the band → everything works as expected.
+
+If the fee spikes beyond the upper bound → that's a breach.
+
+### 3. SLA Credits Automatically Protect the User
+
+If the network fee goes beyond your quoted band due to congestion, MEV activity, gas spikes, or traffic surges, the protocol issues **SLA Credits** — automatic fee offsets that reduce your future protocol fees and restore the cost you were originally promised.
+
+This means:
+
+- You never lose money due to unexpected fee spikes
+- The protocol absorbs volatility
+- You get a reliable all-in cost
+
+Dendrites becomes the first blockchain environment with bounded, predictable fees — the closest crypto has ever come to stable, enterprise-grade fee guarantees.
+
+---
+
+## Why Predictable Gas™ Is a Breakthrough for All Commerce
+
+Businesses run on predictable costs. Stripe, Visa, PayPal, UPI, Apple Pay — all of them succeed for one simple reason: merchants can forecast fees.
+
+Crypto cannot… until now.
+
+Predictable Gas™ unlocks everything crypto was missing:
+
+- Subscription payments and SaaS billing
+- Marketplaces and cross-border apps
+- Logistics, deliveries, and gig-work platforms
+- Fintech wallets, global remittances, and e-commerce rails
+
+In every one of these use cases, predictability is more important than cost. Even if gas is cheap, unpredictability destroys trust. Predictable Gas™ reinstates it.
+
+---
+
+## The Real Impact: Crypto Finally Feels Like Infrastructure
+
+Users don't want a volatile fee market. They want stability, trust, receipts, boundaries, guarantees, and confidence.
+
+Predictable Gas™ gives blockchain the missing ingredient that banks mastered decades ago: fee reliability at human scale.
+
+This is how crypto becomes a real payment layer — not just a speculative one.
+
+---
+
+## Closing: Predictability Is the Beginning of Mass Adoption
+
+Crypto didn't need cheaper gas. It needed predictable gas.
+
+Dendrites is the first protocol to deliver it — with pre-quoted fee bands, variance modeling, SLA Credits, and structured reliability.
+
+This is not a small feature. This is a milestone.
+
+For the first time ever, users can trust blockchain fees. And that changes everything.
+`,
+
+  4: `# SafetySend (UNDO): Reversible Crypto Payments for the First Time
+
+## Mistakes in Money Are Human. Crypto Just Never Forgave Them — Until Now.
+
+Every year, billions of dollars vanish in crypto due to simple errors:
+
+- mistyped wallet addresses
+- wrong-chain deposits
+- scam links and phishing redirects
+- accidental approvals
+- sending to the wrong person
+- sending the wrong token or amount
+
+In banking, reversing mistakes is normal. In UPI, reversal is instant. In PayPal, refund flows are built in. In Stripe, merchant dashboards handle reversals effortlessly.
+
+But in crypto? A single mistake can destroy everything.
+
+This is not a UX flaw. This is a structural flaw. And it's the #1 reason everyday users are still afraid to use blockchain for real payments.
+
+So we fixed it.
+
+---
+
+## Introducing SafetySend (UNDO) — A Safety Net for Digital Money
+
+SafetySend introduces something crypto has never had in its entire history:
+
+> A reversible window — up to 3 minutes — where the sender can cancel the transaction before it finalizes.
+
+It is simple. It is elegant. And it is the feature users have been begging for since Ethereum launched.
+
+---
+
+## How SafetySend Works
+
+### 1. You Send a Payment — But It Does Not Finalize Instantly
+
+The payment enters a **secure temporary vault** — a protected state where funds are held but not delivered.
+
+### 2. A Countdown Begins — The UNDO Window (180 seconds)
+
+During this window, you can:
+
+- undo the transaction
+- fix a mistake
+- cancel a suspicious payment
+- recover funds from a scam attempt
+- reverse an accidental address or wrong-chain transfer
+
+### 3. If You Don't Cancel, the Payment Finalizes Safely
+
+After the UNDO window expires, the funds settle, the receiver gets their money, and the transaction becomes final.
+
+The receiver does not lose time. The sender does not risk everything. This is how payments should work.
+
+---
+
+## Why SafetySend Changes Everything
+
+No matter how technical someone is, mistakes are unavoidable: fast typing, mobile copying errors, QR confusion, scam pop-ups, mis-clicks, wrong tokens, wrong networks.
+
+SafetySend converts these fatal mistakes into harmless moments.
+
+- **It eliminates the fear of sending money.** Users fear crypto because a single mistake can ruin them. SafetySend removes that fear.
+- **It stops scams instantly.** If a user realizes they're being scammed, they can undo before it finalizes. This alone would have prevented millions of past losses.
+- **It solves the "I sent to the wrong address" nightmare.** Wrong address, wrong token, wrong network, wrong amount — all become undoable.
+
+---
+
+## SafetySend = Human-Friendly Crypto
+
+Blockchain's immutability is a strength — but it never meant we shouldn't have protection before finalization.
+
+SafetySend doesn't violate decentralization. It simply inserts a human protection layer between intent and final settlement.
+
+The result? Crypto finally feels safe, forgiving, usable, trustworthy, and familiar. It becomes something normal people can use without fear.
+
+---
+
+## Closing: UNDO Is Not a Feature. It's a Breakthrough.
+
+Every major payment system in the world has safety and reversal logic. Crypto was the only exception.
+
+Dendrites becomes the first protocol to fix this — permanently.
+
+SafetySend transforms crypto from *"one mistake and you're bankrupt"* into *"send with confidence — you're protected."*
+
+This is how digital money should work. And now, for the first time, it finally does.
+`,
+
+  7: `# Why "Planning Gas" Doesn't Work (Real Data Breakdown)
+
+## Everyone Thinks They Can "Plan Gas." Every Business Eventually Learns They Can't.
+
+For years, crypto builders have tried to stabilize user experience by "planning gas."
+
+They estimate average gas, expected traffic, typical congestion, normal times of day, and historical fee patterns. On paper, it sounds smart. In reality, it collapses immediately.
+
+Because gas volatility is not predictable — not even in the short term.
+
+This is why merchants refuse to accept crypto, subscription models fail, users abandon transactions, remittance apps can't risk settlement, and cross-border platforms avoid blockchain rails entirely.
+
+To understand why "planning gas" is impossible, you must understand what actually moves gas prices. Spoiler: it's not rational, and it's not stable.
+
+---
+
+## The Hidden Forces That Break Every Gas Estimate
+
+Gas is not driven by a simple supply-and-demand curve. It is driven by chaotic, unpredictable, and competing forces.
+
+### 1. Network Congestion Is Not Linear — It's Chaotic
+
+Blockchains process fixed blockspace. Demand, however, is volatile and spiky.
+
+A single event can push gas from 8 gwei to 120 gwei, or 30 gwei to 500 gwei, within minutes.
+
+No historical average can predict sudden spikes caused by unexpected news, mass liquidations, new token launches, NFT drops, airdrop farming waves, or memecoin frenzies. Gas markets respond instantly — businesses can't.
+
+### 2. MEV Bots Manipulate Priority Fees Constantly
+
+Miner Extractable Value (MEV) bots compete aggressively for block inclusion. They cause rapid fee surges, fake bidding wars, intentional congestion, and volatile fee auctions.
+
+Your transaction might be competing with arbitrage bots, sandwich bots, NFT minting bots, and liquidation bots. These actors behave unpredictably and instantly. Human-driven businesses cannot react in real time.
+
+### 3. Block Demand Is Not User Demand
+
+Gas spikes are often caused by arbitrage loops, oracle updates, DEX liquidations, whales repricing positions, and memecoin snipers — none of which relate to real commerce, yet they destroy the stability needed for it.
+
+### 4. Fees Can Spike 5×–40× in Seconds
+
+Real data from the last 24 months:
+
+- Ethereum fees spiked 7× during liquidation events
+- Arbitrum fees spiked 20× during NFT launches
+- Base fees spiked 14× during memecoin waves
+- Polygon PoS saw 30× spikes during validator rotation events
+
+When volatility exists at this scale, "planning gas" becomes meaningless. No business model can withstand this unpredictability.
+
+### 5. Merchants Cannot Quote Variable Costs
+
+Imagine Stripe or Visa telling a business: *"Your transaction fee will be between $0.03 and $8.00 depending on network mood."*
+
+No merchant would use it. Yet that's exactly how blockchain payments feel today.
+
+Subscriptions? Impossible. Gig payments? Risky. Cross-border settlements? Unreliable. E-commerce? Unusable.
+
+---
+
+## Predictable Gas™ — The Only Rational Solution
+
+"Planning gas" fails because gas markets are inherently chaotic. Predictable Gas™ solves this with:
+
+- **Stable, pre-quoted fee bands** — You know the fee before sending.
+- **Variance limits** — Fees cannot exceed the upper bound without action.
+- **SLA Credits** — If the chain misbehaves, the protocol protects the user.
+- **Commercial-grade reliability** — Fees become a known cost, like a payment gateway.
+
+This creates something blockchains never had: bounded, predictable, user-friendly fees.
+
+### SDK Integration
+
+\`\`\`javascript
+const quote = await dendrites.fees.getQuote({
+  speed: "instant", // or "eco"
+  chain: "base",
+});
+
+const tx = await dendrites.pay.send({
+  to: receiver,
+  amount: "50 USDC",
+  maxFee: quote.upperBound,
+});
+\`\`\`
+
+The SDK automatically calculates fee bands, enforces upper limits, and issues SLA Credits on breach. Nothing else in crypto offers this level of reliability.
+
+---
+
+## Closing: Businesses Don't Need Cheap Fees — They Need Predictable Fees
+
+This is why crypto payments failed for 10 years: fees spike, users panic, merchants lose money, businesses cannot quote costs, apps cannot scale, subscriptions fail.
+
+Predictable Gas™ finally brings infrastructure-grade stability to blockchain fees.
+
+This is not an optimization — it's a prerequisite for global adoption.
+
+No more "wait for low gas." No more "try again later." No more "I don't know why fees jumped."
+
+Crypto finally becomes reliable. And when reliability arrives, commerce follows.
+`,
+
+  8: `# $12B in 2024: The Harsh Reality of Crypto Scams & Mistakes
+
+## Crypto Didn't Lose $12 Billion in 2024 Because of Hackers Alone. It Lost It Because the System Has No Safety.
+
+Every year, headlines scream about hacks, exploits, rug pulls, phishing, smart contract drains, wrong address transfers, wrong-chain deposits, and irreversible mistakes.
+
+But the deeper truth is far more alarming: most losses happen not because blockchains fail — but because humans do. And blockchains offer zero forgiveness.
+
+According to Chainalysis and multiple independent datasets, over $12B was lost in 2024 through user mistakes, human error, fraudulent addresses, compromised wallets, misdirected funds, wrong-token mistakes, scam interactions, and irreversible transfers.
+
+This is not sustainable for mainstream adoption. This is not acceptable for global commerce. This is not how money should work.
+
+Dendrites exists because this number should be zero.
+
+---
+
+## Where the $12B Actually Went (Real Breakdown)
+
+### 1. Wrong Address Transfers: $1.3B+
+
+A simple typo in a 42-character address → money gone forever.
+
+No bank, no support, no reversal. Crypto has no "Are you sure?" Crypto has no "Undo." Crypto has no "Return to sender." This is a massive adoption blocker.
+
+### 2. Phishing & Scam Redirects: $3.8B+
+
+Fake websites. Fake wallets. Fake copy/paste address malware.
+
+One wrong click → immediate irreversible loss. Traditional payments would block, freeze, or reverse. Crypto cannot.
+
+### 3. Wrong Chain / Wrong Token Errors: $700M+
+
+Users constantly send ETH to BTC networks, USDC to the wrong chain, tokens to incompatible contracts, or funds to unmonitored burn addresses.
+
+These are not malicious attacks. They're human mistakes amplified by rigid systems.
+
+### 4. Smart Contract Exploits: $3.1B+
+
+Hacks happen — but most losses occur because contracts finalize instantly, users cannot protect funds, and protocols lack confirmation layers.
+
+With Safe Commerce primitives like AckPay and APP Escrow, exploit pathways shrink dramatically.
+
+### 5. Payment Fraud & Service Abuse: $2B+
+
+In normal commerce, merchants verify, users confirm, and refunds exist. Crypto has none of that. This is why scams thrive — the system itself has no safety logic.
+
+---
+
+## Why Dendrites Eliminates the Majority of These Losses
+
+The $12B loss is not a user problem. It's an infrastructure problem. Dendrites solves this at the protocol level with three breakthrough protections.
+
+### SafetySend (UNDO): Reversible Mistakes
+
+A 3-minute UNDO window prevents billions in accidental losses. Wrong address, wrong token, fraud, wrong chain, scam link — all become undoable. This single feature could have prevented over 30% of 2024 losses.
+
+### AckPay: Receiver Must Accept Payment
+
+Payments only finalize when the receiver acknowledges. This eliminates fake merchants, ghosted sellers, non-delivery scams, and "pay first" rug tactics. Funds return automatically if unaccepted — protecting another 20–25% of real-world fraud losses.
+
+### APP Escrow: Commercial-Grade Protection
+
+Milestone-based payments prevent incomplete service scams, work-not-delivered fraud, seller disappearance, and buyer-seller disputes. Built-in refunds protect the sender and hold the receiver accountable.
+
+### SDK Integration
+
+\`\`\`javascript
+await dendrites.safetySend.sendWithUndo({...});
+await dendrites.ackPay.create({...});
+await dendrites.escrow.create({...});
+\`\`\`
+
+Three lines of code = full Safe Commerce infrastructure. No protocol has made safety this accessible before.
+
+---
+
+## Crypto Will Not Go Mainstream Until Safety Is Standard
+
+People aren't scared of crypto because of volatility. They're scared because one mistake can destroy savings, scammers hide everywhere, payments finalize instantly, there's no undo, no refunds, no acknowledgement flows, and no structured settlement.
+
+Dendrites fixes the part of crypto no one else addressed: it makes digital money safe. For everyone. Everywhere. Every time.
+
+The $12B number should never repeat again — and with Safe Commerce, it won't.
+`,
+
+  9: `# A Developer's Guide to Using the Dendrites SDK (Simple Version)
+
+## Developers: Safe Commerce Is Now a Few Lines of Code Away
+
+Most blockchain integrations require complex contract deployments, writing your own escrow logic, handling refunds manually, managing stuck transactions, calculating unpredictable gas, building confirmation flows from scratch, and hacking together security checks.
+
+Dendrites changes everything.
+
+Our SDK gives you enterprise-grade Safe Commerce in minutes — without writing a single line of Solidity. If you can use JavaScript or TypeScript, you can integrate Predictable Gas™, SafetySend (UNDO), APP Escrow, AckPay, SLA Credits, PayCodes, and QuickPay into your wallet, app, marketplace, or platform.
+
+---
+
+## 1. Installing the SDK
+
+\`\`\`bash
+npm install @dendrites/sdk
+\`\`\`
+
+Initialize your client:
+
+\`\`\`javascript
+import { Dendrites } from "@dendrites/sdk";
+
+const dendrites = new Dendrites({
+  apiKey: process.env.DENDRITES_API_KEY,
+  network: "base-sepolia", // or mainnet later
+});
+\`\`\`
+
+You now have full Safe Commerce functionality.
+
+---
+
+## 2. Predictable Gas™ — Get Stable Fee Quotes
+
+\`\`\`javascript
+const quote = await dendrites.fees.getQuote({
+  chain: "base",
+  speed: "instant", // or "eco"
+});
+// Returns: { lowerBound: "0.11 USD", upperBound: "0.19 USD", estimated: "0.15 USD" }
+
+await dendrites.pay.send({
+  to: receiver,
+  amount: "50 USDC",
+  maxFee: quote.upperBound,
+});
+\`\`\`
+
+If gas spikes beyond the upper band → protocol issues SLA Credits automatically.
+
+---
+
+## 3. SafetySend (UNDO) — Reversible Payments
+
+\`\`\`javascript
+const tx = await dendrites.safetySend.sendWithUndo({
+  to: receiverAddress,
+  amount: "25 USDC",
+  undoWindow: 180, // seconds
+});
+
+// If the user wants to cancel:
+await dendrites.safetySend.undo(tx.id);
+\`\`\`
+
+If not undone → funds finalize automatically. Prevents accidental transfers, scam sends, wrong-chain mistakes, and phishing damage.
+
+---
+
+## 4. AckPay — Receiver Must Accept Payment
+
+\`\`\`javascript
+// Sender side:
+const request = await dendrites.ackPay.create({
+  to: merchantAddress,
+  amount: "100 USDC",
+  timeout: 300,
+});
+
+// Receiver side:
+await dendrites.ackPay.accept(request.id);
+
+// Auto-refund if not accepted in time:
+await dendrites.ackPay.autoRefund(request.id);
+\`\`\`
+
+Protects buyers and forces merchants to acknowledge the payment.
+
+---
+
+## 5. APP Escrow — Milestones, Delivery, Approvals, Refunds
+
+\`\`\`javascript
+const escrow = await dendrites.escrow.create({
+  payer: sender,
+  payee: freelancer,
+  amount: "200 USDC",
+  milestones: [
+    { id: "design",   amount: "60 USDC" },
+    { id: "frontend", amount: "70 USDC" },
+    { id: "backend",  amount: "70 USDC" },
+  ],
+  timeout: 86400,
+});
+
+// Release a milestone:
+await dendrites.escrow.release({ escrowId: escrow.id, milestoneId: "design" });
+
+// Refund if deadlines fail:
+await dendrites.escrow.refund(escrow.id);
+\`\`\`
+
+Enables gig platforms, agency payments, multi-step services, e-commerce protection, and conditional workflow payments.
+
+---
+
+## 6. QuickPay — Universal Payment Requests
+
+\`\`\`javascript
+const paycode = await dendrites.paycodes.generate({
+  amount: "15 USDC",
+  asset: "USDC",
+  chain: "base",
+  features: { undo: true, ack: true, escrow: false },
+});
+// Returns: { paycode, qr, link }
+\`\`\`
+
+One link or one QR → safe payment every time.
+
+---
+
+## 7. Testnet Instructions
+
+Dendrites testnet runs on Base Sepolia during presale.
+
+1. Set your \`DENDRITES_API_KEY\` to your test key.
+2. Fund your wallet with Base Sepolia ETH and USDC (faucets on the testnet dashboard).
+3. Run any of the flows above — everything works exactly like mainnet with simulated Safe Commerce logic.
+
+---
+
+## 8. Why Developers Love the Dendrites SDK
+
+- **No Solidity needed** — everything is API + SDK based.
+- **Safe Commerce defaults** — every transaction is structured, predictable, and protected.
+- **Production-ready workflows** — the same logic used by gig platforms, marketplaces, and payment networks.
+- **Predictable fees** — no more gas chaos.
+- **Easy integration** — wallets, marketplaces, remittance apps all plug in instantly.
+
+---
+
+## Closing: Web3 Payments Can Finally Match Web2 Quality
+
+With the Dendrites SDK, developers can give users reversible payments, predictable fees, milestone escrow, confirmation-based settlement, auto-refunds, fraud protection, and enterprise workflows — in under 10 minutes.
+
+This is how digital money becomes truly usable — not just powerful.
+
+Dendrites gives you the tools. You build the future.
+`,
+
+  10: `# Understanding PayCodes (EIP-681 for Safe Commerce)
+
+## EIP-681 Made Crypto Payable. PayCodes Make Crypto Commercial.
+
+EIP-681 (Ethereum Payment Request URIs) was a brilliant idea for its time. It allowed wallets to embed address, token, and amount into a simple payment link.
+
+But commerce needs much more than this: undo windows, confirmation logic, fee stability, metadata, escrow flows, cross-chain support, workflow instructions, and transaction constraints.
+
+EIP-681 is too simple for real-world money movement.
+
+So Dendrites created **PayCodes** — a modern, Safe Commerce–optimized evolution of payment links.
+
+---
+
+## What Are PayCodes?
+
+PayCodes are enhanced payment request codes that allow a sender to execute Safe Commerce flows with a single tap. They can be represented as a URL, QR code, short code, deeplink, or URI.
+
+Every PayCode encodes:
+
+- Amount, asset, and chain
+- Fee tier (instant / eco)
+- Safe Commerce features (UNDO, AckPay, Escrow)
+- Metadata, merchant reference, and optional expiry
+
+This makes PayCodes not just a payment request — but a **transaction instruction set**.
+
+---
+
+## What PayCodes Solve
+
+### 1. Error-Proof Payments
+
+Receivers embed exactly what the sender must pay. No more wrong amount, wrong asset, wrong chain, or wrong address. Users stop making irreversible mistakes.
+
+### 2. Safe Commerce Defaults
+
+PayCodes can include undo windows, required acknowledgement, and escrow workflows — meaning every payment link is safe by default. Works for café QR codes, freelancer invoices, delivery app prompts, and marketplace checkout links.
+
+### 3. Universally Compatible
+
+PayCodes work across wallets, apps, browsers, mobile, QR scanners, and API calls. Any system that understands a URL can trigger a PayCode.
+
+### 4. Merchant-Grade Metadata
+
+PayCodes can embed order IDs, merchant IDs, shipping IDs, invoice IDs, and subscription cycles — enabling clean reconciliation with existing systems.
+
+---
+
+## Example PayCode
+
+\`\`\`json
+{
+  "to": "0xAbC123...",
+  "amount": "15 USDC",
+  "chain": "base",
+  "features": { "undo": true, "ack": true, "escrow": false },
+  "metadata": { "orderId": "A1345", "merchant": "NexaCoffee" }
+}
+\`\`\`
+
+---
+
+## Generating a PayCode (SDK)
+
+\`\`\`javascript
+const paycode = await dendrites.paycodes.generate({
+  to: receiverAddress,
+  amount: "15 USDC",
+  asset: "USDC",
+  chain: "base",
+  features: { undo: true, ack: false, escrow: false },
+  metadata: { orderId: "A1345" },
+});
+// Returns: { paycode, link, qr }
+\`\`\`
+
+You can display the QR, embed the link, or encode it in a button.
+
+---
+
+## How PayCodes Power Real Use Cases
+
+- **Retail** — Tap → UNDO-protected payment → done.
+- **E-commerce checkout** — Embed AckPay → merchant must confirm.
+- **Freelancers** — Milestone escrow encoded into a PayCode.
+- **Deliveries & logistics** — Delivery completed → receiver accepts payment.
+- **Cross-border remittances** — Users never touch chains, addresses, or tokens.
+- **Subscriptions** — PayCodes include metadata for recurring billing.
+
+---
+
+## Closing: PayCodes + Safe Commerce = Frictionless Payments
+
+PayCodes are not just a link. They are safer, structured, predictable, feature-rich, and developer-friendly.
+
+They bring all Safe Commerce features into one portable format that can travel anywhere a URL can travel.
+
+This is how crypto becomes easy, human-friendly, and merchant-ready.
+`,
+
+  11: `# Founder Letter #1: The Birth of Dendrites (Personal Edition)
+
+## Every Founder Has a Breaking Point. Mine Became the Beginning of Dendrites.
+
+There's a moment in life where everything falls apart at once — and the world quietly waits to see who you become next.
+
+For me, that moment was painful. It was personal. It was the kind of loss that forces you to confront yourself in ways you never wanted to.
+
+And in that darkness, one truth hit me harder than anything else:
+
+> Crypto wasn't failing because it was new. It was failing because people kept getting hurt.
+
+Not financially alone — but emotionally, mentally, in their confidence, in their trust.
+
+And I saw myself reflected in that. I knew exactly what it meant to lose something important in a moment you couldn't take back.
+
+That feeling stayed with me. And from that pain… a mission formed.
+
+---
+
+## The World Needed a Safety Layer — So Did I
+
+When I looked at crypto, I didn't see technology. I saw fear.
+
+I saw people checking addresses ten times. I saw merchants terrified of unpredictable fees. I saw families afraid to send money across borders. I saw individuals who knew one mistake could destroy them.
+
+People don't fear crypto's complexity. They fear its absence of protection.
+
+I understood that feeling deeply. And I realized:
+
+> If the world is ever going to trust digital money, it needs the one thing it has never been given — safety.
+
+Not optional safety. Not "build it yourself" safety. But safety at the foundation.
+
+That's the day Dendrites began forming in my mind.
+
+---
+
+## Building Something When You Have Nothing Left To Lose
+
+There's a kind of focus that only comes from heartbreak. There's a kind of discipline that only rises from being broken. There's a kind of clarity that only emerges when everything else is taken from you.
+
+I threw myself into building. Not because it was easy — because it was necessary.
+
+And the more I built, the clearer it became. Crypto needed:
+
+- **Predictable Gas™** — because people deserve reliability.
+- **SafetySend (UNDO)** — because one mistake should not define your life.
+- **APP Escrow** — because real commerce requires structure, not blind trust.
+- **AckPay** — because accountability prevents fraud.
+- **SLA Credits** — because systems should protect users, not punish them.
+
+Every feature was a response to a world full of uncertainty and irreversible outcomes — a world I no longer wanted anyone to experience.
+
+---
+
+## Dendrites Is Not Just a Protocol. It's a Promise.
+
+A promise that:
+
+- You can send money without fear
+- Businesses can rely on blockchain
+- Mistakes don't have to be permanent
+- Payments can feel human
+- Safety can exist without centralization
+
+This isn't a whitepaper idea. This is lived experience turned into technology.
+
+---
+
+## From Pain Came Purpose. From Loss Came Leadership.
+
+The hardest moments create the strongest missions.
+
+Dendrites is not born from hype, or greed, or market cycles. It's born from a simple, personal truth:
+
+> When life gives you no safety net, you learn how important one really is.
+
+I wanted to build that safety for millions of people who feel the same. That's why I never stopped. Why I never gave up. Why I refused to accept that "crypto just works this way."
+
+It doesn't have to.
+
+---
+
+## The Next Chapter
+
+Today, Dendrites is entering its most important phase: Predictable Gas™, UNDO, AckPay, Escrow, SDK, Testnets, early adopters, global launch.
+
+Every line of code brings us closer to the world I wish existed years ago — a world where digital money is safe enough for everyone.
+
+And I'm building it with the hunger of someone who has felt the cost of irreversible moments in real life.
+
+---
+
+## A Personal Note to Everyone Reading
+
+If you've ever felt alone, lost, betrayed, left behind, underestimated, broken, or forgotten — then you already understand the spirit behind Dendrites.
+
+This project is more than payment safety. It's a reminder that from pain, we can build power. From failure, we can build future. From loss, we can build legacy.
+
+And that's exactly what I intend to do.
+
+This is just the first letter. There will be many more. And each one will be stronger than the last.
+`,
+
+  12: `# Dendrites Monthly Update #1: Building the Foundations of Safe Commerce
+
+## Welcome to the First Official Dendrites Monthly Update.
+
+This moment marks the beginning of something big — and we're building it the right way.
+
+Dendrites is still early, but the foundation for the world's first Safe Commerce Protocol is being laid with precision. This update is a transparent look into where we stand, what we've designed, what's in development, and what's coming next.
+
+Our philosophy is simple: **move carefully, build seriously, deliver globally.**
+
+---
+
+## 1. Safe Commerce Core — Architecture Locked, Development Underway
+
+Over the last month, we finalized the full technical architecture for the core Dendrites features. These are now moving through design → prototyping → internal testing pipelines.
+
+### Predictable Gas™ — Architecture Completed
+
+Fee-band model finalized, variance logic defined, SLA credit system designed, and cross-chain strategy documented. We are now moving into implementation of the fee quoting engine.
+
+### SafetySend (UNDO) — Core Logic Designed
+
+Temporary vault model finalized, undo-window mechanism defined, finalization logic mapped, and fraud & error scenarios analyzed. Prototype implementation begins next sprint.
+
+### AckPay — Confirmation Flow Defined
+
+Pending-settlement model designed, accept/reject UX flows drafted, auto-refund conditions mapped, and merchant-side API design in progress.
+
+### APP Escrow — State Machine Completed
+
+INIT → FUNDED → RELEASED → REFUNDED fully defined. Milestone logic mapped, dispute-safe flows documented. Development begins after UNDO + AckPay prototypes.
+
+All features are architecturally complete — now entering build phase.
+
+---
+
+## 2. Developer SDK — First Modules Being Prototyped
+
+The SDK is becoming the heart of the Dendrites developer experience. Currently in progress:
+
+- **Client Initialization Module** — drafted. Simple setup for developers integrating Safe Commerce.
+- **Predictable Gas™ Fee Quoting** — prototype started. Will expose stable fee estimates through a single call.
+- **PayCodes Generator** — early design. Will allow merchants to generate safe payment links/QRs instantly.
+- **QuickPay Flows** — concept approved. A single unified "Pay Now" method for wallets and apps.
+
+Next: UNDO + AckPay integrations into SDK. Priority is to build the SDK so developers can use it without writing any Solidity.
+
+---
+
+## 3. Design & Product — Safe Commerce UI System Under Construction
+
+The Dendrites design system is evolving rapidly.
+
+**Brand language:** deep black, neon teal, electric blue, futuristic grid patterns — the identity of Safe Commerce.
+
+**UX workflows being built:** UNDO flows, escrow milestones, merchant acceptance screens, PayCodes payment screens, and fee-band displays. Everything is being designed to feel safe, premium, and trustworthy.
+
+---
+
+## 4. Ecosystem & Growth
+
+**Waitlist momentum:** numbers are rising organically through referrals and early awareness.
+
+**Early conversations with wallets & platforms:** we've begun initial exploratory discussions with Web3 gig platforms, small remittance players, DeFi wallets, and marketplace builders. Their feedback is informing the SDK and PayCodes design.
+
+**Infrastructure partners (early-stage):** preliminary talks with L2 ecosystems have started. The reception to Safe Commerce has been very positive.
+
+---
+
+## 5. What's Coming Next
+
+- Prototype phase: SafetySend (UNDO), AckPay, and Predictable Gas™ engine in internal testing.
+- Developer Docs v0.1 to support initial partners.
+- SDK expansion with more Safe Commerce methods.
+- Ecosystem Update #2: a deeper look at partnerships, testnet decisions, and launch timeline.
+
+---
+
+## Closing
+
+This month wasn't about hype. It was about laying the foundation for technology powerful enough to change how the world uses money.
+
+We are not rushing. We are building carefully, intentionally, and with global scale in mind.
+
+Safe Commerce isn't a feature. It's a new category — and Dendrites is building it from the ground up.
+
+This is just Update #1. The next chapter will be even more meaningful.
+`,
+
   14: `
 # Season-0 Airdrop: Your Complete Guide to Points, NFTs, Multipliers & DNDX Rewards
 

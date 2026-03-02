@@ -1,5 +1,310 @@
 // src/data/blogContent.ts
 export const blogContent: Record<number, string> = {
+  5: `# APP Escrow Explained: Payments That Behave Like Workflows
+
+## Money Isn't Just Sent. Money Moves Through Workflows.
+
+In the real world, payments rarely go from A → B instantly.
+
+Commerce requires structure:
+
+- deposits
+- milestones
+- delivery checks
+- approvals
+- partial releases
+- dispute handling
+- auto-refunds
+- timeouts
+
+Every major platform — Amazon, Uber, Fiverr, Airbnb, DoorDash — is built around structured payment logic, not simple transfers.
+
+Yet blockchains only offer one primitive:
+
+\`\`\`
+send()
+\`\`\`
+
+That's it. No workflow. No milestones. No validation processes. No automated refunds. No delivery logic. No staged payouts.
+
+This is why crypto adoption has been stuck in speculation. It never had the payment primitives real-world commerce depends on.
+
+So Dendrites built them.
+
+---
+
+## Introducing APP Escrow — Adaptive Programmable Payments
+
+**APP Escrow** is the first on-chain system that transforms payments into programmable workflows.
+
+It introduces logic that mirrors how commerce actually works:
+
+- conditions
+- rules
+- milestones
+- acceptance
+- expiration
+- verification
+- automated outcomes
+
+APP Escrow turns crypto payments from a blind transfer into a structured flow with safety and accountability.
+
+---
+
+## Why This Matters: Traditional Crypto Escrow Is Primitive
+
+Every wallet, marketplace, and platform today hacks together its own escrow:
+
+- multisigs
+- custodial vaults
+- centralized admin wallets
+- spreadsheets tracking disputes
+
+This is fragile. Centralized. Dangerous. And inconsistent.
+
+**APP Escrow replaces all of this with a native on-chain state machine.**
+
+---
+
+## The APP Escrow State Machine
+
+At its core, APP Escrow follows a simple but powerful lifecycle:
+
+> **INIT → FUNDED → RELEASED → REFUNDED**
+
+Every step is controlled by transparent, rule-based logic.
+
+### INIT
+The escrow is created with: amount, rules, conditions, recipients, timeouts, refund logic, and milestone definitions.
+
+### FUNDED
+Once funded, the escrow is active — funds are locked but not released.
+
+### RELEASED
+Funds are delivered only when conditions are met:
+
+- receiver acknowledges (AckPay)
+- milestone completed
+- verifier confirms
+- service delivered
+- a preimage is revealed
+- or a passcode is entered
+
+### REFUNDED
+If conditions fail, time expires, or disputes resolve in favor of the sender → funds auto-return to the payer.
+
+This structure is identical to how modern commerce operates — but now it's on-chain, transparent, and deterministic.
+
+---
+
+## The Power of Programmability
+
+APP Escrow is not a single flow. It is a framework that can power millions of use cases.
+
+- **Milestone payments** — Freelancers/creators get paid step-by-step as work progresses.
+- **Order-based payouts** — Delivery apps release payment only when the item is confirmed.
+- **Subscription services** — Automatic renewals + automatic refunds for failed delivery.
+- **Gig platforms** — A driver/worker completes a gig → payment is released automatically.
+- **Marketplace protection** — Buyers are safe until they confirm receipt.
+- **Refund workflows** — If time expires or conditions fail → refund triggers automatically.
+- **Conditional unlocks** — Payments dependent on revealing a secret or passcode.
+- **Time-based logic** — If nobody interacts → auto-refund back to sender.
+
+Dendrites takes payment logic used by billion-dollar companies and makes it open, shared, programmable, and decentralized.
+
+---
+
+## Merchant-Grade Safety, On-Chain
+
+APP Escrow is designed to enforce:
+
+- **Trust for buyers** — Funds are never at risk until conditions are met.
+- **Reliability for sellers** — Funds are reserved — no more fake screenshots, no more "I'll send later."
+- **Fairness for both parties** — Rules are transparent, verifiable, and executable.
+- **Automated conflict resolution** — Timeouts prevent disputes from hanging forever.
+- **Zero central authority** — No admin wallet. No manual processes. No middleman.
+
+Everything is: rules → execution → outcome.
+
+---
+
+## Why APP Escrow Is a Breakthrough for Crypto
+
+This is more than just "escrow." It's the foundation of real on-chain commerce.
+
+- **Structured flows → predictable outcomes.** Commerce stops being guesswork.
+- **Zero-trust → rule-based automation.** Both parties remain safe.
+- **Developer-friendly integration.** One SDK replaces hundreds of custom-built solutions.
+- **Transparent → verifiable state transitions.** Every decision is on-chain, not hidden in a private system.
+- **Universal → any use case.** From marketplaces to remittances to logistics to agencies.
+
+APP Escrow is the missing primitive that finally brings enterprise-grade payment logic to crypto.
+
+---
+
+## Closing: Payments Should Behave Like Workflows — Now They Do
+
+Crypto didn't need a new "smart contract." It needed a unified structure for real-world settlement.
+
+That structure is **APP Escrow**.
+
+For the first time ever — workflows, milestones, approvals, verifications, refunds, and conditional unlocks — are native to digital money.
+
+Dendrites takes crypto from *"send tokens blindly"* to *"settle commerce intelligently."*
+
+This is not a feature. This is the foundation of the on-chain economy.
+`,
+
+  6: `# AckPay: Confirmation-Based Crypto Payments
+
+## Crypto Payments Finalize Too Fast — And That's the Problem
+
+Traditional crypto transfers settle instantly. This sounds great — until you realize instant finality creates massive risk:
+
+- You send money to the wrong merchant
+- The service wasn't delivered
+- The seller disappears
+- You pay for something that never arrives
+- Scammers force you to "pay first"
+- Freelancers don't get milestone clarity
+
+In the real world, payments need **confirmation**, not blind trust.
+
+Every modern system — Apple Pay, Stripe, DoorDash, Uber, Fiverr — has one rule:
+
+> A payment isn't fully complete until the receiver acknowledges it.
+
+Crypto never had this logic. Until now.
+
+---
+
+## Introducing AckPay — Payments Finalize Only When the Receiver Accepts
+
+**AckPay** brings the missing settlement layer crypto has lacked since day one.
+
+It introduces a simple, powerful rule:
+
+> Funds are "pending" until the receiver confirms the payment. If they don't accept it → the funds automatically refund to the sender.
+
+This protects the sender from:
+
+- scams
+- failed deliveries
+- dishonest merchants
+- unresponsive freelancers
+- incomplete services
+- accidental payments
+
+AckPay replaces blind transfers with **accountable settlement**.
+
+---
+
+## How AckPay Works
+
+AckPay is built around a secure, two-phase payment flow:
+
+### 1. Sender Initiates Payment
+
+The payment enters a **pending vault state** — protected but not finalized.
+
+No risk. No exposure. No "one mistake and it's gone forever."
+
+### 2. Receiver Must Press "Accept"
+
+Only the intended receiver can finalize the payment.
+
+If they:
+- delivered the work
+- completed the service
+- shipped the item
+- confirmed correctness
+
+…they simply press **Accept**. This is instant — and they have every incentive to accept legitimate payments.
+
+### 3. If the Receiver Fails to Accept → Auto-Refund
+
+If the receiver ignores, disappears, cancels, tries to cheat, doesn't deliver, fails a condition, or time expires — the payment is **automatically refunded in full** to the sender.
+
+No support tickets. No disputes. No admin intervention. Pure, rule-based safety.
+
+---
+
+## This Is Not "Holding Funds" — It's Commercial Logic
+
+AckPay introduces native settlement semantics that every commerce system relies on:
+
+- buyer protection
+- merchant accountability
+- service verification
+- delivery confirmation
+- conditional settlement
+
+This is the backbone of e-commerce, gig-work platforms, subscription models, digital services, peer-to-peer marketplaces, agency workflows, and cross-border remittances.
+
+Crypto just never had it — because no one built it.
+
+---
+
+## AckPay + APP Escrow = Complete Commercial Settlement
+
+AckPay works seamlessly with APP Escrow:
+
+- **Escrow** controls *how* funds behave (milestones, refunds, workflows).
+- **AckPay** controls *when* funds finalize.
+
+Together, payments become structured workflows with confirmation-based finality.
+
+Nothing like this exists in the blockchain industry today.
+
+---
+
+## SDK: Developers Can Add AckPay in Minutes
+
+Dendrites makes AckPay simple for developers. Via the SDK:
+
+\`\`\`javascript
+// Sender initiates
+await dendrites.ackPay.create({
+  to: receiverAddress,
+  amount: "150 USDC",
+  timeout: 180, // seconds
+});
+
+// Receiver accepts
+await dendrites.ackPay.accept(requestId);
+
+// Auto-refund if not accepted in time
+await dendrites.ackPay.autoRefund(requestId);
+\`\`\`
+
+No Solidity. No custom contract deployment. No settlement headaches.
+
+The protocol handles the logic. The SDK handles the integration. Developers get enterprise-grade payment flows instantly.
+
+---
+
+## Why AckPay Is a Breakthrough
+
+- **Protects the sender completely** — No more blind transfers.
+- **Ensures the receiver must confirm delivery** — No ambiguity.
+- **Eliminates scams and fake merchants** — They can't drain funds without acknowledging the payment.
+- **Powers real-world commerce:** Delivery apps confirm, freelancers accept, merchants approve, subscriptions auto-accept or expire.
+
+AckPay gives crypto the **missing confirmation layer**.
+
+---
+
+## Closing: Crypto Payments Should Be Safe — Not Blind.
+
+AckPay transforms blockchain settlement from *"hope the receiver is honest"* into *"funds finalize only when the receiver accepts."*
+
+This gives crypto: accountability, protection, reliability, commercial structure, and real-world usability.
+
+For the first time ever, blockchain payments have a confirmation layer — the same layer that powers every trusted payment network in the world.
+
+This is how commerce should work. And now, finally, it does.
+`,
+
   1: `# The Vision of Dendrites: Why Crypto Needs a Trust Layer
 
 Crypto solved the money layer.

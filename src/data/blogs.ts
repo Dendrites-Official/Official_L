@@ -109,7 +109,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Technical Papers",
     date: "Oct 2025",
     readMins: 7,
-    pdfPath: "/blogs/blog-5.pdf",
+    pdfPath: "",
   },
   {
     id: 6,
@@ -119,7 +119,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categoryLabel: "Technical Papers",
     date: "Oct 2025",
     readMins: 6,
-    pdfPath: "/blogs/blog-6.pdf",
+    pdfPath: "",
   },
   {
     id: 7,

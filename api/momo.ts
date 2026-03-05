@@ -20,6 +20,8 @@ export default async function handler(req: any, res: any) {
   }
 
   const apiKey = process.env.OPENAI_API_KEY || '';
+  const openaiOrg = process.env.OPENAI_ORG || '';
+  const openaiProject = process.env.OPENAI_PROJECT || '';
   if (!apiKey) {
     res.status(500).json({ error: 'Missing OPENAI_API_KEY' });
     return;
@@ -43,12 +45,22 @@ export default async function handler(req: any, res: any) {
   const maxTokens = typeof (payload as any).max_tokens === 'number' ? (payload as any).max_tokens : 350;
 
   try {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    };
+
+    if (openaiOrg) {
+      headers['OpenAI-Organization'] = openaiOrg;
+    }
+
+    if (openaiProject) {
+      headers['OpenAI-Project'] = openaiProject;
+    }
+
     const response = await fetch(OPENAI_API_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
+      headers,
       body: JSON.stringify({
         model,
         messages,

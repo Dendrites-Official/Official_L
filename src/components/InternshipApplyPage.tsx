@@ -253,14 +253,35 @@ export default function InternshipApplyPage() {
         additionalDoc: formValues.additionalDoc?.name || 'Not provided',
       };
 
-      // TODO: replace with your Formspree form ID
-      await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(emailContent),
-      });
+      // Prefer an environment-provided Formspree ID. If not set, fall back
+      // to saving the application locally (useful for local dev and testing).
+  const FORMSPREE_ID = (import.meta as any).env?.VITE_FORMSPREE_ID || '';
+
+      if (FORMSPREE_ID) {
+        await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(emailContent),
+        });
+      } else {
+        // Local fallback: persist to localStorage under a sandbox key so
+        // maintainers can review submissions during development.
+        const saveLocalApplication = (data: Record<string, any>) => {
+          try {
+            const key = 'dendrites:local_applications';
+            const existing = JSON.parse(localStorage.getItem(key) || '[]');
+            existing.push({ id: Date.now(), createdAt: new Date().toISOString(), data });
+            localStorage.setItem(key, JSON.stringify(existing));
+          } catch (err) {
+            console.warn('Could not save application locally', err);
+          }
+        };
+
+        saveLocalApplication(emailContent);
+        console.info('No Formspree ID configured — application saved to localStorage under "dendrites:local_applications" for review.');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
     } finally {

@@ -159,7 +159,7 @@ OTHER LIVE ROUTES:
 - '/roadmap': the same 'DndxRoadmapPremium' render in a distraction-free page.
 - '/sla': premium "module under construction" broadcast explaining the upcoming SLA Testnet—tell users it's coming soon but outlines goals.
 - '/launch': BackgroundDnDx + MusicPlayer hero with a Coming Soon card summarizing the Launch experience.
-- '/league': glitch-styled teaser for future gaming leagues / tournaments.
+- '/presale': Genesis presale information, timeline, and token details.
 - '/security': currently shows the LeadBoard placeholder and promises rankings soon (naming quirk in code).
 - Leaderboard CTA points to https://waitlist.dendrites.ai/leaderboard.
 
@@ -170,7 +170,7 @@ WEBSITE NAVIGATION (MATCHES NAVBAR):
 - SLA '/sla'
 - Roadmap '/roadmap'
 - Launch '/launch'
-- Leagues '/league'
+- Presale '/presale'
 - External Leaderboard link '/leaderboard' (opens waitlist leaderboard)
 
 When someone asks "where can I..." give the exact path and describe what they'll see. Default guidance:
@@ -179,7 +179,7 @@ When someone asks "where can I..." give the exact path and describe what they'll
 - Blog deep dives → '/blogs' with category filters or the specific '/blogs/{id}' permalink.
 - Roadmap timing → '/roadmap' (mirrors the home component).
 - SLA policy → '/sla' (currently under construction, explains SLA Testnet status).
-- Launch / League info → '/launch' and '/league' (both announce upcoming experiences).
+- Presale info → '/presale' (announces the genesis presale, token details, and timeline).
 - Leaderboard standings → 'https://waitlist.dendrites.ai/leaderboard'.
 
 TOKENOMICS (CRITICAL - 7.6 BILLION):

@@ -1,6 +1,5 @@
 // src/components/Footer.tsx
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 /* -------------------------------------------------
    Modal types
@@ -29,6 +28,12 @@ function PolicyModal({ type, onClose }: PolicyModalProps) {
       : type === "terms"
       ? "The rules of using Dendrites AI and DNDX products."
       : "How we protect your data and payments infrastructure.";
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, []);
 
   return (
     <div className="fixed inset-0 z-[9990] flex items-end sm:items-center justify-center px-2 sm:px-4">
@@ -470,13 +475,13 @@ export default function Footer({ showCompanyInfo = false }: { showCompanyInfo?: 
             {/* <a href="/security" className="footer-link">
               Security
             </a> */}
-            <Link to="/careers" className="footer-link">
+            <a href="/careers" className="footer-link">
               Careers
-            </Link>
+            </a>
             {/* NEW: About Us on mobile */}
-            <Link to="/about" className="footer-link">
+            <a href="/about" className="footer-link">
               About Us
-            </Link>
+            </a>
             <a
               href="https://shorturl.at/vpN6j"
               target="_blank"
@@ -859,19 +864,19 @@ export default function Footer({ showCompanyInfo = false }: { showCompanyInfo?: 
                   >
                     Security
                   </a> */}
-                  <Link
-                    to="/careers"
+                  <a
+                    href="/careers"
                     className="block text-white/60 footer-link transition-colors"
                   >
                     Careers
-                  </Link>
+                  </a>
                   {/* NEW: About Us on desktop */}
-                  <Link
-                    to="/about"
+                  <a
+                    href="/about"
                     className="block text-white/60 footer-link transition-colors"
                   >
                     About Us
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

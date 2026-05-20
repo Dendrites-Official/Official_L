@@ -9,9 +9,11 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Navbar from "@/components/Navbar";
 import ChatBotWidget from "@/components/ChatBotWidget";
 import MatrixIntro from "@/components/MatrixIntro";
+// DNDXLaunchSequence removed — launch sequence is deprecated.
 import MusicPlayer from "@/components/MusicPlayer";
 import ExternalRedirect from "@/components/ExternalRedirect";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import GenesisPresale from "@/pages/Presale";
 
 // Pages - Lazy loaded for better performance
 const HomePage = lazy(() => import("@/pages/Home"));
@@ -25,11 +27,16 @@ const Launch = lazy(() => import("@/pages/Launch"));
 const HeroExample = lazy(() => import("@/pages/HeroExample"));
 const Careers = lazy(() => import("./components/Careers"));
 const InternshipApplyPage = lazy(() => import("./components/InternshipApplyPage"));
-const League = lazy(() => import("@/pages/League"));
+
 const AboutDendrites = lazy(() => import("@/pages/AboutDendrites")); // 👈 NEW
 
-/** Check if we should show intro (only once per session) */
+/** Check if we should show intro (only once per session and only on home page) */
 const shouldShowIntro = (): boolean => {
+  // Only show intro on home page
+  if (typeof window !== "undefined" && window.location.pathname !== "/") {
+    return false;
+  }
+
   const shownA = sessionStorage.getItem("introShown") === "true";
   const shownB = sessionStorage.getItem("dndx:introShown") === "true";
   if (shownA || shownB) return false;
@@ -103,6 +110,7 @@ function PageLoader() {
 
 export default function App() {
   const location = useLocation();
+  const [isInitialMount, setIsInitialMount] = useState<boolean>(true);
   const [showIntro, setShowIntro] = useState<boolean>(() => shouldShowIntro());
   const [introComplete, setIntroComplete] = useState<boolean>(false);
   const [chatbotReady, setChatbotReady] = useState(false);
@@ -181,6 +189,18 @@ export default function App() {
     setShowIntro(false);
   };
 
+  // Track initial mount so we can differentiate full page loads from SPA navigations
+  useEffect(() => {
+    setIsInitialMount(true);
+    // mark end of initial mount on next tick
+    const t = window.setTimeout(() => setIsInitialMount(false), 0);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  // Always allow popup on home page - simplified logic
+  const allowPopupOnThisLoad = true;
+  console.log("[App] allowPopupOnThisLoad: true (always enabled on home page)");
+
   useEffect(() => {
     if (showIntro) {
       setChatbotReady(false);
@@ -214,6 +234,8 @@ export default function App() {
           )}
         </AnimatePresence>
 
+  {/* Launch sequence removed — no takeover sequence will be shown. */}
+
         <ScrollToTop />
         <Navbar />
 
@@ -234,7 +256,7 @@ export default function App() {
                     path="/"
                     element={
                       <PageTransition>
-                        <HomePage introReady={introReady} />
+                        <HomePage introReady={introReady} allowPopupOnInitialLoad={allowPopupOnThisLoad} />
                       </PageTransition>
                     }
                   />
@@ -321,12 +343,12 @@ export default function App() {
                     }
                   />
 
-                  {/* League */}
+                  {/* Presale */}
                   <Route
-                    path="/league"
+                    path="/presale"
                     element={
                       <PageTransition>
-                        <League />
+                        <GenesisPresale />
                       </PageTransition>
                     }
                   />

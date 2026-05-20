@@ -282,7 +282,7 @@ export default function Navbar() {
               {/* Center CTAs - Only on XL desktop (1280px+) */}
               <div className="hidden xl:flex items-center justify-center">
                 <div className="nav-shelf relative flex items-center justify-between w-full max-w-2xl px-4 translate-y-[10px]">
-                  <CTA to="/league" variant="dark">Leagues</CTA>
+                  <CTA to="/presale" variant="dark">Presale</CTA>
                   <CTA to="/launch" variant="primary" className="z-10">Launch DNDX</CTA>
                   <CTA to="https://waitlist.dendrites.ai/" variant="dark">Airdrop</CTA>
                 </div>

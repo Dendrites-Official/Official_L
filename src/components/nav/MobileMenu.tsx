@@ -353,11 +353,11 @@ export default function MobileMenu({
                   <GradientRingButton 
                     size="md" 
                     fullWidth 
-                    onClick={() => go("/league")}
+                    onClick={() => go("/presale")}
                     className="text-base font-bold tracking-wide"
                     style={{ fontFamily: 'var(--font-hape)' }}
                   >
-                    Leagues
+                    Presale
                   </GradientRingButton>
                   <GradientRingButton 
                     size="md" 

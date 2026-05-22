@@ -1,9 +1,8 @@
 // AI-powered chatbot with OpenAI GPT models
 // Rate limiting: 15 requests per minute to avoid flooding the API
 
-const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY || '';
 const OPENAI_MODEL = import.meta.env.VITE_OPENAI_MODEL?.trim() || 'gpt-4o-mini';
-const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
+const MOMO_API_URL = '/api/momo';
 
 let requestCount = 0;
 const MAX_REQUESTS_PER_MINUTE = 15;
@@ -332,32 +331,30 @@ function buildOpenAIRequest(): OpenAIChatPayload {
 }
 
 async function callOpenAI(payload: OpenAIChatPayload): Promise<string> {
-  console.warn(`🤖 MOMO: Calling OpenAI model ${OPENAI_MODEL}`);
+  console.warn(`🤖 MOMO: Calling ${MOMO_API_URL} with model ${OPENAI_MODEL}`);
   console.warn(`📦 MOMO: Payload size: ${JSON.stringify(payload).length} characters`);
 
-  const response = await fetch(OPENAI_API_URL, {
+  const response = await fetch(MOMO_API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
     },
     body: JSON.stringify(payload),
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`OpenAI API error (${response.status}) - ${errorText}`);
+    throw new Error(`MOMO API error (${response.status}) - ${errorText}`);
   }
 
   const data = await response.json();
-  const choice = data?.choices?.[0];
-  const aiReply: string | undefined = choice?.message?.content?.trim();
+  const aiReply: string | undefined = data?.reply?.trim();
   if (!aiReply) {
     console.error('⚠️ MOMO: OpenAI returned no text', data);
     throw new Error('OpenAI returned an empty response');
   }
 
-  console.warn(`✅ MOMO: Received response from ${OPENAI_MODEL} (finish_reason=${choice?.finish_reason ?? 'unknown'})`);
+  console.warn(`✅ MOMO: Received response from ${OPENAI_MODEL}`);
   return aiReply;
 }
 
@@ -365,12 +362,6 @@ export async function getAIResponse(userMessage: string): Promise<string> {
   if (DATE_REGEX.test(userMessage.toLowerCase())) {
     return getCurrentDateResponse();
   }
-  // If no API key, fall back to knowledge base
-  if (!OPENAI_API_KEY) {
-    console.warn('⚠️ MOMO: No API key found, using fallback');
-    return getFallbackResponse(userMessage);
-  }
-
   try {
     // Wait for rate limit if needed
     await waitForRateLimit();

@@ -33,10 +33,10 @@ html.dxMiniLaunchActive #root {
 .dxMiniLaunch__card {
   position: relative;
   z-index: 2;
-  width: min(410px, calc(100vw - 28px));
+  width: min(430px, calc(100vw - 28px));
   overflow: hidden;
   border-radius: 24px;
-  padding: 18px;
+  padding: 22px;
   color: #ffffff;
   background: #050505;
   border: 1px solid rgba(255, 255, 255, 0.13);
@@ -66,11 +66,10 @@ html.dxMiniLaunchActive #root {
   );
 }
 
-.dxMiniLaunch__brand,
-.dxMiniLaunch__tabs,
+.dxMiniLaunch__header,
 .dxMiniLaunch__content,
-.dxMiniLaunch__terms,
-.dxMiniLaunch__actions,
+.dxMiniLaunch__points,
+.dxMiniLaunch__point,
 .dxMiniLaunch__note,
 .dxMiniLaunch__close {
   position: relative;
@@ -117,125 +116,40 @@ html.dxMiniLaunchActive #root {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.dxMiniLaunch__brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  min-height: 38px;
-  padding-right: 44px;
-  margin-bottom: 16px;
+.dxMiniLaunch__header {
+  padding-right: 42px;
+  margin-bottom: 18px;
 }
 
-.dxMiniLaunch__brandMark {
-  display: inline-flex;
-  height: 32px;
-  min-width: 54px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0 11px;
-  background: #ffffff;
-  color: #030303;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-}
-
-.dxMiniLaunch__brand strong {
-  display: block;
-  color: #ffffff;
-  font-size: 13px;
+.dxMiniLaunch__kicker {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
   line-height: 1;
-  font-weight: 850;
-  letter-spacing: -0.01em;
-}
-
-.dxMiniLaunch__brand small {
-  display: block;
-  margin-top: 5px;
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 11.5px;
-  line-height: 1;
-  font-weight: 650;
-}
-
-.dxMiniLaunch__tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-bottom: 14px;
-  padding: 4px;
-  border-radius: 999px;
-  background: #0a0a0a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dxMiniLaunch__tab {
-  min-height: 38px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 12.5px;
-  font-weight: 820;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-  transition:
-    color 160ms ease,
-    background 160ms ease,
-    transform 160ms ease;
-}
-
-.dxMiniLaunch__tab:hover {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.dxMiniLaunch__tab.is-active {
-  color: #030303;
-  background: #ffffff;
-}
-
-.dxMiniLaunch__content {
-  padding: 16px;
-  border-radius: 20px;
-  background: #080808;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: dxMiniTabFadeIn 180ms ease both;
-}
-
-.dxMiniLaunch__eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 13px;
-}
-
-.dxMiniLaunch__eyebrow span {
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 10.5px;
-  font-weight: 850;
-  letter-spacing: 0.16em;
+  font-weight: 750;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 
-.dxMiniLaunch__eyebrow i {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(0, 112, 243, 0.72), transparent);
-}
-
-.dxMiniLaunch__content h2 {
-  max-width: 350px;
+.dxMiniLaunch__header h2 {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(24px, 6vw, 32px);
-  line-height: 1.02;
-  letter-spacing: -0.055em;
-  font-weight: 900;
+  font-size: clamp(38px, 8.5vw, 52px);
+  line-height: 0.92;
+  font-weight: 950;
+  letter-spacing: -0.075em;
 }
 
-.dxMiniLaunch__content > p {
-  margin: 11px 0 0;
+.dxMiniLaunch__content {
+  padding: 17px;
+  border-radius: 20px;
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dxMiniLaunch__intro {
+  margin: 0;
+  max-width: 330px;
   color: rgba(255, 255, 255, 0.64);
   font-size: 13.5px;
   line-height: 1.5;
@@ -245,15 +159,15 @@ html.dxMiniLaunchActive #root {
 
 .dxMiniLaunch__points {
   display: grid;
-  gap: 8px;
-  margin-top: 15px;
+  gap: 0;
+  margin-top: 16px;
 }
 
 .dxMiniLaunch__point {
   display: flex;
   align-items: center;
-  gap: 9px;
-  min-height: 34px;
+  gap: 10px;
+  min-height: 44px;
   padding: 0 2px;
   border-top: 1px solid rgba(255, 255, 255, 0.075);
 }
@@ -263,8 +177,8 @@ html.dxMiniLaunchActive #root {
 }
 
 .dxMiniLaunch__point span {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   flex: 0 0 auto;
   border-radius: 999px;
   background: #0070f3;
@@ -273,173 +187,30 @@ html.dxMiniLaunchActive #root {
 
 .dxMiniLaunch__point p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
   line-height: 1.35;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 720;
+  letter-spacing: -0.018em;
 }
 
-.dxMiniLaunch__terms {
-  display: grid;
-  grid-template-columns: 19px 1fr;
-  gap: 10px;
-  align-items: flex-start;
-  margin-top: 13px;
-  padding: 12px;
-  border-radius: 16px;
-  background: #070707;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition:
-    transform 160ms ease,
-    background 160ms ease,
-    box-shadow 160ms ease,
-    border-color 160ms ease;
-}
-
-.dxMiniLaunch__terms.is-nudging {
-  animation: dxMiniTermsNudge 480ms ease both;
-  background: rgba(0, 112, 243, 0.08);
-  border-color: rgba(0, 112, 243, 0.44);
-  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.14);
-}
-
-.dxMiniLaunch__terms input {
-  -webkit-appearance: none;
-  appearance: none;
-  position: relative;
-  width: 19px;
-  height: 19px;
-  margin: 1px 0 0;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 6px;
-  background: #050505;
-  cursor: pointer;
-  transition:
-    background 150ms ease,
-    border-color 150ms ease,
-    box-shadow 150ms ease;
-}
-
-.dxMiniLaunch__terms input:checked {
-  background: #0070f3;
-  border-color: #0070f3;
-  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.18);
-}
-
-.dxMiniLaunch__terms input:checked::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 11px;
-  border: solid #ffffff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.dxMiniLaunch__termsCopy {
-  min-width: 0;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 11.5px;
-  line-height: 1.42;
-  font-weight: 560;
-  letter-spacing: -0.01em;
-}
-
-.dxMiniLaunch__termsCopy label {
-  cursor: pointer;
-}
-
-.dxMiniLaunch__termsCopy a {
-  display: inline-flex;
-  margin-left: 6px;
-  color: #4da3ff;
-  font-weight: 760;
-  text-decoration: none;
-}
-
-.dxMiniLaunch__termsCopy a:hover {
-  text-decoration: underline;
-}
-
-.dxMiniLaunch__actions {
-  display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 10px;
-  margin-top: 13px;
-}
-
-.dxMiniLaunch__primary,
-.dxMiniLaunch__secondary {
-  display: inline-flex;
-  min-height: 48px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: 999px;
-  padding: 0 15px;
-  font-size: 13px;
-  font-weight: 850;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    transform 160ms ease,
-    opacity 160ms ease,
-    background 160ms ease,
-    border-color 160ms ease;
-}
-
-.dxMiniLaunch__primary {
-  color: #030303;
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.86);
-}
-
-.dxMiniLaunch__secondary {
+.dxMiniLaunch__point:first-child p {
   color: #ffffff;
-  background: #090909;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-}
-
-.dxMiniLaunch__primary:hover,
-.dxMiniLaunch__secondary:hover {
-  transform: translateY(-1px);
-}
-
-.dxMiniLaunch__primary:hover {
-  background: #f2f2f2;
-}
-
-.dxMiniLaunch__secondary:hover {
-  background: #111111;
-  border-color: rgba(255, 255, 255, 0.24);
-}
-
-.dxMiniLaunch__primary.is-disabled,
-.dxMiniLaunch__secondary.is-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
 }
 
 .dxMiniLaunch__note {
-  margin: 11px 0 0;
-  color: rgba(255, 255, 255, 0.34);
+  margin: 13px 0 0;
+  color: rgba(255, 255, 255, 0.36);
   font-size: 11px;
   line-height: 1.36;
   font-weight: 560;
   text-align: center;
 }
 
-.dxMiniLaunch__close:focus-visible,
-.dxMiniLaunch__tab:focus-visible,
-.dxMiniLaunch__primary:focus-visible,
-.dxMiniLaunch__secondary:focus-visible,
-.dxMiniLaunch__terms input:focus-visible,
-.dxMiniLaunch__termsCopy a:focus-visible {
+.dxMiniLaunch__close:focus-visible {
   outline: 2px solid #0070f3;
   outline-offset: 3px;
 }
@@ -466,37 +237,6 @@ html.dxMiniLaunchActive #root {
   }
 }
 
-@keyframes dxMiniTabFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes dxMiniTermsNudge {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-
-  24% {
-    transform: translateX(-4px);
-  }
-
-  48% {
-    transform: translateX(4px);
-  }
-
-  72% {
-    transform: translateX(-2px);
-  }
-}
-
 @media (max-width: 520px) {
   .dxMiniLaunch {
     padding: 14px;
@@ -505,79 +245,65 @@ html.dxMiniLaunchActive #root {
   .dxMiniLaunch__card {
     width: min(390px, calc(100vw - 24px));
     border-radius: 22px;
-    padding: 15px;
+    padding: 18px;
   }
 
-  .dxMiniLaunch__brand {
-    margin-bottom: 13px;
+  .dxMiniLaunch__header {
+    margin-bottom: 15px;
+  }
+
+  .dxMiniLaunch__header h2 {
+    font-size: clamp(36px, 11vw, 46px);
   }
 
   .dxMiniLaunch__content {
-    padding: 13px;
+    padding: 15px;
   }
 
-  .dxMiniLaunch__content h2 {
-    font-size: clamp(23px, 7.2vw, 29px);
+  .dxMiniLaunch__point {
+    min-height: 42px;
   }
 
-  .dxMiniLaunch__actions {
-    grid-template-columns: 1fr;
+  .dxMiniLaunch__point p {
+    font-size: 13.5px;
   }
 
-  .dxMiniLaunch__primary,
-  .dxMiniLaunch__secondary {
-    width: 100%;
-    min-height: 46px;
+  .dxMiniLaunch__point:first-child p {
+    font-size: 16px;
   }
 }
 
 @media (max-height: 720px) {
   .dxMiniLaunch__card {
-    padding: 14px;
+    padding: 17px;
   }
 
-  .dxMiniLaunch__brand {
-    margin-bottom: 11px;
+  .dxMiniLaunch__header {
+    margin-bottom: 13px;
   }
 
-  .dxMiniLaunch__tabs {
-    margin-bottom: 11px;
+  .dxMiniLaunch__header h2 {
+    font-size: 40px;
   }
 
   .dxMiniLaunch__content {
-    padding: 12px;
+    padding: 14px;
   }
 
-  .dxMiniLaunch__content h2 {
-    font-size: 23px;
-  }
-
-  .dxMiniLaunch__content > p {
-    font-size: 12.4px;
-    line-height: 1.42;
-  }
-
-  .dxMiniLaunch__points {
-    gap: 4px;
-    margin-top: 10px;
+  .dxMiniLaunch__intro {
+    font-size: 12.6px;
   }
 
   .dxMiniLaunch__point {
-    min-height: 29px;
+    min-height: 38px;
   }
 
-  .dxMiniLaunch__terms {
-    margin-top: 10px;
-    padding: 10px;
+  .dxMiniLaunch__point p {
+    font-size: 13px;
   }
 
-  .dxMiniLaunch__actions {
-    margin-top: 10px;
-  }
-
-  .dxMiniLaunch__primary,
-  .dxMiniLaunch__secondary {
-    min-height: 43px;
+  .dxMiniLaunch__point:first-child p {
+    font-size: 15px;
   }
 }
 
@@ -585,11 +311,6 @@ html.dxMiniLaunchActive #root {
   html.dxMiniLaunchActive #root,
   .dxMiniLaunch__shade,
   .dxMiniLaunch__card,
-  .dxMiniLaunch__content,
-  .dxMiniLaunch__terms,
-  .dxMiniLaunch__primary,
-  .dxMiniLaunch__secondary,
-  .dxMiniLaunch__tab,
   .dxMiniLaunch__close {
     animation: none !important;
     transition: none !important;

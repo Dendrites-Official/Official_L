@@ -157,6 +157,7 @@ export default function InternshipApplyPage() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStage, setSubmitStage] = useState<SubmitStage>('idle');
   const firstErrorRef = useRef<HTMLDivElement>(null);
@@ -228,62 +229,58 @@ export default function InternshipApplyPage() {
     setIsSubmitting(true);
     setSubmitStage('loading');
     setSubmitted(false);
+    setSubmitError(false);
+
+    let success = false;
 
     try {
-      const emailContent = {
-        to: 'hello@dendrites.ai',
-        subject: `Job Application: ${role.title} - ${formValues.fullName}`,
+      // Send all form fields directly to careers@dendrites.ai via FormSubmit.
+      // No account or env variable needed. The very first submission will send
+      // a one-time activation email to careers@dendrites.ai; after clicking
+      // Activate, every subsequent submission is delivered as a normal email.
+      const payload = {
+        _subject: `Job Application: ${role.title} — ${formValues.fullName}`,
+        _replyto: formValues.email,
+        _template: 'table',
+        _captcha: 'false',
         role: role.title,
-        fullName: formValues.fullName,
-        email: formValues.email,
-        phone: formValues.phone,
-        location: formValues.location,
-        linkedin: formValues.linkedin,
-        github: formValues.github,
-        portfolio: formValues.portfolio,
-        experience: formValues.experience,
-        skills: formValues.selectedSkills.join(', '),
-        whyDendrites: formValues.whyDendrites,
-        proudProject: formValues.proudProject,
-        specificAnswer: formValues.specificAnswer,
-        startDate: formValues.startDate,
-        salary: formValues.salary,
-        hearAbout: formValues.hearAbout,
-        resume: formValues.resume?.name || 'Not provided',
-        additionalDoc: formValues.additionalDoc?.name || 'Not provided',
+        'Full Name': formValues.fullName,
+        'Email': formValues.email,
+        'Phone': formValues.phone || 'Not provided',
+        'Location / Timezone': formValues.location || 'Not provided',
+        'LinkedIn': formValues.linkedin || 'Not provided',
+        'GitHub': formValues.github || 'Not provided',
+        'Portfolio': formValues.portfolio || 'Not provided',
+        'Experience Level': formValues.experience,
+        'Skills': formValues.selectedSkills.join(', '),
+        'Why Dendrites': formValues.whyDendrites,
+        'Proud Project': formValues.proudProject,
+        'Role-Specific Answer': formValues.specificAnswer || 'Not provided',
+        'Start Date': formValues.startDate || 'Not provided',
+        'Salary Expectation': formValues.salary || 'Not provided',
+        'How They Heard': formValues.hearAbout || 'Not provided',
+        'Resume File': formValues.resume?.name || 'Not provided',
+        'Additional Doc': formValues.additionalDoc?.name || 'Not provided',
       };
 
-      // Prefer an environment-provided Formspree ID. If not set, fall back
-      // to saving the application locally (useful for local dev and testing).
-  const FORMSPREE_ID = (import.meta as any).env?.VITE_FORMSPREE_ID || '';
+      const res = await fetch('https://formsubmit.co/ajax/careers@dendrites.ai', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-      if (FORMSPREE_ID) {
-        await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(emailContent),
-        });
+      const result = await res.json();
+      if (result.success) {
+        success = true;
       } else {
-        // Local fallback: persist to localStorage under a sandbox key so
-        // maintainers can review submissions during development.
-        const saveLocalApplication = (data: Record<string, any>) => {
-          try {
-            const key = 'dendrites:local_applications';
-            const existing = JSON.parse(localStorage.getItem(key) || '[]');
-            existing.push({ id: Date.now(), createdAt: new Date().toISOString(), data });
-            localStorage.setItem(key, JSON.stringify(existing));
-          } catch (err) {
-            console.warn('Could not save application locally', err);
-          }
-        };
-
-        saveLocalApplication(emailContent);
-        console.info('No Formspree ID configured — application saved to localStorage under "dendrites:local_applications" for review.');
+        throw new Error('FormSubmit returned failure.');
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Error submitting application:', error);
+      success = false;
     } finally {
       // loader → check → modal
       setTimeout(() => {
@@ -291,7 +288,11 @@ export default function InternshipApplyPage() {
         setTimeout(() => {
           setIsSubmitting(false);
           setSubmitStage('idle');
-          setSubmitted(true);
+          if (success) {
+            setSubmitted(true);
+          } else {
+            setSubmitError(true);
+          }
         }, 800);
       }, 1000);
     }
@@ -837,6 +838,19 @@ export default function InternshipApplyPage() {
                 >
                   {isSubmitting ? 'Submitting…' : 'Submit Application'}
                 </button>
+
+                {submitError && (
+                  <p className="mt-4 text-sm text-red-400 font-medium">
+                    ⚠️ Submission failed. Please try again or email us directly at{' '}
+                    <a
+                      href="mailto:careers@dendrites.ai"
+                      className="underline hover:text-red-300"
+                    >
+                      careers@dendrites.ai
+                    </a>
+                    .
+                  </p>
+                )}
               </div>
             </form>
           </div>

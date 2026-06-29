@@ -238,38 +238,47 @@ export default function InternshipApplyPage() {
       // No account or env variable needed. The very first submission will send
       // a one-time activation email to careers@dendrites.ai; after clicking
       // Activate, every subsequent submission is delivered as a normal email.
-      const payload = {
-        _subject: `Job Application: ${role.title} — ${formValues.fullName}`,
-        _replyto: formValues.email,
-        _template: 'table',
-        _captcha: 'false',
-        role: role.title,
-        'Full Name': formValues.fullName,
-        'Email': formValues.email,
-        'Phone': formValues.phone || 'Not provided',
-        'Location / Timezone': formValues.location || 'Not provided',
-        'LinkedIn': formValues.linkedin || 'Not provided',
-        'GitHub': formValues.github || 'Not provided',
-        'Portfolio': formValues.portfolio || 'Not provided',
-        'Experience Level': formValues.experience,
-        'Skills': formValues.selectedSkills.join(', '),
-        'Why Dendrites': formValues.whyDendrites,
-        'Proud Project': formValues.proudProject,
-        'Role-Specific Answer': formValues.specificAnswer || 'Not provided',
-        'Start Date': formValues.startDate || 'Not provided',
-        'Salary Expectation': formValues.salary || 'Not provided',
-        'How They Heard': formValues.hearAbout || 'Not provided',
-        'Resume File': formValues.resume?.name || 'Not provided',
-        'Additional Doc': formValues.additionalDoc?.name || 'Not provided',
-      };
+      // Convert files to base64 so the API route can attach them to the email
+      const toBase64 = (file: File): Promise<string> =>
+        new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve((reader.result as string).split(',')[1]);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
 
-      const res = await fetch('https://formsubmit.co/ajax/careers@dendrites.ai', {
+      const resumeBase64 = formValues.resume ? await toBase64(formValues.resume) : null;
+      const additionalDocBase64 = formValues.additionalDoc ? await toBase64(formValues.additionalDoc) : null;
+
+      const res = await fetch('/api/apply', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: {
+            'Role': role.title,
+            'Full Name': formValues.fullName,
+            'Email': formValues.email,
+            'Phone': formValues.phone || 'Not provided',
+            'Location / Timezone': formValues.location || 'Not provided',
+            'LinkedIn': formValues.linkedin || 'Not provided',
+            'GitHub': formValues.github || 'Not provided',
+            'Portfolio': formValues.portfolio || 'Not provided',
+            'Experience Level': formValues.experience,
+            'Skills': formValues.selectedSkills.join(', '),
+            'Why Dendrites': formValues.whyDendrites,
+            'Proud Project': formValues.proudProject || 'Not provided',
+            'Role-Specific Answer': formValues.specificAnswer || 'Not provided',
+            'Start Date': formValues.startDate || 'Not provided',
+            'Salary Expectation': formValues.salary || 'Not provided',
+            'How They Heard': formValues.hearAbout || 'Not provided',
+            'Resume File': formValues.resume?.name || 'Not provided',
+            'Additional Doc': formValues.additionalDoc?.name || 'Not provided',
+          },
+          resumeBase64,
+          resumeName: formValues.resume?.name || null,
+          additionalDocBase64,
+          additionalDocName: formValues.additionalDoc?.name || null,
+        }),
       });
 
       const result = await res.json();

@@ -5,7 +5,7 @@
 //   MAILGUN_REGION    — 'us' or 'eu'  (default: 'us')
 
 const TO_EMAIL = 'careers@dendrites.ai';
-const FROM_ADDRESS = 'Dendrites Careers <careers@dendrites.ai>';
+const FROM_ADDRESS = 'Dendrites <careers@dendrites.ai>';
 
 function row(label: string, value: string) {
   if (!value || value === 'Not provided') {
